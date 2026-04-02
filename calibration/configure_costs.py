@@ -66,7 +66,7 @@ def _parse_timing(log_path: str) -> Dict[str, float]:
     return results
 
 
-def measure_costs_manual(
+def configure_costs_manual(
     l1_cost: float, l2_cost: float, l3_cost: float
 ) -> Dict[str, Any]:
     return {
@@ -77,7 +77,7 @@ def measure_costs_manual(
     }
 
 
-def measure_costs_from_logs(
+def configure_costs_from_logs(
     ghidra_log: str,
     angr_log: str,
     labels_dir: str,
@@ -143,11 +143,11 @@ def main():
     args = parser.parse_args()
 
     if args.manual:
-        result = measure_costs_manual(args.l1_cost, args.l2_cost, args.l3_cost)
+        result = configure_costs_manual(args.l1_cost, args.l2_cost, args.l3_cost)
     else:
         if not args.ghidra_log or not args.angr_log:
             parser.error("--from-logs requires --ghidra-log and --angr-log")
-        result = measure_costs_from_logs(
+        result = configure_costs_from_logs(
             args.ghidra_log, args.angr_log, args.labels_dir
         )
 
