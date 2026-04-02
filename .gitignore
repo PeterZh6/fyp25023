@@ -1,1 +1,32 @@
+# Third-party tools (large binaries)
 /tools/
+/binutils/
+
+# Dataset: input binaries and analysis outputs (reproducible)
+/data/binaries/
+/data/ghidra_results/
+/data/angr_results/
+
+# Training outputs (models, curves, plots)
+out*/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs and debug artifacts
+*.log
+gdb.txt
+.gdb_history
+
+# Generated plots
+*.png
+
+# Large binary artifacts
+*.zip
+*.npz
+*.npy
+
+# OS
+.DS_Store
