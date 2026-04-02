@@ -13,6 +13,7 @@ import ghidra.program.model.address.Address;
 import ghidra.program.model.symbol.Reference;
 import ghidra.program.model.symbol.RefType;
 import ghidra.program.model.symbol.FlowType;
+import ghidra.program.model.mem.MemoryBlock;
 
 
 
@@ -71,6 +72,9 @@ public class ExportIndirectFlowsCustom extends GhidraScript {
             if (!(ft.isJump() || ft.isCall())) continue;
 
             Address a = ins.getAddress();
+
+            MemoryBlock block = currentProgram.getMemory().getBlock(a);
+            if (block != null && block.getName().startsWith(".plt")) continue;
             String fn = funcName(a);
             String type = ft.isJump() ? "jump" : "call";
             List<String> targets = collectTargets(a);
