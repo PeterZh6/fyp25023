@@ -14,19 +14,51 @@ out*/
 __pycache__/
 *.pyc
 *.pyo
+*.egg-info/
+*.egg
+dist/
+build/
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Linting / type-checking caches
+.mypy_cache/
+.ruff_cache/
 
 # Logs and debug artifacts
 *.log
 gdb.txt
 .gdb_history
 
-# Generated plots
+# Generated plots and figures
 *.png
+*.pdf
 
 # Large binary artifacts
 *.zip
 *.npz
 *.npy
 
+# Environment / secrets
+.env
+.env.*
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
 # OS
 .DS_Store
+Thumbs.db
