@@ -63,6 +63,7 @@ class EnvConfig:
     targets_per_cluster: int = 5
     budget: int = 60
     seed: int = 0
+    
 
     # Action levels and costs
     # Action space = {0:SKIP, 1:L1, 2:L2, 3:L3}
@@ -78,9 +79,9 @@ class EnvConfig:
     # Success probabilities per hidden type and action level
     success_probs: Dict[str, Dict[int, float]] = dataclasses.field(
         default_factory=lambda: {
-        "easy": {1: 0.95, 2: 0.99, 3: 1.00},   # O0/simple
-        "medium": {1: 0.65, 2: 0.90, 3: 0.98}, # O1/O2
-        "hard": {1: 0.20, 2: 0.60, 3: 0.90},   # O3/obfuscated
+        "easy": {1: 0.80, 2: 0.95, 3: 1.00},   # O0/simple
+        "medium": {1: 0.40, 2: 0.80, 3: 0.95}, # O1/O2
+        "hard": {1: 0.10, 2: 0.50, 3: 0.85},    # O3/obfuscated
         }
     )
 
@@ -92,6 +93,9 @@ class EnvConfig:
     # Per-target attempt structure
     max_attempts_per_target: int = 3  # to prevent infinite loops
     invalid_repeat_penalty: float = -0.05  # if agent repeats same level on same target
+
+    use_cluster_stats: bool = True
+    oracle_mode: bool = False
 
 
 class AnalysisBudgetEnv(gym.Env):
@@ -136,7 +140,7 @@ class AnalysisBudgetEnv(gym.Env):
         # Actions: 0=SKIP, 1=L1, 2=L2, 3=L3
         self.action_space = spaces.Discrete(4)
 
-        obs_dim = self.n_clusters + 13
+        obs_dim = self.n_clusters + 16
         self.observation_space = spaces.Box(
             low=-np.inf, high=np.inf, shape=(obs_dim,), dtype=np.float32
         )
@@ -192,12 +196,26 @@ class AnalysisBudgetEnv(gym.Env):
         denom = max(1.0, float(attempts.sum()))
         attempts_norm = attempts / denom
 
-        successes = self.cluster_successes[cid].astype(np.float32)
-        success_rate = successes / (attempts + 1e-6)
+        if self.cfg.use_cluster_stats:
+            attempts_norm = attempts / denom
+            successes = self.cluster_successes[cid].astype(np.float32)
+            success_rate = successes / (attempts + 1e-6)
+        else:
+            # ablation: zero out cluster stats
+            attempts_norm = np.zeros(3, dtype=np.float32)
+            success_rate = np.zeros(3, dtype=np.float32)
 
         global_success_rate = np.array([
             self.total_solved / max(1, self.cur_target)
         ], dtype=np.float32)
+
+        if self.cfg.oracle_mode:
+            # 加入hidden type的one-hot (3维: easy/medium/hard)
+            type_map = {"easy": 0, "medium": 1, "hard": 2}
+            hidden_type = self.cluster_types[cid]
+            type_oh = self._one_hot(type_map[hidden_type], 3)
+        else:
+            type_oh = np.zeros(3, dtype=np.float32)
 
         obs = np.concatenate([
             progress,
@@ -208,6 +226,7 @@ class AnalysisBudgetEnv(gym.Env):
             attempts_norm,
             success_rate,
             global_success_rate,
+            type_oh
         ]).astype(np.float32)
         return obs
 
@@ -744,6 +763,10 @@ def main():
     ap.add_argument("--budget", type=int, default=60)
     ap.add_argument("--seed", type=int, default=0)
 
+    ap.add_argument("--cost_lambda", type=float, default=0.02)
+    ap.add_argument("--no_cluster_stats", action="store_true", help="Ablation: remove cluster stats from observation")
+    ap.add_argument("--oracle", action="store_true", help="Oracle mode: reveal hidden difficulty")
+
     args = ap.parse_args()
 
     cfg = EnvConfig(
@@ -751,6 +774,9 @@ def main():
         targets_per_cluster=args.tpc,
         budget=args.budget,
         seed=args.seed,
+        cost_lambda=args.cost_lambda,
+        use_cluster_stats=not args.no_cluster_stats,
+        oracle_mode=args.oracle,
     )
 
     if args.mode == "sanity":
