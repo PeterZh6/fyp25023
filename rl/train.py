@@ -1,53 +1,103 @@
-"""RL training and evaluation entry point (PPO / DQN via stable-baselines3)."""
+"""RL training and evaluation entry point (PPO via stable-baselines3).
+
+Supports:
+  - Single binary training with multiple seeds
+  - Lambda sweep for Pareto front
+  - Info ablation experiments
+  - Cross-binary generalization
+"""
 
 from __future__ import annotations
 
 import argparse
 import dataclasses
+import json
 import os
-from typing import Dict
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional
 
 import numpy as np
 
 from rl.budget_env import AnalysisBudgetEnv, EnvConfig
 from rl.baselines import (
-    BaselinePolicy, AlwaysL1, AlwaysL3, RandomPolicy,
-    GreedyFallback, BudgetAwareGreedy, eval_policy,
+    ALL_BASELINES, PolicyFn, evaluate_policy, run_all_baselines,
 )
-from rl.plotting import plot_learning_curve, plot_policy_behavior, plot_solved_vs_budget
 
 
-class SB3PolicyAdapter(BaselinePolicy):
+@dataclass
+class TrainConfig:
+    env_config_path: str = "rl/configs/env_configs.yaml"
+    binary_name: str = "gcc"
+    budget_ratio: float = 2.0
+
+    algorithm: str = "PPO"
+    total_timesteps: int = 500_000
+    learning_rate: float = 3e-4
+    n_steps: int = 2048
+    batch_size: int = 64
+    n_epochs: int = 10
+    gamma: float = 0.99
+    policy_net: str = "MlpPolicy"
+    policy_kwargs: dict = field(default_factory=lambda: {"net_arch": [64, 64]})
+
+    num_seeds: int = 5
+    cost_lambda: float = 0.02
+    eval_freq: int = 10_000
+    eval_episodes: int = 100
+    save_dir: str = "results/"
+
+    use_site_features: bool = True
+    use_global_stats: bool = True
+    oracle_mode: bool = False
+
+
+def make_env_config(train_cfg: TrainConfig) -> EnvConfig:
+    env_config = EnvConfig.from_yaml(train_cfg.env_config_path, train_cfg.binary_name)
+    env_config.budget_ratio = train_cfg.budget_ratio
+    env_config.budget = env_config.budget_ratio * env_config.num_sites * env_config.costs["L1"]
+    env_config.cost_lambda = train_cfg.cost_lambda
+    env_config.oracle_mode = train_cfg.oracle_mode
+    env_config.use_site_features = train_cfg.use_site_features
+    env_config.use_global_stats = train_cfg.use_global_stats
+    return env_config
+
+
+class SB3PolicyAdapter:
+    """Wraps an SB3 model to match the PolicyFn signature."""
+
     def __init__(self, model, deterministic: bool = True):
         self.model = model
         self.deterministic = deterministic
 
-    def act(self, obs: np.ndarray) -> int:
+    def __call__(self, obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
         a, _ = self.model.predict(obs, deterministic=self.deterministic)
         return int(a)
 
 
-def train_rl(algo: str, cfg: EnvConfig, timesteps: int, out_dir: str) -> str:
-    os.makedirs(out_dir, exist_ok=True)
+def train_single(train_cfg: TrainConfig, seed: int) -> Dict[str, Any]:
+    """Train a single model with given config and seed.
 
-    from stable_baselines3 import PPO, DQN
+    Returns dict with model_path, best_mean_reward, and learning_curve.
+    """
+    from stable_baselines3 import PPO
     from stable_baselines3.common.vec_env import DummyVecEnv
     from stable_baselines3.common.monitor import Monitor
-    from stable_baselines3.common.callbacks import (
-        BaseCallback, EvalCallback,
-        StopTrainingOnNoModelImprovement, CallbackList,
-    )
+    from stable_baselines3.common.callbacks import EvalCallback, BaseCallback
 
-    def _make():
-        return Monitor(AnalysisBudgetEnv(cfg))
+    env_config = make_env_config(train_cfg)
+    run_dir = os.path.join(train_cfg.save_dir, f"seed_{seed}")
+    os.makedirs(run_dir, exist_ok=True)
 
-    vec_env = DummyVecEnv([_make])
-    eval_env = DummyVecEnv([_make])
+    def _make_env():
+        return Monitor(AnalysisBudgetEnv(env_config))
+
+    vec_env = DummyVecEnv([_make_env])
+    eval_env = DummyVecEnv([_make_env])
 
     class RewardLogger(BaseCallback):
         def __init__(self):
             super().__init__()
-            self.ep_returns = []
+            self.ep_returns: list[float] = []
 
         def _on_step(self) -> bool:
             infos = self.locals.get("infos", [])
@@ -58,169 +108,334 @@ def train_rl(algo: str, cfg: EnvConfig, timesteps: int, out_dir: str) -> str:
 
     curve_cb = RewardLogger()
 
-    early_stop_cb = StopTrainingOnNoModelImprovement(
-        max_no_improvement_evals=8,
-        min_evals=6,
-        verbose=1,
-    )
-
     eval_cb = EvalCallback(
         eval_env,
-        callback_after_eval=early_stop_cb,
-        eval_freq=10_000,
-        n_eval_episodes=30,
+        eval_freq=train_cfg.eval_freq,
+        n_eval_episodes=train_cfg.eval_episodes,
         deterministic=True,
-        best_model_save_path=out_dir,
-        log_path=out_dir,
-        verbose=1,
+        best_model_save_path=run_dir,
+        log_path=run_dir,
+        verbose=0,
     )
 
-    cb = CallbackList([curve_cb, eval_cb])
+    model = PPO(
+        train_cfg.policy_net, vec_env,
+        seed=seed,
+        learning_rate=train_cfg.learning_rate,
+        n_steps=train_cfg.n_steps,
+        batch_size=train_cfg.batch_size,
+        n_epochs=train_cfg.n_epochs,
+        gamma=train_cfg.gamma,
+        policy_kwargs=train_cfg.policy_kwargs,
+        verbose=0,
+        device="cpu",
+    )
 
-    if algo.lower() == "ppo":
-        model = PPO(
-            "MlpPolicy", vec_env, verbose=1,
-            n_steps=2048, batch_size=256, learning_rate=3e-4,
-            gamma=0.99, seed=cfg.seed, device="cpu",
-        )
-    elif algo.lower() == "dqn":
-        model = DQN(
-            "MlpPolicy", vec_env, verbose=1,
-            buffer_size=100_000, learning_rate=2e-4, learning_starts=5_000,
-            batch_size=256, gamma=0.99, train_freq=4,
-            target_update_interval=2_000, seed=cfg.seed, device="cpu",
-        )
-    else:
-        raise ValueError(f"Unknown algo: {algo}")
+    from stable_baselines3.common.callbacks import CallbackList
+    model.learn(
+        total_timesteps=train_cfg.total_timesteps,
+        callback=CallbackList([curve_cb, eval_cb]),
+    )
 
-    model.learn(total_timesteps=timesteps, callback=cb)
-
-    model_path = os.path.join(out_dir, "model.zip")
+    model_path = os.path.join(run_dir, "final_model.zip")
     model.save(model_path)
 
-    np.save(
-        os.path.join(out_dir, "learning_curve.npy"),
-        np.array(curve_cb.ep_returns, dtype=np.float32),
+    curve = np.array(curve_cb.ep_returns, dtype=np.float32)
+    np.save(os.path.join(run_dir, "learning_curve.npy"), curve)
+
+    with open(os.path.join(run_dir, "config.json"), "w") as f:
+        json.dump(dataclasses.asdict(train_cfg), f, indent=2, default=str)
+
+    return {
+        "model_path": model_path,
+        "best_model_path": os.path.join(run_dir, "best_model.zip"),
+        "learning_curve": curve,
+        "seed": seed,
+    }
+
+
+def evaluate_trained_model(
+    model_path: str,
+    train_cfg: TrainConfig,
+    n_episodes: int = 1000,
+    seed: int = 42,
+    test_binary: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Evaluate a trained model against all baselines."""
+    from stable_baselines3 import PPO
+
+    model = PPO.load(model_path)
+    rl_policy = SB3PolicyAdapter(model)
+
+    if test_binary:
+        cfg = dataclasses.replace(train_cfg, binary_name=test_binary)
+    else:
+        cfg = train_cfg
+    env_config = make_env_config(cfg)
+    env = AnalysisBudgetEnv(env_config)
+
+    rl_metrics = evaluate_policy(rl_policy, env, n_episodes=n_episodes, seed=seed)
+
+    baseline_metrics = {}
+    for name, policy_fn in ALL_BASELINES.items():
+        baseline_metrics[name] = evaluate_policy(
+            policy_fn, env, n_episodes=n_episodes, seed=seed
+        )
+
+    best_baseline_name = max(
+        baseline_metrics, key=lambda k: baseline_metrics[k]["mean_resolve_rate"]
     )
+    best_bl = baseline_metrics[best_baseline_name]
 
-    return model_path
+    improvement = rl_metrics["mean_resolve_rate"] - best_bl["mean_resolve_rate"]
+
+    return {
+        "rl": rl_metrics,
+        "baselines": baseline_metrics,
+        "best_baseline": best_baseline_name,
+        "improvement_over_best": improvement,
+        "binary": cfg.binary_name,
+    }
 
 
-def load_rl(algo: str, model_path: str):
-    from stable_baselines3 import PPO, DQN
+# ---- Experiment suites ----
 
-    if algo.lower() == "ppo":
-        return PPO.load(model_path)
-    if algo.lower() == "dqn":
-        return DQN.load(model_path)
-    raise ValueError(f"Unknown algo: {algo}")
+def run_experiment_a(train_cfg: TrainConfig, binaries: List[str]) -> Dict[str, Any]:
+    """Experiment A: Single binary training + multi seed."""
+    results: Dict[str, Any] = {}
+    for binary in binaries:
+        print(f"\n{'='*60}")
+        print(f"Experiment A: {binary}")
+        print(f"{'='*60}")
+        cfg = dataclasses.replace(
+            train_cfg,
+            binary_name=binary,
+            save_dir=os.path.join(train_cfg.save_dir, "exp_a", binary),
+        )
+        seed_results = []
+        for s in range(cfg.num_seeds):
+            print(f"  Training seed {s}...")
+            result = train_single(cfg, seed=s)
+            eval_result = evaluate_trained_model(
+                result["best_model_path"], cfg, n_episodes=200
+            )
+            seed_results.append(eval_result)
+            print(f"    RL resolve_rate={eval_result['rl']['mean_resolve_rate']:.3f}, "
+                  f"best_baseline={eval_result['best_baseline']} "
+                  f"({eval_result['baselines'][eval_result['best_baseline']]['mean_resolve_rate']:.3f})")
+
+        results[binary] = seed_results
+    return results
+
+
+def run_experiment_b(train_cfg: TrainConfig) -> Dict[str, Any]:
+    """Experiment B: Lambda sweep for Pareto front."""
+    lambda_values = [0.001, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5]
+    results: Dict[float, List[Dict]] = {}
+
+    for lam in lambda_values:
+        print(f"\n--- Lambda = {lam} ---")
+        cfg = dataclasses.replace(
+            train_cfg,
+            cost_lambda=lam,
+            num_seeds=3,
+            save_dir=os.path.join(train_cfg.save_dir, "exp_b", f"lambda_{lam}"),
+        )
+        seed_results = []
+        for s in range(cfg.num_seeds):
+            result = train_single(cfg, seed=s)
+            eval_result = evaluate_trained_model(
+                result["best_model_path"], cfg, n_episodes=200
+            )
+            seed_results.append(eval_result)
+        results[lam] = seed_results
+
+        mean_rate = np.mean([r["rl"]["mean_resolve_rate"] for r in seed_results])
+        mean_cost = np.mean([r["rl"]["mean_cost"] for r in seed_results])
+        print(f"  resolve_rate={mean_rate:.3f}, cost={mean_cost:.1f}")
+
+    return results
+
+
+def run_experiment_c(train_cfg: TrainConfig) -> Dict[str, Any]:
+    """Experiment C: Info ablation."""
+    configs = [
+        {"name": "full", "use_site_features": True, "use_global_stats": True, "oracle_mode": False},
+        {"name": "no_site_features", "use_site_features": False, "use_global_stats": True, "oracle_mode": False},
+        {"name": "minimal", "use_site_features": False, "use_global_stats": False, "oracle_mode": False},
+        {"name": "oracle", "use_site_features": True, "use_global_stats": True, "oracle_mode": True},
+    ]
+    results: Dict[str, Any] = {}
+
+    for ablation in configs:
+        name = ablation.pop("name")
+        print(f"\n--- Ablation: {name} ---")
+        cfg = dataclasses.replace(
+            train_cfg,
+            save_dir=os.path.join(train_cfg.save_dir, "exp_c", name),
+            **ablation,
+        )
+        seed_results = []
+        for s in range(cfg.num_seeds):
+            result = train_single(cfg, seed=s)
+            eval_result = evaluate_trained_model(
+                result["best_model_path"], cfg, n_episodes=200
+            )
+            seed_results.append(eval_result)
+        results[name] = seed_results
+
+        mean_rate = np.mean([r["rl"]["mean_resolve_rate"] for r in seed_results])
+        print(f"  resolve_rate={mean_rate:.3f}")
+
+    return results
+
+
+def run_experiment_d(
+    train_cfg: TrainConfig,
+    all_binaries: List[str],
+) -> Dict[str, Any]:
+    """Experiment D: Cross-binary generalization."""
+    splits = {
+        "A": {"train": "gcc", "test": ["ssh", "ssh-keygen", "h264ref"]},
+        "B": {"train": "h264ref", "test": ["gcc", "openssl", "ssh"]},
+        "C": {"train": "mixed_no_cpp", "test": ["gcc", "ssh", "openssl", "h264ref", "bzip2"]},
+    }
+    results: Dict[str, Any] = {}
+
+    for split_name, split in splits.items():
+        print(f"\n{'='*60}")
+        print(f"Experiment D, split {split_name}: train={split['train']}")
+        print(f"{'='*60}")
+        cfg = dataclasses.replace(
+            train_cfg,
+            binary_name=split["train"],
+            num_seeds=3,
+            save_dir=os.path.join(train_cfg.save_dir, "exp_d", split_name),
+        )
+
+        trained_models = []
+        for s in range(cfg.num_seeds):
+            result = train_single(cfg, seed=s)
+            trained_models.append(result["best_model_path"])
+
+        split_results: Dict[str, Any] = {"train": split["train"], "test_results": {}}
+        for test_binary in split["test"]:
+            seed_evals = []
+            for model_path in trained_models:
+                eval_result = evaluate_trained_model(
+                    model_path, cfg, n_episodes=200, test_binary=test_binary
+                )
+                seed_evals.append(eval_result)
+            split_results["test_results"][test_binary] = seed_evals
+            mean_rate = np.mean([r["rl"]["mean_resolve_rate"] for r in seed_evals])
+            best_bl = seed_evals[0]["best_baseline"]
+            bl_rate = np.mean([
+                r["baselines"][best_bl]["mean_resolve_rate"] for r in seed_evals
+            ])
+            print(f"  {test_binary}: RL={mean_rate:.3f}, best_baseline={best_bl}({bl_rate:.3f})")
+
+        results[split_name] = split_results
+
+    return results
 
 
 # ---- CLI ----
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="RL training for budget allocation")
+    parser.add_argument("--mode", choices=["train", "eval", "suite_a", "suite_b", "suite_c", "suite_d", "sanity"],
+                        required=True)
+
+    parser.add_argument("--config", default="rl/configs/env_configs.yaml")
+    parser.add_argument("--binary", default="gcc")
+    parser.add_argument("--budget-ratio", type=float, default=2.0)
+
+    parser.add_argument("--timesteps", type=int, default=500_000)
+    parser.add_argument("--lr", type=float, default=3e-4)
+    parser.add_argument("--n-steps", type=int, default=2048)
+    parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--cost-lambda", type=float, default=0.02)
+    parser.add_argument("--num-seeds", type=int, default=5)
+
+    parser.add_argument("--no-site-features", action="store_true")
+    parser.add_argument("--no-global-stats", action="store_true")
+    parser.add_argument("--oracle", action="store_true")
+
+    parser.add_argument("--eval-model", type=str, default=None)
+    parser.add_argument("--save-dir", default="results/")
+    parser.add_argument("--seed", type=int, default=0)
+
+    return parser.parse_args()
+
+
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["sanity", "train", "sweep"], required=True)
-    ap.add_argument("--algo", choices=["ppo", "dqn"], default="ppo")
-    ap.add_argument("--timesteps", type=int, default=200_000)
-    ap.add_argument("--model", type=str, default="")
-    ap.add_argument("--out", type=str, default="out")
+    args = parse_args()
 
-    ap.add_argument("--n_clusters", type=int, default=4)
-    ap.add_argument("--tpc", type=int, default=5, help="targets per cluster")
-    ap.add_argument("--budget", type=int, default=60)
-    ap.add_argument("--seed", type=int, default=0)
-
-    ap.add_argument("--cost_lambda", type=float, default=0.02)
-    ap.add_argument("--no_cluster_stats", action="store_true",
-                    help="Ablation: remove cluster stats from observation")
-    ap.add_argument("--oracle", action="store_true",
-                    help="Oracle mode: reveal hidden difficulty")
-
-    args = ap.parse_args()
-
-    cfg = EnvConfig(
-        n_clusters=args.n_clusters,
-        targets_per_cluster=args.tpc,
-        budget=args.budget,
-        seed=args.seed,
+    train_cfg = TrainConfig(
+        env_config_path=args.config,
+        binary_name=args.binary,
+        budget_ratio=args.budget_ratio,
+        total_timesteps=args.timesteps,
+        learning_rate=args.lr,
+        n_steps=args.n_steps,
+        batch_size=args.batch_size,
         cost_lambda=args.cost_lambda,
-        use_cluster_stats=not args.no_cluster_stats,
+        num_seeds=args.num_seeds,
+        use_site_features=not args.no_site_features,
+        use_global_stats=not args.no_global_stats,
         oracle_mode=args.oracle,
+        save_dir=args.save_dir,
     )
 
     if args.mode == "sanity":
-        policies = {
-            "always_l1": AlwaysL1(),
-            "always_l3": AlwaysL3(),
-            "random": RandomPolicy(seed=cfg.seed),
-            "greedy_fallback": GreedyFallback(n_clusters=cfg.n_clusters),
-            "budget_aware": BudgetAwareGreedy(n_clusters=cfg.n_clusters),
-        }
-        for name, pol in policies.items():
-            m = eval_policy(cfg, pol, n_episodes=200, seed0=123)
-            print(
-                f"{name:15s} "
-                f"solved_mean={m['solved_mean']:.2f}\u00b1{m['solved_std']:.2f} "
-                f"spent_mean={m['spent_mean']:.1f}\u00b1{m['spent_std']:.1f} "
-                f"return_mean={m['return_mean']:.3f}\u00b1{m['return_std']:.3f}"
-            )
-        return
+        print("Running sanity check: short training + baseline comparison")
+        cfg = dataclasses.replace(train_cfg, total_timesteps=50_000, num_seeds=1,
+                                  save_dir=os.path.join(args.save_dir, "sanity"))
+        result = train_single(cfg, seed=0)
+        eval_result = evaluate_trained_model(result["best_model_path"], cfg, n_episodes=200)
+        print(f"\nRL resolve_rate: {eval_result['rl']['mean_resolve_rate']:.3f}")
+        print(f"Best baseline: {eval_result['best_baseline']} "
+              f"({eval_result['baselines'][eval_result['best_baseline']]['mean_resolve_rate']:.3f})")
+        print(f"Improvement: {eval_result['improvement_over_best']:+.3f}")
 
-    if args.mode == "train":
-        model_path = train_rl(args.algo, cfg, args.timesteps, args.out)
-        print(f"Saved model to: {model_path}")
+    elif args.mode == "train":
+        for s in range(train_cfg.num_seeds):
+            print(f"\n--- Seed {s} ---")
+            result = train_single(train_cfg, seed=s)
+            eval_result = evaluate_trained_model(result["best_model_path"], train_cfg)
+            print(f"  resolve_rate={eval_result['rl']['mean_resolve_rate']:.3f}")
 
-        curve = os.path.join(args.out, "learning_curve.npy")
-        if os.path.exists(curve):
-            plot_learning_curve(curve, os.path.join(args.out, "learning_curve.png"))
+            out_path = os.path.join(train_cfg.save_dir, f"seed_{s}", "eval_results.json")
+            with open(out_path, "w") as f:
+                json.dump(eval_result, f, indent=2)
 
-        try:
-            model = load_rl(args.algo, model_path)
-            pol = SB3PolicyAdapter(model)
-            plot_policy_behavior(cfg, pol, os.path.join(args.out, "policy_behavior.png"))
-        except Exception as e:
-            print(f"[warn] could not plot behavior: {e}")
-        return
+    elif args.mode == "eval":
+        if not args.eval_model:
+            raise ValueError("--eval-model required in eval mode")
+        eval_result = evaluate_trained_model(args.eval_model, train_cfg)
+        print(json.dumps(eval_result, indent=2))
 
-    if args.mode == "sweep":
-        if not args.model:
-            raise ValueError("--model is required in sweep mode")
+    elif args.mode == "suite_a":
+        binaries = ["gcc", "ssh", "openssl", "h264ref", "bzip2"]
+        results = run_experiment_a(train_cfg, binaries)
+        with open(os.path.join(args.save_dir, "exp_a_results.json"), "w") as f:
+            json.dump(results, f, indent=2, default=str)
 
-        model = load_rl(args.algo, args.model)
-        rl_policy = SB3PolicyAdapter(model)
+    elif args.mode == "suite_b":
+        results = run_experiment_b(train_cfg)
+        with open(os.path.join(args.save_dir, "exp_b_results.json"), "w") as f:
+            json.dump({str(k): v for k, v in results.items()}, f, indent=2, default=str)
 
-        policies: Dict[str, BaselinePolicy] = {
-            "Fixed-L1": AlwaysL1(),
-            "Fixed-L3": AlwaysL3(),
-            "Greedy-fallback": GreedyFallback(n_clusters=cfg.n_clusters),
-            "Budget-aware": BudgetAwareGreedy(n_clusters=cfg.n_clusters),
-            f"RL-{args.algo.upper()}": rl_policy,
-        }
+    elif args.mode == "suite_c":
+        results = run_experiment_c(train_cfg)
+        with open(os.path.join(args.save_dir, "exp_c_results.json"), "w") as f:
+            json.dump(results, f, indent=2, default=str)
 
-        budgets = [20, 40, 60, 80, 100]
-        results: Dict[str, Dict[int, Dict[str, float]]] = {n: {} for n in policies}
-
-        for B in budgets:
-            cfgB = dataclasses.replace(cfg, budget=B)
-            print(f"\n=== Budget = {B} ===")
-            for name, pol in policies.items():
-                m = eval_policy(cfgB, pol, n_episodes=300, seed0=999)
-                results[name][B] = m
-                print(
-                    f"{name:15s} "
-                    f"solved_mean={m['solved_mean']:.2f}\u00b1{m['solved_std']:.2f} "
-                    f"spent_mean={m['spent_mean']:.1f}\u00b1{m['spent_std']:.1f} "
-                    f"return_mean={m['return_mean']:.3f}\u00b1{m['return_std']:.3f}"
-                )
-
-        os.makedirs(args.out, exist_ok=True)
-        plot_solved_vs_budget(results, os.path.join(args.out, "solved_vs_budget.png"))
-        plot_policy_behavior(
-            dataclasses.replace(cfg, budget=max(budgets)),
-            rl_policy,
-            os.path.join(args.out, "policy_behavior_rl.png"),
-        )
+    elif args.mode == "suite_d":
+        all_binaries = ["gcc", "ssh", "openssl", "h264ref", "bzip2", "ssh-keygen"]
+        results = run_experiment_d(train_cfg, all_binaries)
+        with open(os.path.join(args.save_dir, "exp_d_results.json"), "w") as f:
+            json.dump(results, f, indent=2, default=str)
 
 
 if __name__ == "__main__":

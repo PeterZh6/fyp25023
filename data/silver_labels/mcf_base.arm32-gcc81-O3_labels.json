@@ -1,0 +1,64 @@
+{
+  "binary": "mcf_base.arm32-gcc81-O3",
+  "total": 3,
+  "summary": {
+    "easy": 0,
+    "medium": 1,
+    "medium_conflict": 0,
+    "medium_partial": 1,
+    "hard": 2
+  },
+  "sites": [
+    {
+      "address": "000088ac",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "deregister_tm_clones",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000088e4",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "register_tm_clones",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0000a640",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "__libc_csu_init",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "00000002",
+        "00008910"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    }
+  ]
+}

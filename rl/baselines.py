@@ -1,146 +1,218 @@
-"""Baseline (hand-crafted) policies for the budgeted analysis environment."""
+"""Baseline (hand-crafted) policies and evaluation harness for the budgeted analysis environment."""
 
 from __future__ import annotations
 
-import random
-from typing import Any, Dict
+import json
+import os
+from typing import Any, Callable, Dict, List, Optional
 
 import numpy as np
 
 from rl.budget_env import AnalysisBudgetEnv, EnvConfig
 
-
-class BaselinePolicy:
-    def reset(self):
-        pass
-
-    def act(self, obs: np.ndarray) -> int:
-        raise NotImplementedError
+PolicyFn = Callable[[np.ndarray, AnalysisBudgetEnv], int]
 
 
-class AlwaysL1(BaselinePolicy):
-    def act(self, obs: np.ndarray) -> int:
+def all_skip(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    return 0
+
+
+def all_l1(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    return 1
+
+
+def all_l2(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    costs = env.config.costs
+    if env.budget_remaining >= costs["L2"]:
+        return 2
+    if env.budget_remaining >= costs["L1"]:
         return 1
+    return 0
 
 
-class AlwaysL3(BaselinePolicy):
-    def act(self, obs: np.ndarray) -> int:
+def all_l3(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    costs = env.config.costs
+    if env.budget_remaining >= costs["L3"]:
         return 3
-
-
-class RandomPolicy(BaselinePolicy):
-    def __init__(self, p_skip: float = 0.1, seed: int = 0):
-        self.p_skip = p_skip
-        self.rng = random.Random(seed)
-
-    def act(self, obs: np.ndarray) -> int:
-        if self.rng.random() < self.p_skip:
-            return 0
-        return self.rng.choice([1, 2, 3])
-
-
-class GreedyFallback(BaselinePolicy):
-    """Try L1 -> L2 -> L3 on each target; SKIP if all tried."""
-
-    def __init__(self, n_clusters: int):
-        self.n_clusters = n_clusters
-
-    def act(self, obs: np.ndarray) -> int:
-        idx = 1 + self.n_clusters + 1 + 1
-        tried = obs[idx: idx + 3]
-        tried = (tried > 0.5).astype(np.int32)
-
-        if tried[0] == 0:
-            return 1
-        if tried[1] == 0:
-            return 2
-        if tried[2] == 0:
-            return 3
-        return 0
-
-
-class BudgetAwareGreedy(BaselinePolicy):
-    """Remaining-budget-aware fallback with cluster hardness heuristic."""
-
-    def __init__(self, n_clusters: int, min_attempts_for_infer: int = 3):
-        self.n_clusters = n_clusters
-        self.min_attempts_for_infer = min_attempts_for_infer
-
-    def act(self, obs: np.ndarray) -> int:
-        progress_end = 1
-        onehot_end = progress_end + self.n_clusters
-        remain_idx = onehot_end + 1
-        tried_idx = remain_idx + 1
-        attempts_norm_idx = tried_idx + 3
-        success_rate_idx = attempts_norm_idx + 3
-
-        remain_ratio = float(obs[remain_idx])
-        tried = (obs[tried_idx: tried_idx + 3] > 0.5).astype(np.int32)
-
-        if tried.sum() > 0:
-            if tried[0] == 0:
-                return 1
-            if tried[1] == 0:
-                return 2
-            if tried[2] == 0:
-                return 3
-            return 0
-
-        l1_succ = float(obs[success_rate_idx + 0])
-
-        if remain_ratio < 0.15:
-            return 0
-        if remain_ratio < 0.35:
-            if l1_succ < 0.2:
-                return 2
-            return 1
+    if env.budget_remaining >= costs["L2"]:
+        return 2
+    if env.budget_remaining >= costs["L1"]:
         return 1
+    return 0
 
 
-# ---- Rollout utilities ----
+def random_policy(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    return int(env.np_random.integers(0, 4))
 
-def run_episode(env: AnalysisBudgetEnv, policy: BaselinePolicy, seed: int = 0) -> Dict[str, Any]:
-    obs, info0 = env.reset(seed=seed)
-    policy.reset()
 
-    total_reward = 0.0
-    actions = []
-    infos = []
+def greedy_cheap(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    """Pick cheapest untried non-SKIP level."""
+    ct = env.current_target
+    if ct >= env.config.num_sites:
+        return 0
+    costs = env.config.costs
+    for lvl_idx, lvl_name in enumerate(["L1", "L2", "L3"]):
+        if not env.tried_levels[ct, lvl_idx] and env.budget_remaining >= costs[lvl_name]:
+            return lvl_idx + 1
+    return 0
 
-    done = False
-    while not done:
-        a = policy.act(obs)
-        obs, r, term, trunc, info = env.step(a)
-        done = bool(term or trunc)
-        total_reward += float(r)
-        actions.append(int(a))
-        infos.append(info)
+
+def budget_aware(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    """Dynamically adjust action based on remaining budget per site."""
+    ct = env.current_target
+    if ct >= env.config.num_sites:
+        return 0
+    remaining_sites = max(env.config.num_sites - ct, 1)
+    avg_budget = env.budget_remaining / remaining_sites
+    costs = env.config.costs
+
+    for lvl_idx, lvl_name in reversed(list(enumerate(["L1", "L2", "L3"]))):
+        if (avg_budget >= costs[lvl_name]
+                and not env.tried_levels[ct, lvl_idx]
+                and env.budget_remaining >= costs[lvl_name]):
+            return lvl_idx + 1
+    return 0
+
+
+def escalation(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    """Mimics human analyst: try L1 first, escalate to L2, then L3."""
+    ct = env.current_target
+    if ct >= env.config.num_sites:
+        return 0
+    if env.resolved[ct]:
+        return 0
+    costs = env.config.costs
+    for lvl_idx, lvl_name in enumerate(["L1", "L2", "L3"]):
+        if not env.tried_levels[ct, lvl_idx] and env.budget_remaining >= costs[lvl_name]:
+            return lvl_idx + 1
+    return 0
+
+
+ALL_BASELINES: Dict[str, PolicyFn] = {
+    "all_skip": all_skip,
+    "all_l1": all_l1,
+    "all_l2": all_l2,
+    "all_l3": all_l3,
+    "random": random_policy,
+    "greedy_cheap": greedy_cheap,
+    "budget_aware": budget_aware,
+    "escalation": escalation,
+}
+
+
+def evaluate_policy(
+    policy_fn: PolicyFn,
+    env: AnalysisBudgetEnv,
+    n_episodes: int = 1000,
+    seed: int = 42,
+) -> Dict[str, Any]:
+    """Evaluate a policy function on an environment.
+
+    Returns dict with mean/std for reward, cost, resolved, resolve_rate,
+    episode_length, plus per_episode details.
+    """
+    rewards: List[float] = []
+    costs: List[float] = []
+    resolved_counts: List[int] = []
+    resolve_rates: List[float] = []
+    episode_lengths: List[int] = []
+
+    for ep in range(n_episodes):
+        obs, info = env.reset(seed=seed + ep)
+        total_reward = 0.0
+        steps = 0
+
+        done = False
+        while not done:
+            action = policy_fn(obs, env)
+            obs, r, terminated, truncated, info = env.step(action)
+            total_reward += r
+            steps += 1
+            done = terminated or truncated
+
+        rewards.append(total_reward)
+        costs.append(info["budget_spent"])
+        resolved_counts.append(info["total_resolved"])
+        resolve_rates.append(info["resolve_rate"])
+        episode_lengths.append(steps)
 
     return {
-        "return": total_reward,
-        "solved": infos[-1].get("solved", 0) if infos else 0,
-        "spent": infos[-1].get("spent", 0) if infos else 0,
-        "actions": actions,
-        "infos": infos,
-        "cluster_types": info0.get("cluster_types"),
-        "budget": info0.get("budget"),
+        "mean_reward": float(np.mean(rewards)),
+        "std_reward": float(np.std(rewards)),
+        "mean_cost": float(np.mean(costs)),
+        "std_cost": float(np.std(costs)),
+        "mean_resolved": float(np.mean(resolved_counts)),
+        "std_resolved": float(np.std(resolved_counts)),
+        "mean_resolve_rate": float(np.mean(resolve_rates)),
+        "std_resolve_rate": float(np.std(resolve_rates)),
+        "mean_episode_length": float(np.mean(episode_lengths)),
     }
 
 
-def eval_policy(env_cfg: EnvConfig, policy: BaselinePolicy, n_episodes: int = 200, seed0: int = 0) -> Dict[str, float]:
-    env = AnalysisBudgetEnv(env_cfg)
-    rets, solved, spent = [], [], []
-    for i in range(n_episodes):
-        out = run_episode(env, policy, seed=seed0 + i)
-        rets.append(out["return"])
-        solved.append(out["solved"])
-        spent.append(out["spent"])
+def run_all_baselines(
+    env_config: EnvConfig,
+    n_episodes: int = 1000,
+    seed: int = 42,
+    output_path: Optional[str] = None,
+) -> Dict[str, Dict[str, Any]]:
+    """Run all baselines on a given env config and optionally save results."""
+    env = AnalysisBudgetEnv(env_config)
+    results: Dict[str, Dict[str, Any]] = {}
 
-    return {
-        "return_mean": float(np.mean(rets)),
-        "return_std": float(np.std(rets)),
-        "solved_mean": float(np.mean(solved)),
-        "solved_std": float(np.std(solved)),
-        "spent_mean": float(np.mean(spent)),
-        "spent_std": float(np.std(spent)),
-    }
+    print(f"\n{'Baseline':<16s} {'Reward':>10s} {'Cost':>10s} {'Resolved':>10s} "
+          f"{'Rate':>8s} {'Steps':>8s}")
+    print("-" * 70)
+
+    for name, policy_fn in ALL_BASELINES.items():
+        metrics = evaluate_policy(policy_fn, env, n_episodes=n_episodes, seed=seed)
+        results[name] = metrics
+        print(
+            f"{name:<16s} "
+            f"{metrics['mean_reward']:>9.2f} "
+            f"{metrics['mean_cost']:>9.1f} "
+            f"{metrics['mean_resolved']:>9.1f} "
+            f"{metrics['mean_resolve_rate']:>7.3f} "
+            f"{metrics['mean_episode_length']:>7.0f}"
+        )
+
+    if output_path:
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        out = {
+            "num_sites": env_config.num_sites,
+            "budget": env_config.budget,
+            "budget_ratio": env_config.budget_ratio,
+            "n_episodes": n_episodes,
+            "baselines": results,
+        }
+        with open(output_path, "w") as f:
+            json.dump(out, f, indent=2)
+        print(f"\nResults written to: {output_path}")
+
+    return results
+
+
+def main():
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run baseline evaluations")
+    parser.add_argument("--config", default="rl/configs/env_configs.yaml")
+    parser.add_argument("--binary", default="gcc")
+    parser.add_argument("--budget-ratio", type=float, default=2.0)
+    parser.add_argument("--n-episodes", type=int, default=1000)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--output", default=None)
+    args = parser.parse_args()
+
+    env_config = EnvConfig.from_yaml(args.config, args.binary)
+    env_config.budget_ratio = args.budget_ratio
+    env_config.budget = env_config.budget_ratio * env_config.num_sites * env_config.costs["L1"]
+
+    if args.output is None:
+        args.output = f"data/calibration/baseline_results_{args.binary}.json"
+
+    run_all_baselines(env_config, n_episodes=args.n_episodes, seed=args.seed,
+                      output_path=args.output)
+
+
+if __name__ == "__main__":
+    main()

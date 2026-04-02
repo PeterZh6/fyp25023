@@ -1,0 +1,7061 @@
+{
+  "binary": "h264ref_base.arm32-gcc81-O3",
+  "total": 386,
+  "summary": {
+    "easy": 18,
+    "medium": 305,
+    "medium_conflict": 0,
+    "medium_partial": 305,
+    "hard": 63
+  },
+  "sites": [
+    {
+      "address": "00009534",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "deregister_tm_clones",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0000956c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "register_tm_clones",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00016b4c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeSyntaxElement_CABAC",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00017088",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "writeMB_typeInfo_CABAC",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00017090",
+        "000170d8",
+        "000170fc",
+        "00017130",
+        "00017148",
+        "0001717c",
+        "00017210"
+      ],
+      "angr_targets": [
+        "000170d8",
+        "000170fc",
+        "00017130",
+        "00017148",
+        "0001717c",
+        "00017210"
+      ],
+      "overlap_ratio": 0.8571,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000173b0",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "writeB8_typeInfo_CABAC",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "000173b8",
+        "0001745c",
+        "00017470",
+        "00017494",
+        "000174c8"
+      ],
+      "angr_targets": [
+        "0001745c",
+        "00017470",
+        "00017494",
+        "000174c8"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00018f6c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "ParseContent",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00018f74",
+        "00018fe0",
+        "00019008",
+        "00019128",
+        "00019130",
+        "00019140",
+        "00019160"
+      ],
+      "angr_targets": [
+        "00018fe0",
+        "00019008",
+        "00019128",
+        "00019130",
+        "00019140",
+        "00019160"
+      ],
+      "overlap_ratio": 0.8571,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000213b4",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "Conceal_Error",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "000213bc",
+        "0002140c",
+        "00021440",
+        "000215a0",
+        "000216fc",
+        "00021a18"
+      ],
+      "angr_targets": [
+        "0002140c",
+        "00021440",
+        "000215a0",
+        "000216fc",
+        "00021a18"
+      ],
+      "overlap_ratio": 0.8333,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00021d48",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "Conceal_Error",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "0002140c",
+        "00021d50",
+        "0002269c",
+        "000226a4",
+        "000226b4"
+      ],
+      "angr_targets": [
+        "0002140c",
+        "0002269c",
+        "000226a4",
+        "000226b4"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00022e4c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "interpret_gop_structure",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00022e54",
+        "00022f10",
+        "00022f44",
+        "00022f68",
+        "00022f8c"
+      ],
+      "angr_targets": [
+        "00022f10",
+        "00022f44",
+        "00022f68",
+        "00022f8c"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0002419c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "PartCalMad",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026a64",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026aa8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026adc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026b10",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026b44",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026b70",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026b9c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026bc8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026bfc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026c28",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026c54",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026c80",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026cb4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026ce0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026d0c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00026d38",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "AddUpSADQuarter",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000277fc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "write_PPS",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00027874",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "start_sequence",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0000959c",
+        "0008f2a8"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00027898",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "start_sequence",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f2a8"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00027a08",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "FmoInit",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00027a10",
+        "00027b98",
+        "00027c0c",
+        "00027ca0",
+        "00027ce8",
+        "00027d68",
+        "00027dc0",
+        "00027e74"
+      ],
+      "angr_targets": [
+        "00027b98",
+        "00027c0c",
+        "00027ca0",
+        "00027ce8",
+        "00027d68",
+        "00027dc0",
+        "00027e74"
+      ],
+      "overlap_ratio": 0.875,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00029ea4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeout_picture",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00037e14",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "terminate_macroblock",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00037e1c",
+        "00037e2c",
+        "00037e68",
+        "00037fd8",
+        "00038040"
+      ],
+      "angr_targets": [
+        "00037e2c",
+        "00037e68",
+        "00037fd8",
+        "00038040"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00037fa0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "terminate_macroblock",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0003822c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "terminate_macroblock",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000382dc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "terminate_macroblock",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000384b0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "terminate_macroblock",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000403c8",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "IntraChromaPrediction",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "000403d0",
+        "000403e8",
+        "000406ec",
+        "000407c0",
+        "000408b4"
+      ],
+      "angr_targets": [
+        "000403e8",
+        "000406ec",
+        "000407c0",
+        "000408b4"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00042814",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeIntra4x4Modes",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00042a30",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeChromaIntraPredMode",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00042c08",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeReferenceFrame",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00042ce0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeReferenceFrame",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00042fd8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMotionVector8x8",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00043738",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeLumaCoeff4x4_CABAC",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00043814",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeLumaCoeff4x4_CABAC",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00043984",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeLumaCoeff8x8_CABAC",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00043f8c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "writeCoeff4x4_CAVLC",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00043f94",
+        "00043fb4",
+        "00044350",
+        "000443c0",
+        "00044408",
+        "0004445c",
+        "000445ac"
+      ],
+      "angr_targets": [
+        "00043fb4",
+        "00044350",
+        "000443c0",
+        "00044408",
+        "0004445c",
+        "000445ac"
+      ],
+      "overlap_ratio": 0.8571,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00044a7c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeChromaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00044d2c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeChromaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00044f90",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeCBPandLumaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000450a4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeCBPandLumaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045240",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeCBPandLumaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000454e0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeCBPandLumaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000455d8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeCBPandLumaCoeff",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000458b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0004598c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045a9c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045b78",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045cec",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045d8c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045e20",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00045ed4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000460ec",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000461fc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeMBLayer",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00048330",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "gen_pic_list_from_frame_list",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0004827c"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0004836c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "gen_pic_list_from_frame_list",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0004827c"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00048420",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "gen_pic_list_from_frame_list",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0004827c"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0004845c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "gen_pic_list_from_frame_list",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0004827c"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00048798",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "remove_frame_from_dpb",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "000487a0",
+        "000487b0",
+        "00048800",
+        "000488b8",
+        "00048904"
+      ],
+      "angr_targets": [
+        "000487b0",
+        "00048800",
+        "000488b8",
+        "00048904"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00048e40",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "getDpbSize",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00048e48",
+        "00048ef0",
+        "00048f04",
+        "00048f1c",
+        "00048f34",
+        "00048f4c",
+        "00048f64",
+        "00048f7c",
+        "00048f94",
+        "00048fac",
+        "00048fc4",
+        "00048fd8"
+      ],
+      "angr_targets": [
+        "00048ef0",
+        "00048f04",
+        "00048f1c",
+        "00048f34",
+        "00048f4c",
+        "00048f64",
+        "00048f7c",
+        "00048f94",
+        "00048fac",
+        "00048fc4",
+        "00048fd8"
+      ],
+      "overlap_ratio": 0.9167,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0004c4f4",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": null,
+      "type_agree": null,
+      "function": "replace_top_pic_with_frame",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": false
+    },
+    {
+      "address": "0004e308",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "store_picture_in_dpb",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "0004e310",
+        "0004e32c",
+        "0004e3e4",
+        "0004e4b8",
+        "0004e560",
+        "0004e62c",
+        "0004e6bc",
+        "0004e7bc"
+      ],
+      "angr_targets": [
+        "0004e32c",
+        "0004e3e4",
+        "0004e4b8",
+        "0004e560",
+        "0004e62c",
+        "0004e6bc",
+        "0004e7bc"
+      ],
+      "overlap_ratio": 0.875,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00053cac",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": null,
+      "type_agree": null,
+      "function": "ResetFastFullIntegerSearch",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": false
+    },
+    {
+      "address": "0005543c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SetupFastFullPelSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008de08"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00056044",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "FullPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e780"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000566ec",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "find_SATD",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "000566f4",
+        "00056710",
+        "00056730",
+        "000567d4",
+        "0005682c",
+        "00056870"
+      ],
+      "angr_targets": [
+        "00056710",
+        "00056730",
+        "000567d4",
+        "0005682c",
+        "00056870"
+      ],
+      "overlap_ratio": 0.8333,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000570d4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057118",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005714c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057180",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000571b4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000571e0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005720c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057238",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005726c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057298",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000572c4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000572f0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057324",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057350",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005737c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000573a8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005781c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057860",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057894",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000578c8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000578fc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057928",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057954",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057980",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000579b4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000579e0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057a0c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057a38",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057a6c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057a98",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057ac4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00057af0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000581d4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "FullPelBlockMotionBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e780"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000581fc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "FullPelBlockMotionBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e780"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00058430",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "FullPelBlockMotionBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e780"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00058458",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "FullPelBlockMotionBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e780"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00058f1c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00058f60",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00058fc0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00058fe0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059010",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059030",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059060",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059080",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000590b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000590d8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059108",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059128",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059158",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059178",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000591a8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000591c8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059200",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059220",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059250",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059270",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000592a0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000592c0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000592f0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059310",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059348",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059368",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059398",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000593b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000593e8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005940c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005943c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005945c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000597d0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005980c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059850",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059874",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000598c8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000598ec",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059958",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005997c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000599c0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000599e4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059a38",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059a5c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059ac8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059aec",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059b30",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059b54",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059ba8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059bcc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059c38",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059c5c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059ca0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059cc4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059d18",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059d3c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059da0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059dc4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059e08",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059e2c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059e80",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059ea4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059ef0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059f14",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059f58",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059f7c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059fd0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00059ff4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a044",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a068",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a0ac",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a0d0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a124",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a148",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a198",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a1bc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a200",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a224",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a278",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a29c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a2f8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a31c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a360",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a384",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a3d8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a3fc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a448",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a46c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a4b0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a4d4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a528",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a54c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a59c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a5c0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a604",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a628",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a67c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a6a0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a6f0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a714",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a758",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a77c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a7d0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a7f4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a850",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a874",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a8b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a8dc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a930",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a954",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a9a0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005a9c4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005aa08",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005aa2c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005aa80",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005aaa4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005aaf4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ab18",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ab5c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ab80",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005abd4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005abf8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ac48",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ac6c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005acb0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005acd4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ad28",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ad4c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f0fc"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b42c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b470",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b4d0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b4f0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b520",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b540",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b570",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b590",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b5c8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b5e8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b618",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b638",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b668",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b688",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b6b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b6d8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b710",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b730",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b760",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b780",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b7b0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b7d0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b800",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b820",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b858",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b878",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b8a8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b8c8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b8f8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b91c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b94c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005b96c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bcd8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bd14",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bd58",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bd7c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bdd0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bdf4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005be60",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005be84",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bec8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005beec",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bf40",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bf64",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bfd0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005bff4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c038",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c05c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c0b0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c0d4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c140",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c164",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c1a8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c1cc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c220",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c244",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c2a8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c2cc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c310",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c334",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c388",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c3ac",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c3f8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c41c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c460",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c484",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c4d8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c4fc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c54c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c570",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c5b4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c5d8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c62c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c650",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c6a0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c6c4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c708",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c72c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c780",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c7a4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c800",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c824",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c868",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c88c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c8e0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c904",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c950",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c974",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c9b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005c9dc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ca30",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ca54",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005caa4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cac8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cb0c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cb30",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cb84",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cba8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cbf8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cc1c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cc60",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cc84",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ccd8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ccfc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cd58",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cd7c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cdc0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cde4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ce38",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005ce5c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cea8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cecc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cf10",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cf34",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cf88",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cfac",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005cffc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d020",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d064",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d088",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d0dc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d100",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d150",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d174",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d1b8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d1dc",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d230",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0005d254",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "SubPelBlockSearchBiPred",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008f180"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00060cf8",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "BlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e770"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00060d20",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "BlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e770"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000614e0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "BlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e770"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00061508",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "BlockMotionSearch",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "0008e770"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00065588",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "GeneratePictureParameterSet",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00065590",
+        "000656c4",
+        "0006577c",
+        "0006581c",
+        "00065828",
+        "00065914"
+      ],
+      "angr_targets": [
+        "000656c4",
+        "0006577c",
+        "0006581c",
+        "00065828",
+        "00065914"
+      ],
+      "overlap_ratio": 0.8333,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0006722c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "ParseMatrix",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00067234",
+        "000672c4",
+        "000674f0",
+        "00067518",
+        "00067544",
+        "0006754c",
+        "0006755c",
+        "0006757c"
+      ],
+      "angr_targets": [
+        "000672c4",
+        "000674f0",
+        "00067518",
+        "00067544",
+        "0006754c",
+        "0006755c",
+        "0006757c"
+      ],
+      "overlap_ratio": 0.875,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00069380",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "ParseQOffsetMatrix",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "00069388",
+        "00069418",
+        "000696a0",
+        "000696c8",
+        "000696f4",
+        "000696fc",
+        "0006970c",
+        "0006972c"
+      ],
+      "angr_targets": [
+        "00069418",
+        "000696a0",
+        "000696c8",
+        "000696f4",
+        "000696fc",
+        "0006970c",
+        "0006972c"
+      ],
+      "overlap_ratio": 0.875,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0006e97c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "RDCost_for_4x4IntraBlocks",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00070b90",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "RDCost_for_4x4IntraBlocks",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00070dc4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "RDCost_for_4x4Blocks_Chroma",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000742ec",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "RDCost_for_8x8blocks",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00075684",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "SetModesAndRefframeForBlocks",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "0007568c",
+        "000756f8",
+        "00075eb0",
+        "000761f8",
+        "00076238",
+        "0007628c",
+        "000762bc",
+        "00076f34"
+      ],
+      "angr_targets": [
+        "000756f8",
+        "00075eb0",
+        "000761f8",
+        "00076238",
+        "0007628c",
+        "000762bc",
+        "00076f34"
+      ],
+      "overlap_ratio": 0.875,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00096ce4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "RDCost_for_8x8IntraBlocks",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00097114",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "RDCost_for_8x8IntraBlocks",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0009c824",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeSyntaxElement_UVLC",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0009caa0",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "writeSyntaxElement2Buf_UVLC",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000a22fc",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "__aeabi_uidiv",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000a251c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": ".divsi3_skip_div0_test",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000a2f5c",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "__libc_csu_init",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "00000002",
+        "00009598"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    }
+  ]
+}

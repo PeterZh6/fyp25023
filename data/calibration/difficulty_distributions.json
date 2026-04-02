@@ -1,0 +1,395 @@
+{
+  "per_binary": {
+    "998-998-specrand_base.arm32-gcc81-O3": {
+      "total_sites": 3,
+      "easy": 0.0,
+      "medium": 0.3333,
+      "hard": 0.6667,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      }
+    },
+    "998-specrand_base.arm32-gcc81-O3": {
+      "total_sites": 3,
+      "easy": 0.0,
+      "medium": 0.3333,
+      "hard": 0.6667,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      }
+    },
+    "999-specrand_base.arm32-gcc81-O3": {
+      "total_sites": 3,
+      "easy": 0.0,
+      "medium": 0.3333,
+      "hard": 0.6667,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      }
+    },
+    "Xalan_base.arm32-gcc81-O3": {
+      "total_sites": 16613,
+      "easy": 0.009,
+      "medium": 0.0447,
+      "hard": 0.9463,
+      "counts": {
+        "easy": 149,
+        "medium": 743,
+        "hard": 15721
+      }
+    },
+    "astar_base.arm32-gcc81-O3": {
+      "total_sites": 4,
+      "easy": 0.0,
+      "medium": 0.25,
+      "hard": 0.75,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 3
+      }
+    },
+    "bzip2_base.arm32-gcc81-O3": {
+      "total_sites": 36,
+      "easy": 0.3333,
+      "medium": 0.2778,
+      "hard": 0.3889,
+      "counts": {
+        "easy": 12,
+        "medium": 10,
+        "hard": 14
+      }
+    },
+    "dealII_base.arm32-gcc81-O3": {
+      "total_sites": 2057,
+      "easy": 0.0413,
+      "medium": 0.0467,
+      "hard": 0.912,
+      "counts": {
+        "easy": 85,
+        "medium": 96,
+        "hard": 1876
+      }
+    },
+    "gcc_base.arm32-gcc81-O3": {
+      "total_sites": 1820,
+      "easy": 0.5115,
+      "medium": 0.2132,
+      "hard": 0.2753,
+      "counts": {
+        "easy": 931,
+        "medium": 388,
+        "hard": 501
+      }
+    },
+    "gobmk_base.arm32-gcc81-O3": {
+      "total_sites": 66,
+      "easy": 0.2121,
+      "medium": 0.2273,
+      "hard": 0.5606,
+      "counts": {
+        "easy": 14,
+        "medium": 15,
+        "hard": 37
+      }
+    },
+    "h264ref_base.arm32-gcc81-O3": {
+      "total_sites": 386,
+      "easy": 0.0466,
+      "medium": 0.7902,
+      "hard": 0.1632,
+      "counts": {
+        "easy": 18,
+        "medium": 305,
+        "hard": 63
+      }
+    },
+    "hmmer_base.arm32-gcc81-O3": {
+      "total_sites": 58,
+      "easy": 0.7069,
+      "medium": 0.0172,
+      "hard": 0.2759,
+      "counts": {
+        "easy": 41,
+        "medium": 1,
+        "hard": 16
+      }
+    },
+    "lbm_base.arm32-gcc81-O3": {
+      "total_sites": 3,
+      "easy": 0.0,
+      "medium": 0.3333,
+      "hard": 0.6667,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      }
+    },
+    "libquantum_base.arm32-gcc81-O3": {
+      "total_sites": 6,
+      "easy": 0.1667,
+      "medium": 0.3333,
+      "hard": 0.5,
+      "counts": {
+        "easy": 1,
+        "medium": 2,
+        "hard": 3
+      }
+    },
+    "lighttpd": {
+      "total_sites": 154,
+      "easy": 0.1688,
+      "medium": 0.0065,
+      "hard": 0.8247,
+      "counts": {
+        "easy": 26,
+        "medium": 1,
+        "hard": 127
+      }
+    },
+    "mcf_base.arm32-gcc81-O3": {
+      "total_sites": 3,
+      "easy": 0.0,
+      "medium": 0.3333,
+      "hard": 0.6667,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      }
+    },
+    "milc_base.arm32-gcc81-O3": {
+      "total_sites": 15,
+      "easy": 0.4,
+      "medium": 0.0667,
+      "hard": 0.5333,
+      "counts": {
+        "easy": 6,
+        "medium": 1,
+        "hard": 8
+      }
+    },
+    "namd_base.arm32-gcc81-O3": {
+      "total_sites": 12,
+      "easy": 0.0833,
+      "medium": 0.0833,
+      "hard": 0.8333,
+      "counts": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 10
+      }
+    },
+    "omnetpp_base.arm32-gcc81-O3": {
+      "total_sites": 1150,
+      "easy": 0.0165,
+      "medium": 0.0035,
+      "hard": 0.98,
+      "counts": {
+        "easy": 19,
+        "medium": 4,
+        "hard": 1127
+      }
+    },
+    "openssl": {
+      "total_sites": 82,
+      "easy": 0.7561,
+      "medium": 0.0488,
+      "hard": 0.1951,
+      "counts": {
+        "easy": 62,
+        "medium": 4,
+        "hard": 16
+      }
+    },
+    "povray_base.arm32-gcc81-O3": {
+      "total_sites": 323,
+      "easy": 0.3375,
+      "medium": 0.0217,
+      "hard": 0.6409,
+      "counts": {
+        "easy": 109,
+        "medium": 7,
+        "hard": 207
+      }
+    },
+    "scp": {
+      "total_sites": 26,
+      "easy": 0.4231,
+      "medium": 0.1154,
+      "hard": 0.4615,
+      "counts": {
+        "easy": 11,
+        "medium": 3,
+        "hard": 12
+      }
+    },
+    "sftp": {
+      "total_sites": 48,
+      "easy": 0.2292,
+      "medium": 0.125,
+      "hard": 0.6458,
+      "counts": {
+        "easy": 11,
+        "medium": 6,
+        "hard": 31
+      }
+    },
+    "sjeng_base.arm32-gcc81-O3": {
+      "total_sites": 34,
+      "easy": 0.5294,
+      "medium": 0.0294,
+      "hard": 0.4412,
+      "counts": {
+        "easy": 18,
+        "medium": 1,
+        "hard": 15
+      }
+    },
+    "soplex_base.arm32-gcc81-O3": {
+      "total_sites": 816,
+      "easy": 0.0723,
+      "medium": 0.0086,
+      "hard": 0.9191,
+      "counts": {
+        "easy": 59,
+        "medium": 7,
+        "hard": 750
+      }
+    },
+    "specrand_base.arm32-gcc81-O3": {
+      "total_sites": 3,
+      "easy": 0.0,
+      "medium": 0.3333,
+      "hard": 0.6667,
+      "counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      }
+    },
+    "sphinx_livepretend_base.arm32-gcc81-O3": {
+      "total_sites": 17,
+      "easy": 0.1765,
+      "medium": 0.0588,
+      "hard": 0.7647,
+      "counts": {
+        "easy": 3,
+        "medium": 1,
+        "hard": 13
+      }
+    },
+    "ssh-add": {
+      "total_sites": 64,
+      "easy": 0.5469,
+      "medium": 0.1094,
+      "hard": 0.3438,
+      "counts": {
+        "easy": 35,
+        "medium": 7,
+        "hard": 22
+      }
+    },
+    "ssh-agent": {
+      "total_sites": 59,
+      "easy": 0.5763,
+      "medium": 0.1017,
+      "hard": 0.322,
+      "counts": {
+        "easy": 34,
+        "medium": 6,
+        "hard": 19
+      }
+    },
+    "ssh-keygen": {
+      "total_sites": 124,
+      "easy": 0.3065,
+      "medium": 0.0645,
+      "hard": 0.629,
+      "counts": {
+        "easy": 38,
+        "medium": 8,
+        "hard": 78
+      }
+    },
+    "ssh-keyscan": {
+      "total_sites": 88,
+      "easy": 0.5114,
+      "medium": 0.0909,
+      "hard": 0.3977,
+      "counts": {
+        "easy": 45,
+        "medium": 8,
+        "hard": 35
+      }
+    },
+    "ssh": {
+      "total_sites": 174,
+      "easy": 0.2586,
+      "medium": 0.1092,
+      "hard": 0.6322,
+      "counts": {
+        "easy": 45,
+        "medium": 19,
+        "hard": 110
+      }
+    }
+  },
+  "mixed_all": {
+    "total_sites": 24250,
+    "easy": 0.0731,
+    "medium": 0.0681,
+    "hard": 0.8588,
+    "binary_weights": {
+      "998-998-specrand_base.arm32-gcc81-O3": 0.0001,
+      "998-specrand_base.arm32-gcc81-O3": 0.0001,
+      "999-specrand_base.arm32-gcc81-O3": 0.0001,
+      "Xalan_base.arm32-gcc81-O3": 0.6851,
+      "astar_base.arm32-gcc81-O3": 0.0002,
+      "bzip2_base.arm32-gcc81-O3": 0.0015,
+      "dealII_base.arm32-gcc81-O3": 0.0848,
+      "gcc_base.arm32-gcc81-O3": 0.0751,
+      "gobmk_base.arm32-gcc81-O3": 0.0027,
+      "h264ref_base.arm32-gcc81-O3": 0.0159,
+      "hmmer_base.arm32-gcc81-O3": 0.0024,
+      "lbm_base.arm32-gcc81-O3": 0.0001,
+      "libquantum_base.arm32-gcc81-O3": 0.0002,
+      "lighttpd": 0.0064,
+      "mcf_base.arm32-gcc81-O3": 0.0001,
+      "milc_base.arm32-gcc81-O3": 0.0006,
+      "namd_base.arm32-gcc81-O3": 0.0005,
+      "omnetpp_base.arm32-gcc81-O3": 0.0474,
+      "openssl": 0.0034,
+      "povray_base.arm32-gcc81-O3": 0.0133,
+      "scp": 0.0011,
+      "sftp": 0.002,
+      "sjeng_base.arm32-gcc81-O3": 0.0014,
+      "soplex_base.arm32-gcc81-O3": 0.0336,
+      "specrand_base.arm32-gcc81-O3": 0.0001,
+      "sphinx_livepretend_base.arm32-gcc81-O3": 0.0007,
+      "ssh-add": 0.0026,
+      "ssh-agent": 0.0024,
+      "ssh-keygen": 0.0051,
+      "ssh-keyscan": 0.0036,
+      "ssh": 0.0072
+    }
+  },
+  "mixed_no_cpp": {
+    "total_sites": 5580,
+    "easy": 0.2758,
+    "medium": 0.1455,
+    "hard": 0.5787,
+    "excluded": [
+      "Xalan_base.arm32-gcc81-O3",
+      "dealII_base.arm32-gcc81-O3"
+    ],
+    "note": "Excludes C++ vtable-dominated binaries"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "binary": "libquantum_base.arm32-gcc81-O3",
+  "total": 6,
+  "summary": {
+    "easy": 1,
+    "medium": 2,
+    "medium_conflict": 0,
+    "medium_partial": 2,
+    "hard": 3
+  },
+  "sites": [
+    {
+      "address": "00008d1c",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "deregister_tm_clones",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "00008d54",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "register_tm_clones",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0000d808",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": "quantum_objcode_run",
+      "label": "easy",
+      "label_detail": "easy",
+      "ghidra_targets": [
+        "0000d810",
+        "0000d870",
+        "0000d884",
+        "0000d898",
+        "0000d8ac"
+      ],
+      "angr_targets": [
+        "0000d870",
+        "0000d884",
+        "0000d898",
+        "0000d8ac"
+      ],
+      "overlap_ratio": 0.8,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "0000f650",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": "jump",
+      "type_agree": true,
+      "function": ".divsi3_skip_div0_test",
+      "label": "hard",
+      "label_detail": "hard",
+      "ghidra_targets": [],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000102a4",
+      "type": "call",
+      "type_source": "ghidra",
+      "ghidra_type": "call",
+      "angr_type": "call",
+      "type_agree": true,
+      "function": "__libc_csu_init",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "00000002",
+        "00008d80"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": true
+    },
+    {
+      "address": "000102cc",
+      "type": "jump",
+      "type_source": "ghidra",
+      "ghidra_type": "jump",
+      "angr_type": null,
+      "type_agree": null,
+      "function": "atexit",
+      "label": "medium",
+      "label_detail": "medium_partial",
+      "ghidra_targets": [
+        "000102d0"
+      ],
+      "angr_targets": [],
+      "overlap_ratio": null,
+      "ghidra_found": true,
+      "angr_found": false
+    }
+  ]
+}

@@ -1,0 +1,1125 @@
+{
+  "per_binary": {
+    "998-998-specrand_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "998-specrand_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "999-specrand_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "Xalan_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.9933,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0067,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 149,
+        "medium": 743,
+        "hard": 15721
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "astar_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 3
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "bzip2_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 12,
+        "medium": 10,
+        "hard": 14
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "dealII_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 85,
+        "medium": 96,
+        "hard": 1876
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "gcc_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.9948,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0155,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 931,
+        "medium": 388,
+        "hard": 501
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "gobmk_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 14,
+        "medium": 15,
+        "hard": 37
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "h264ref_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 18,
+        "medium": 305,
+        "hard": 63
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "hmmer_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 41,
+        "medium": 1,
+        "hard": 16
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "lbm_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "libquantum_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 1,
+        "medium": 2,
+        "hard": 3
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "lighttpd": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 26,
+        "medium": 1,
+        "hard": 127
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "mcf_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "milc_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 6,
+        "medium": 1,
+        "hard": 8
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "namd_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 10
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "omnetpp_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 19,
+        "medium": 4,
+        "hard": 1127
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "openssl": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 62,
+        "medium": 4,
+        "hard": 16
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "povray_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.2857,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 109,
+        "medium": 7,
+        "hard": 207
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "scp": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 11,
+        "medium": 3,
+        "hard": 12
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "sftp": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.5,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.5,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 11,
+        "medium": 6,
+        "hard": 31
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "sjeng_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 18,
+        "medium": 1,
+        "hard": 15
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "soplex_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 59,
+        "medium": 7,
+        "hard": 750
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "specrand_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": null,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": null,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 0,
+        "medium": 1,
+        "hard": 2
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "sphinx_livepretend_base.arm32-gcc81-O3": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 1.0,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.0,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 3,
+        "medium": 1,
+        "hard": 13
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "ssh-add": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.4286,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.5714,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 35,
+        "medium": 7,
+        "hard": 22
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "ssh-agent": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.5,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.5,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 34,
+        "medium": 6,
+        "hard": 19
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "ssh-keygen": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.375,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.625,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 38,
+        "medium": 8,
+        "hard": 78
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "ssh-keyscan": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.375,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.625,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 45,
+        "medium": 8,
+        "hard": 35
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    },
+    "ssh": {
+      "L1": {
+        "easy": 1.0,
+        "medium": 0.2105,
+        "hard": 0.0
+      },
+      "L2": {
+        "easy": 1.0,
+        "medium": 0.7895,
+        "hard": 0.15
+      },
+      "L3": {
+        "easy": 1.0,
+        "medium": 0.95,
+        "hard": 0.7
+      },
+      "site_counts": {
+        "easy": 45,
+        "medium": 19,
+        "hard": 110
+      },
+      "estimated_fields": [
+        "L2.hard",
+        "L3.easy",
+        "L3.medium",
+        "L3.hard"
+      ]
+    }
+  },
+  "aggregate_all": {
+    "L1": {
+      "easy": 1.0,
+      "medium": 0.9746,
+      "hard": 0.0
+    },
+    "L2": {
+      "easy": 1.0,
+      "medium": 0.0291,
+      "hard": 0.1498
+    },
+    "L3": {
+      "easy": null,
+      "medium": null,
+      "hard": null
+    }
+  },
+  "aggregate_no_cpp": {
+    "L1": {
+      "easy": 1.0,
+      "medium": 0.9544,
+      "hard": 0.0
+    },
+    "L2": {
+      "easy": 1.0,
+      "medium": 0.053,
+      "hard": 0.1487
+    },
+    "L3": {
+      "easy": null,
+      "medium": null,
+      "hard": null
+    }
+  },
+  "medium_breakdown": {
+    "998-998-specrand_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "998-specrand_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "999-specrand_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "Xalan_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 743,
+      "ghidra_only": 738,
+      "angr_only": 5,
+      "both_partial": 0
+    },
+    "astar_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "bzip2_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 10,
+      "ghidra_only": 10,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "dealII_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 96,
+      "ghidra_only": 96,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "gcc_base.arm32-gcc81-O3": {
+      "medium_conflict": 4,
+      "medium_partial": 384,
+      "ghidra_only": 382,
+      "angr_only": 2,
+      "both_partial": 4
+    },
+    "gobmk_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 15,
+      "ghidra_only": 15,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "h264ref_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 305,
+      "ghidra_only": 305,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "hmmer_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "lbm_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "libquantum_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 2,
+      "ghidra_only": 2,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "lighttpd": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "mcf_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "milc_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "namd_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "omnetpp_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 4,
+      "ghidra_only": 4,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "openssl": {
+      "medium_conflict": 0,
+      "medium_partial": 4,
+      "ghidra_only": 4,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "povray_base.arm32-gcc81-O3": {
+      "medium_conflict": 2,
+      "medium_partial": 5,
+      "ghidra_only": 5,
+      "angr_only": 0,
+      "both_partial": 2
+    },
+    "scp": {
+      "medium_conflict": 0,
+      "medium_partial": 3,
+      "ghidra_only": 3,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "sftp": {
+      "medium_conflict": 0,
+      "medium_partial": 6,
+      "ghidra_only": 3,
+      "angr_only": 3,
+      "both_partial": 0
+    },
+    "sjeng_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "soplex_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 7,
+      "ghidra_only": 7,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "specrand_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "sphinx_livepretend_base.arm32-gcc81-O3": {
+      "medium_conflict": 0,
+      "medium_partial": 1,
+      "ghidra_only": 1,
+      "angr_only": 0,
+      "both_partial": 0
+    },
+    "ssh-add": {
+      "medium_conflict": 0,
+      "medium_partial": 7,
+      "ghidra_only": 3,
+      "angr_only": 4,
+      "both_partial": 0
+    },
+    "ssh-agent": {
+      "medium_conflict": 0,
+      "medium_partial": 6,
+      "ghidra_only": 3,
+      "angr_only": 3,
+      "both_partial": 0
+    },
+    "ssh-keygen": {
+      "medium_conflict": 0,
+      "medium_partial": 8,
+      "ghidra_only": 3,
+      "angr_only": 5,
+      "both_partial": 0
+    },
+    "ssh-keyscan": {
+      "medium_conflict": 0,
+      "medium_partial": 8,
+      "ghidra_only": 3,
+      "angr_only": 5,
+      "both_partial": 0
+    },
+    "ssh": {
+      "medium_conflict": 0,
+      "medium_partial": 19,
+      "ghidra_only": 4,
+      "angr_only": 15,
+      "both_partial": 0
+    }
+  }
+}

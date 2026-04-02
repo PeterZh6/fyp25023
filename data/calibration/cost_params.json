@@ -1,0 +1,11 @@
+{
+  "method": "manual",
+  "costs": {
+    "SKIP": 0,
+    "L1": 1.0,
+    "L2": 5.0,
+    "L3": 20.0
+  },
+  "ratio_description": "L1:L2:L3 = 1.0:5.0:20.0",
+  "per_binary": null
+}
