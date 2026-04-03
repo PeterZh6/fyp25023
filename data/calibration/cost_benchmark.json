@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-02 18:57:29",
+  "generated_at": "2026-04-02 19:39:53",
   "timeout": 600,
-  "skip_ghidra": true,
-  "skip_angr": false,
+  "skip_ghidra": false,
+  "skip_angr": true,
   "summary": {
-    "angr_per_site_median": 0.1805,
+    "ghidra_per_site_median": 0.5914,
     "l1_l2_ratio": null
   },
   "benchmarks": [
@@ -12,280 +12,280 @@
       "binary": "998-998-specrand_base.arm32-gcc81-O3",
       "sites": 3,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/998-998-specrand_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 1.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.3666666666666667
+      "ghidra_time": 7.3,
+      "angr_time": null,
+      "ghidra_per_site": 2.433333333333333,
+      "angr_per_site": null
     },
     {
       "binary": "998-specrand_base.arm32-gcc81-O3",
       "sites": 3,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/998-specrand_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 1.0,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.3333333333333333
+      "ghidra_time": 9.5,
+      "angr_time": null,
+      "ghidra_per_site": 3.1666666666666665,
+      "angr_per_site": null
     },
     {
       "binary": "999-specrand_base.arm32-gcc81-O3",
       "sites": 3,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/999-specrand_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 3.3,
-      "ghidra_per_site": null,
-      "angr_per_site": 1.0999999999999999
+      "ghidra_time": 7.6,
+      "angr_time": null,
+      "ghidra_per_site": 2.533333333333333,
+      "angr_per_site": null
     },
     {
       "binary": "lbm_base.arm32-gcc81-O3",
       "sites": 3,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/lbm_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 1.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.3666666666666667
+      "ghidra_time": 11.5,
+      "angr_time": null,
+      "ghidra_per_site": 3.8333333333333335,
+      "angr_per_site": null
     },
     {
       "binary": "mcf_base.arm32-gcc81-O3",
       "sites": 3,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/mcf_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 1.4,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.4666666666666666
+      "ghidra_time": 16.6,
+      "angr_time": null,
+      "ghidra_per_site": 5.533333333333334,
+      "angr_per_site": null
     },
     {
       "binary": "specrand_base.arm32-gcc81-O3",
       "sites": 3,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/specrand_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 1.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.3666666666666667
+      "ghidra_time": 7.8,
+      "angr_time": null,
+      "ghidra_per_site": 2.6,
+      "angr_per_site": null
     },
     {
       "binary": "astar_base.arm32-gcc81-O3",
       "sites": 4,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/astar_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 1.5,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.375
+      "ghidra_time": 10.8,
+      "angr_time": null,
+      "ghidra_per_site": 2.7,
+      "angr_per_site": null
     },
     {
       "binary": "libquantum_base.arm32-gcc81-O3",
       "sites": 6,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/libquantum_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 2.6,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.43333333333333335
+      "ghidra_time": 15.0,
+      "angr_time": null,
+      "ghidra_per_site": 2.5,
+      "angr_per_site": null
     },
     {
       "binary": "namd_base.arm32-gcc81-O3",
       "sites": 12,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/namd_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 4.4,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.3666666666666667
+      "ghidra_time": 29.1,
+      "angr_time": null,
+      "ghidra_per_site": 2.4250000000000003,
+      "angr_per_site": null
     },
     {
       "binary": "milc_base.arm32-gcc81-O3",
       "sites": 15,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/milc_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 4.8,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.32
+      "ghidra_time": 18.4,
+      "angr_time": null,
+      "ghidra_per_site": 1.2266666666666666,
+      "angr_per_site": null
     },
     {
       "binary": "sphinx_livepretend_base.arm32-gcc81-O3",
       "sites": 17,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/sphinx_livepretend_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 6.8,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.39999999999999997
+      "ghidra_time": 28.9,
+      "angr_time": null,
+      "ghidra_per_site": 1.7,
+      "angr_per_site": null
     },
     {
       "binary": "scp",
       "sites": 26,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/scp",
-      "ghidra_time": null,
-      "angr_time": 5.8,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.22307692307692306
+      "ghidra_time": 23.5,
+      "angr_time": null,
+      "ghidra_per_site": 0.9038461538461539,
+      "angr_per_site": null
     },
     {
       "binary": "sjeng_base.arm32-gcc81-O3",
       "sites": 34,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/sjeng_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 8.4,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.24705882352941178
+      "ghidra_time": 29.1,
+      "angr_time": null,
+      "ghidra_per_site": 0.8558823529411765,
+      "angr_per_site": null
     },
     {
       "binary": "bzip2_base.arm32-gcc81-O3",
       "sites": 36,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/bzip2_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 3.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.08611111111111111
+      "ghidra_time": 20.5,
+      "angr_time": null,
+      "ghidra_per_site": 0.5694444444444444,
+      "angr_per_site": null
     },
     {
       "binary": "sftp",
       "sites": 48,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/sftp",
-      "ghidra_time": null,
-      "angr_time": 8.2,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.1708333333333333
+      "ghidra_time": 23.8,
+      "angr_time": null,
+      "ghidra_per_site": 0.49583333333333335,
+      "angr_per_site": null
     },
     {
       "binary": "hmmer_base.arm32-gcc81-O3",
       "sites": 58,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/hmmer_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 9.4,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.1620689655172414
+      "ghidra_time": 34.3,
+      "angr_time": null,
+      "ghidra_per_site": 0.5913793103448275,
+      "angr_per_site": null
     },
     {
       "binary": "ssh-agent",
       "sites": 59,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/ssh-agent",
-      "ghidra_time": null,
-      "angr_time": 10.8,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.18305084745762712
+      "ghidra_time": 25.7,
+      "angr_time": null,
+      "ghidra_per_site": 0.435593220338983,
+      "angr_per_site": null
     },
     {
       "binary": "ssh-add",
       "sites": 64,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/ssh-add",
-      "ghidra_time": null,
-      "angr_time": 9.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.1421875
+      "ghidra_time": 31.5,
+      "angr_time": null,
+      "ghidra_per_site": 0.4921875,
+      "angr_per_site": null
     },
     {
       "binary": "gobmk_base.arm32-gcc81-O3",
       "sites": 66,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/gobmk_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 19.5,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.29545454545454547
+      "ghidra_time": 72.2,
+      "angr_time": null,
+      "ghidra_per_site": 1.093939393939394,
+      "angr_per_site": null
     },
     {
       "binary": "openssl",
       "sites": 82,
       "binary_path": "/home/peterzh/fyp/data/binaries/openssl_gcc_O3/openssl",
-      "ghidra_time": null,
-      "angr_time": 14.8,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.1804878048780488
+      "ghidra_time": 59.4,
+      "angr_time": null,
+      "ghidra_per_site": 0.724390243902439,
+      "angr_per_site": null
     },
     {
       "binary": "ssh-keyscan",
       "sites": 88,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/ssh-keyscan",
-      "ghidra_time": null,
-      "angr_time": 10.3,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.11704545454545455
+      "ghidra_time": 37.2,
+      "angr_time": null,
+      "ghidra_per_site": 0.4227272727272728,
+      "angr_per_site": null
     },
     {
       "binary": "ssh-keygen",
       "sites": 124,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/ssh-keygen",
-      "ghidra_time": null,
-      "angr_time": 11.9,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.09596774193548388
+      "ghidra_time": 34.3,
+      "angr_time": null,
+      "ghidra_per_site": 0.27661290322580645,
+      "angr_per_site": null
     },
     {
       "binary": "lighttpd",
       "sites": 154,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/lighttpd",
-      "ghidra_time": null,
-      "angr_time": 10.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.06558441558441558
+      "ghidra_time": 39.6,
+      "angr_time": null,
+      "ghidra_per_site": 0.2571428571428572,
+      "angr_per_site": null
     },
     {
       "binary": "ssh",
       "sites": 174,
       "binary_path": "/home/peterzh/fyp/data/binaries/ssh_servers_gcc_O3/ssh",
-      "ghidra_time": null,
-      "angr_time": 18.3,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.10517241379310345
+      "ghidra_time": 46.1,
+      "angr_time": null,
+      "ghidra_per_site": 0.2649425287356322,
+      "angr_per_site": null
     },
     {
       "binary": "povray_base.arm32-gcc81-O3",
       "sites": 323,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/povray_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 25.1,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.07770897832817338
+      "ghidra_time": 139.8,
+      "angr_time": null,
+      "ghidra_per_site": 0.43281733746130036,
+      "angr_per_site": null
     },
     {
       "binary": "h264ref_base.arm32-gcc81-O3",
       "sites": 386,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/h264ref_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 14.7,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.03808290155440414
+      "ghidra_time": 73.5,
+      "angr_time": null,
+      "ghidra_per_site": 0.19041450777202074,
+      "angr_per_site": null
     },
     {
       "binary": "soplex_base.arm32-gcc81-O3",
       "sites": 816,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/soplex_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 28.4,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.03480392156862745
+      "ghidra_time": 33.0,
+      "angr_time": null,
+      "ghidra_per_site": 0.04044117647058824,
+      "angr_per_site": null
     },
     {
       "binary": "omnetpp_base.arm32-gcc81-O3",
       "sites": 1150,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/omnetpp_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 32.2,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.028000000000000004
+      "ghidra_time": 32.1,
+      "angr_time": null,
+      "ghidra_per_site": 0.02791304347826087,
+      "angr_per_site": null
     },
     {
       "binary": "gcc_base.arm32-gcc81-O3",
       "sites": 1820,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/gcc_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 167.7,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.09214285714285714
+      "ghidra_time": 321.4,
+      "angr_time": null,
+      "ghidra_per_site": 0.17659340659340658,
+      "angr_per_site": null
     },
     {
       "binary": "dealII_base.arm32-gcc81-O3",
       "sites": 2057,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/dealII_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 108.6,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.05279533300923675
+      "ghidra_time": 124.9,
+      "angr_time": null,
+      "ghidra_per_site": 0.06071949440933398,
+      "angr_per_site": null
     },
     {
       "binary": "Xalan_base.arm32-gcc81-O3",
       "sites": 16613,
       "binary_path": "/home/peterzh/fyp/data/binaries/cpu2006_gcc_O3/Xalan_base.arm32-gcc81-O3",
-      "ghidra_time": null,
-      "angr_time": 245.0,
-      "ghidra_per_site": null,
-      "angr_per_site": 0.014747486907843256
+      "ghidra_time": 176.5,
+      "angr_time": null,
+      "ghidra_per_site": 0.01062420995605851,
+      "angr_per_site": null
     }
   ]
 }

@@ -15,6 +15,8 @@ import re
 import sys
 import argparse
 
+from calibration.config import filter_binary_names
+
 
 def load_indirect_flows(path):
     """Load indirect flows JSON, return dict {address: (type, set(targets))}."""
@@ -53,7 +55,7 @@ def discover_binaries(ghidra_dir, angr_dir):
     if only_angr:
         print(f"[info] angr-only (no Ghidra match): {sorted(only_angr)}")
 
-    return sorted(common)
+    return filter_binary_names(sorted(common))
 
 
 def compare_one(binary, ghidra_dir, angr_dir, verbose=True):
@@ -265,7 +267,7 @@ def main():
             sys.exit(1)
         print(f"[info] Discovered {len(binaries)} binaries: {binaries}\n")
     elif args.binaries:
-        binaries = args.binaries
+        binaries = filter_binary_names(args.binaries)
     else:
         parser.error("Provide binary names or use --all")
 

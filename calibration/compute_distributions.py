@@ -13,6 +13,8 @@ import sys
 from pathlib import Path
 from typing import Dict, Any
 
+from calibration.config import filter_binary_entries
+
 
 def load_silver_labels(input_dir: str) -> list[tuple[str, dict]]:
     """Load all silver label JSON files from directory.
@@ -26,7 +28,7 @@ def load_silver_labels(input_dir: str) -> list[tuple[str, dict]]:
             data = json.load(f)
         binary_name = data["binary"]
         results.append((binary_name, data))
-    return results
+    return filter_binary_entries(results, lambda entry: entry[0])
 
 
 def compute_distributions(input_dir: str) -> Dict[str, Any]:

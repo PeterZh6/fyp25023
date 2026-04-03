@@ -17,6 +17,8 @@ import os
 import sys
 from pathlib import Path
 
+from calibration.config import filter_binary_names
+
 
 def load_results(path):
     with open(path) as f:
@@ -153,6 +155,7 @@ def discover_binaries(ghidra_dir, angr_dir):
             angr_names[name] = os.path.join(angr_dir, f)
 
     common = sorted(set(ghidra_names.keys()) & set(angr_names.keys()))
+    common = filter_binary_names(common)
     return [(name, ghidra_names[name], angr_names[name]) for name in common]
 
 

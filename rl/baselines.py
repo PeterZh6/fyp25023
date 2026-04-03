@@ -8,6 +8,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 import numpy as np
 
+from calibration.config import filter_binary_names
 from rl.budget_env import AnalysisBudgetEnv, EnvConfig
 
 PolicyFn = Callable[[np.ndarray, AnalysisBudgetEnv], int]
@@ -203,12 +204,19 @@ def main():
     parser.add_argument("--output", default=None)
     args = parser.parse_args()
 
-    env_config = EnvConfig.from_yaml(args.config, args.binary)
+    selected = filter_binary_names([args.binary])
+    if not selected:
+        raise ValueError(
+            f"Binary '{args.binary}' is excluded by EXCLUDED_BINARIES"
+        )
+    binary_name = selected[0]
+
+    env_config = EnvConfig.from_yaml(args.config, binary_name)
     env_config.budget_ratio = args.budget_ratio
     env_config.budget = env_config.budget_ratio * env_config.num_sites * env_config.costs["L1"]
 
     if args.output is None:
-        args.output = f"data/calibration/baseline_results_{args.binary}.json"
+        args.output = f"data/calibration/baseline_results_{binary_name}.json"
 
     run_all_baselines(env_config, n_episodes=args.n_episodes, seed=args.seed,
                       output_path=args.output)

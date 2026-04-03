@@ -15,6 +15,8 @@ import tempfile
 import time
 from statistics import median
 
+from calibration.config import filter_binary_entries
+
 PROJECT_ROOT = os.path.normpath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 )
@@ -158,6 +160,7 @@ def main():
     args = parser.parse_args()
 
     labels = load_silver_labels()
+    labels = filter_binary_entries(labels, lambda entry: entry[0])
     bmap = build_binary_map()
 
     tasks = []

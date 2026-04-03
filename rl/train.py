@@ -18,6 +18,7 @@ from typing import Any, Dict, List, Optional
 
 import numpy as np
 
+from calibration.config import filter_binary_names
 from rl.budget_env import AnalysisBudgetEnv, EnvConfig
 from rl.baselines import (
     ALL_BASELINES, PolicyFn, evaluate_policy, run_all_baselines,
@@ -203,7 +204,7 @@ def evaluate_trained_model(
 def run_experiment_a(train_cfg: TrainConfig, binaries: List[str]) -> Dict[str, Any]:
     """Experiment A: Single binary training + multi seed."""
     results: Dict[str, Any] = {}
-    for binary in binaries:
+    for binary in filter_binary_names(binaries):
         print(f"\n{'='*60}")
         print(f"Experiment A: {binary}")
         print(f"{'='*60}")
@@ -319,7 +320,7 @@ def run_experiment_d(
             trained_models.append(result["best_model_path"])
 
         split_results: Dict[str, Any] = {"train": split["train"], "test_results": {}}
-        for test_binary in split["test"]:
+        for test_binary in filter_binary_names(split["test"]):
             seed_evals = []
             for model_path in trained_models:
                 eval_result = evaluate_trained_model(
@@ -433,7 +434,7 @@ def main():
 
     elif args.mode == "suite_d":
         all_binaries = ["gcc", "ssh", "openssl", "h264ref", "bzip2", "ssh-keygen"]
-        results = run_experiment_d(train_cfg, all_binaries)
+        results = run_experiment_d(train_cfg, filter_binary_names(all_binaries))
         with open(os.path.join(args.save_dir, "exp_d_results.json"), "w") as f:
             json.dump(results, f, indent=2, default=str)
 

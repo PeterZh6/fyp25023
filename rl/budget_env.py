@@ -20,6 +20,8 @@ import numpy as np
 import gymnasium as gym
 from gymnasium import spaces
 
+from calibration.config import filter_binary_names
+
 OBS_DIM = 19
 LEVEL_NAMES = ["SKIP", "L1", "L2", "L3"]
 DIFFICULTY_NAMES = ["easy", "medium", "hard"]
@@ -71,7 +73,13 @@ class EnvConfig:
             cfg = yaml.safe_load(f)
 
         src = None
-        per_binary = cfg.get("per_binary", {})
+        raw_per_binary = cfg.get("per_binary", {})
+        allowed_binary_names = set(filter_binary_names(raw_per_binary.keys()))
+        per_binary = {
+            name: value
+            for name, value in raw_per_binary.items()
+            if name in allowed_binary_names
+        }
         top_level_keys = [
             k for k in cfg if k not in ("defaults", "per_binary", "estimated_fields")
         ]
