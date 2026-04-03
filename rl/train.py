@@ -42,6 +42,8 @@ class TrainConfig:
     policy_kwargs: dict = field(default_factory=lambda: {"net_arch": [64, 64]})
 
     num_seeds: int = 5
+    # If set, overrides L1/L2/L3 (and SKIP if provided) after YAML load; budget is recomputed.
+    cost_overrides: Optional[Dict[str, float]] = None
     cost_lambda: float = 0.02
     eval_freq: int = 10_000
     eval_episodes: int = 100
@@ -55,6 +57,8 @@ class TrainConfig:
 def make_env_config(train_cfg: TrainConfig) -> EnvConfig:
     env_config = EnvConfig.from_yaml(train_cfg.env_config_path, train_cfg.binary_name)
     env_config.budget_ratio = train_cfg.budget_ratio
+    if train_cfg.cost_overrides:
+        env_config.costs = {**env_config.costs, **train_cfg.cost_overrides}
     env_config.budget = env_config.budget_ratio * env_config.num_sites * env_config.costs["L1"]
     env_config.cost_lambda = train_cfg.cost_lambda
     env_config.oracle_mode = train_cfg.oracle_mode
