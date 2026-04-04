@@ -48,6 +48,8 @@ class TrainConfig:
     eval_freq: int = 10_000
     eval_episodes: int = 100
     save_dir: str = "results/"
+    # If set, after training also save PPO to data/calibration/models/{binary}_{name}_{seed}.zip
+    sensitivity_cost_name: Optional[str] = None
 
     use_site_features: bool = True
     use_global_stats: bool = True
@@ -145,6 +147,17 @@ def train_single(train_cfg: TrainConfig, seed: int) -> Dict[str, Any]:
     model_path = os.path.join(run_dir, "final_model.zip")
     model.save(model_path)
 
+    best_model_path = os.path.join(run_dir, "best_model.zip")
+    if train_cfg.sensitivity_cost_name is not None:
+        cal_dir = os.path.join("data", "calibration", "models")
+        os.makedirs(cal_dir, exist_ok=True)
+        safe_binary = train_cfg.binary_name.replace(os.sep, "_")
+        cal_path = os.path.join(
+            cal_dir,
+            f"{safe_binary}_{train_cfg.sensitivity_cost_name}_{seed}.zip",
+        )
+        model.save(cal_path)
+
     curve = np.array(curve_cb.ep_returns, dtype=np.float32)
     np.save(os.path.join(run_dir, "learning_curve.npy"), curve)
 
@@ -153,7 +166,7 @@ def train_single(train_cfg: TrainConfig, seed: int) -> Dict[str, Any]:
 
     return {
         "model_path": model_path,
-        "best_model_path": os.path.join(run_dir, "best_model.zip"),
+        "best_model_path": best_model_path,
         "learning_curve": curve,
         "seed": seed,
     }
@@ -165,11 +178,12 @@ def evaluate_trained_model(
     n_episodes: int = 1000,
     seed: int = 42,
     test_binary: Optional[str] = None,
+    skip_baselines: bool = False,
 ) -> Dict[str, Any]:
-    """Evaluate a trained model against all baselines."""
+    """Evaluate a trained model; optionally skip baseline policies (RL only)."""
     from stable_baselines3 import PPO
 
-    model = PPO.load(model_path)
+    model = PPO.load(model_path, device="cpu")
     rl_policy = SB3PolicyAdapter(model)
 
     if test_binary:
@@ -180,6 +194,15 @@ def evaluate_trained_model(
     env = AnalysisBudgetEnv(env_config)
 
     rl_metrics = evaluate_policy(rl_policy, env, n_episodes=n_episodes, seed=seed)
+
+    if skip_baselines:
+        return {
+            "rl": rl_metrics,
+            "baselines": {},
+            "best_baseline": None,
+            "improvement_over_best": float("nan"),
+            "binary": cfg.binary_name,
+        }
 
     baseline_metrics = {}
     for name, policy_fn in ALL_BASELINES.items():

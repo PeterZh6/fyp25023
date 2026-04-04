@@ -11,7 +11,8 @@ import argparse
 import dataclasses
 import json
 import os
-from typing import Any, Dict, List
+from collections import defaultdict
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 import numpy as np
 
@@ -35,17 +36,153 @@ DEFAULT_BINARIES: List[str] = [
 ]
 
 RESULT_JSON = "data/calibration/sensitivity_results.json"
+CALIBRATION_MODEL_DIR = "data/calibration/models"
 
 
-def _strategy_columns() -> List[str]:
+def calibration_model_path(binary: str, cost_name: str, seed: int) -> str:
+    """SB3 zip path used for sensitivity training export and --eval-only load."""
+    safe = binary.replace(os.sep, "_")
+    return os.path.join(CALIBRATION_MODEL_DIR, f"{safe}_{cost_name}_{seed}.zip")
+
+
+def _experiment_dedupe_key(r: Dict[str, Any]) -> Tuple[Any, ...]:
+    return (
+        r["binary"],
+        r["cost_name"],
+        r["seed"],
+        r.get("timesteps"),
+    )
+
+
+def _dedupe_runs_last_wins(runs: List[Dict[str, Any]]) -> None:
+    """One row per (binary, cost, seed, timesteps); last wins."""
+    merged: Dict[Tuple[Any, ...], Dict[str, Any]] = {}
+    for r in runs:
+        merged[_experiment_dedupe_key(r)] = r
+    runs[:] = list(merged.values())
+
+
+def _strategy_columns(skip_baselines: bool) -> List[str]:
+    if skip_baselines:
+        return ["RL"]
     return ["RL"] + list(ALL_BASELINES.keys())
+
+
+def _resolve_cost_presets(cost_arg: Optional[List[str]]) -> List[Tuple[str, Dict[str, float]]]:
+    if not cost_arg:
+        return list(COST_PRESETS.items())
+    bad = [n for n in cost_arg if n not in COST_PRESETS]
+    if bad:
+        raise SystemExit(
+            f"Unknown --cost {bad!r}; choose from {list(COST_PRESETS.keys())}"
+        )
+    return [(n, COST_PRESETS[n]) for n in cost_arg]
+
+
+def _run_fingerprint(
+    binary: str,
+    cost_name: str,
+    seed: int,
+    timesteps: int,
+) -> Tuple[Any, ...]:
+    """Training resume key only (eval / baselines flags are not part of it)."""
+    return (binary, cost_name, seed, timesteps)
+
+
+def _fp_from_run(r: Dict[str, Any], default_timesteps: int) -> Tuple[Any, ...]:
+    return _run_fingerprint(
+        r["binary"],
+        r["cost_name"],
+        r["seed"],
+        r.get("timesteps", default_timesteps),
+    )
+
+
+def _load_resume_json(path: str) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
+    if not os.path.isfile(path):
+        return {}, []
+    with open(path) as f:
+        doc = json.load(f)
+    runs = doc.get("runs")
+    if not isinstance(runs, list):
+        return doc.get("meta") or {}, []
+    return doc.get("meta") or {}, runs
+
+
+def _aggregate_runs(runs: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """by_binary[binary][cost_name] -> same shape as before (mean/std/per_seed)."""
+    # (binary, cost_name) -> lists
+    rl_lists: Dict[Tuple[str, str], List[float]] = defaultdict(list)
+    bl_lists: Dict[Tuple[str, str], Dict[str, List[float]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+    cost_overrides_map: Dict[Tuple[str, str], Dict[str, float]] = {}
+
+    for run in runs:
+        b = run["binary"]
+        c = run["cost_name"]
+        key = (b, c)
+        cost_overrides_map[key] = run.get("cost_overrides") or COST_PRESETS.get(c, {})
+        rl_lists[key].append(float(run["rl"]["mean_resolve_rate"]))
+        baselines = run.get("baselines") or {}
+        for name, metrics in baselines.items():
+            if isinstance(metrics, dict) and "mean_resolve_rate" in metrics:
+                bl_lists[key][name].append(float(metrics["mean_resolve_rate"]))
+
+    by_binary: Dict[str, Any] = {}
+    for (b, c), rl_vals in rl_lists.items():
+        key = (b, c)
+        means: Dict[str, float] = {"RL": float(np.mean(rl_vals))}
+        stds: Dict[str, float] = {"RL": float(np.std(rl_vals))}
+        per_seed: Dict[str, List[float]] = {"RL": list(rl_vals)}
+
+        for name in ALL_BASELINES:
+            vals = bl_lists[key].get(name, [])
+            if vals:
+                means[name] = float(np.mean(vals))
+                stds[name] = float(np.std(vals))
+                per_seed[name] = list(vals)
+
+        if b not in by_binary:
+            by_binary[b] = {}
+        by_binary[b][c] = {
+            "cost_name": c,
+            "cost_overrides": cost_overrides_map[key],
+            "mean_resolve_rate": means,
+            "std_resolve_rate": stds,
+            "per_seed": per_seed,
+        }
+
+    return by_binary
+
+
+def _build_summary_for_print(
+    by_binary: Dict[str, Any], cost_order: List[str]
+) -> Dict[str, Dict[str, Dict[str, float]]]:
+    out: Dict[str, Dict[str, Dict[str, float]]] = {}
+    for binary, per_cost in by_binary.items():
+        out[binary] = {}
+        for cn in cost_order:
+            if cn in per_cost:
+                out[binary][cn] = per_cost[cn]["mean_resolve_rate"]
+    return out
+
+
+def _atomic_write_json(path: str, payload: Dict[str, Any]) -> None:
+    d = os.path.dirname(path) or "."
+    os.makedirs(d, exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(payload, f, indent=2)
+    os.replace(tmp, path)
 
 
 def _print_flat_binary_cost_summary(
     summary: Dict[str, Dict[str, Dict[str, float]]],
+    cost_order: List[str],
+    skip_baselines: bool,
 ) -> None:
-    """One table: each row = (binary, cost preset) with all strategy resolve rates."""
-    cols = _strategy_columns()
+    cols = _strategy_columns(skip_baselines)
     w_bin = max(8, max(len(b) for b in summary) if summary else 8)
     w_cost = max(len("cost"), max(len(c) for b in summary for c in summary[b]) if summary else 8)
     w_cell = 8
@@ -57,7 +194,7 @@ def _print_flat_binary_cost_summary(
     print(header)
     print("-" * len(header))
     for binary in summary:
-        for cost_name in COST_PRESETS:
+        for cost_name in cost_order:
             if cost_name not in summary[binary]:
                 continue
             r = summary[binary][cost_name]
@@ -68,81 +205,23 @@ def _print_flat_binary_cost_summary(
 def _print_cost_x_strategy_table(
     title: str,
     rows: Dict[str, Dict[str, float]],
+    cost_order: List[str],
+    skip_baselines: bool,
 ) -> None:
-    """rows: cost_preset -> {strategy -> mean resolve rate}"""
-    cols = _strategy_columns()
-    w_cost = max(len("cost"), max(len(k) for k in rows))
+    cols = _strategy_columns(skip_baselines)
+    w_cost = max(len("cost"), max(len(k) for k in rows) if rows else len("cost"))
     w_cell = 8
 
-    header = f"{ 'cost':<{w_cost}s}" + "".join(f"{c:>{w_cell}s}" for c in cols)
+    header = f"{'cost':<{w_cost}s}" + "".join(f"{c:>{w_cell}s}" for c in cols)
     print(f"\n{title}")
     print(header)
     print("-" * len(header))
-    for cost_name in COST_PRESETS:
+    for cost_name in cost_order:
         if cost_name not in rows:
             continue
         r = rows[cost_name]
         cells = "".join(f"{r.get(c, float('nan')):>{w_cell}.4f}" for c in cols)
         print(f"{cost_name:<{w_cost}s}{cells}")
-
-
-def _run_cost_group(
-    train_cfg: TrainConfig,
-    binary: str,
-    cost_name: str,
-    cost_overrides: Dict[str, float],
-    seeds: List[int],
-    eval_episodes: int,
-    group_save_dir: str,
-) -> Dict[str, Any]:
-    rl_per_seed: List[float] = []
-    baseline_per_seed: Dict[str, List[float]] = {n: [] for n in ALL_BASELINES}
-
-    for seed in seeds:
-        run_save = os.path.join(group_save_dir, f"seed_{seed}")
-        cfg = dataclasses.replace(
-            train_cfg,
-            binary_name=binary,
-            cost_overrides=cost_overrides,
-            save_dir=run_save,
-        )
-        print(f"    train seed={seed} ...")
-        trained = train_single(cfg, seed=seed)
-        ev = evaluate_trained_model(
-            trained["best_model_path"],
-            cfg,
-            n_episodes=eval_episodes,
-            seed=seed,
-        )
-        rl_per_seed.append(float(ev["rl"]["mean_resolve_rate"]))
-        for name in ALL_BASELINES:
-            baseline_per_seed[name].append(
-                float(ev["baselines"][name]["mean_resolve_rate"])
-            )
-
-    means: Dict[str, float] = {
-        "RL": float(np.mean(rl_per_seed)),
-    }
-    means.update(
-        {n: float(np.mean(baseline_per_seed[n])) for n in ALL_BASELINES}
-    )
-    stds: Dict[str, float] = {
-        "RL": float(np.std(rl_per_seed)),
-    }
-    stds.update(
-        {n: float(np.std(baseline_per_seed[n])) for n in ALL_BASELINES}
-    )
-
-    return {
-        "cost_name": cost_name,
-        "cost_overrides": cost_overrides,
-        "mean_resolve_rate": means,
-        "std_resolve_rate": stds,
-        "per_seed": {
-            "RL": rl_per_seed,
-            **{n: baseline_per_seed[n] for n in ALL_BASELINES},
-        },
-    }
 
 
 def parse_args() -> argparse.Namespace:
@@ -154,13 +233,35 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_BINARIES,
         help="One or more binary keys (YAML names or short names)",
     )
-    p.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
+    p.add_argument(
+        "--cost",
+        nargs="+",
+        default=None,
+        metavar="PRESET",
+        help=f"Subset of cost presets (default: all). Choices: {list(COST_PRESETS.keys())}",
+    )
+    p.add_argument("--seeds", type=int, nargs="+", default=[0])
     p.add_argument("--eval-episodes", type=int, default=200)
     p.add_argument("--config", default="rl/configs/env_configs.yaml")
     p.add_argument("--budget-ratio", type=float, default=2.0)
     p.add_argument("--cost-lambda", type=float, default=0.02)
     p.add_argument("--save-dir", default="results/sensitivity")
     p.add_argument("--output", default=RESULT_JSON)
+    p.add_argument(
+        "--skip-baselines",
+        action="store_true",
+        help="Only evaluate RL after training; skip baseline policies",
+    )
+    p.add_argument(
+        "--resume",
+        action="store_true",
+        help="Load --output; skip re-training when (binary,cost,seed,timesteps) already done; still re-runs eval",
+    )
+    p.add_argument(
+        "--eval-only",
+        action="store_true",
+        help="Never train; load PPO zip from data/calibration/models/ and run eval (--skip-baselines still applies)",
+    )
     return p.parse_args()
 
 
@@ -170,6 +271,9 @@ def main() -> None:
     if not binaries:
         raise SystemExit("No binaries left after filtering (check names / EXCLUDED_BINARIES).")
 
+    cost_items = _resolve_cost_presets(args.cost)
+    cost_order = [name for name, _ in cost_items]
+
     train_cfg = TrainConfig(
         env_config_path=args.config,
         budget_ratio=args.budget_ratio,
@@ -178,57 +282,139 @@ def main() -> None:
         num_seeds=len(args.seeds),
     )
 
-    all_results: Dict[str, Any] = {
-        "meta": {
-            "timesteps": args.timesteps,
-            "seeds": list(args.seeds),
-            "eval_episodes": args.eval_episodes,
-            "binaries": binaries,
-            "cost_presets": COST_PRESETS,
-        },
-        "by_binary": {},
+    prev_meta: Dict[str, Any] = {}
+    runs: List[Dict[str, Any]] = []
+    completed: Set[Tuple[Any, ...]] = set()
+
+    if args.resume and os.path.isfile(args.output):
+        prev_meta, runs = _load_resume_json(args.output)
+        _dedupe_runs_last_wins(runs)
+        completed = {_fp_from_run(r, args.timesteps) for r in runs}
+        print(f"[resume] Loaded {len(runs)} runs; {len(completed)} trained keys from {args.output}")
+
+    meta = {
+        **prev_meta,
+        "timesteps": args.timesteps,
+        "seeds": list(args.seeds),
+        "eval_episodes": args.eval_episodes,
+        "binaries": binaries,
+        "cost_presets": {k: v for k, v in COST_PRESETS.items()},
+        "costs_run": cost_order,
+        "skip_baselines": args.skip_baselines,
+        "resume": args.resume,
+        "eval_only": args.eval_only,
     }
 
-    summary_for_print: Dict[str, Dict[str, Dict[str, float]]] = {}
+    def save_document() -> None:
+        _dedupe_runs_last_wins(runs)
+        by_binary = _aggregate_runs(runs)
+        doc = {
+            "meta": meta,
+            "runs": runs,
+            "by_binary": by_binary,
+        }
+        _atomic_write_json(args.output, doc)
+
+    table_skip_baselines = args.skip_baselines
 
     for binary in binaries:
         print(f"\n{'=' * 60}\nBinary: {binary}\n{'=' * 60}")
-        per_cost: Dict[str, Any] = {}
-        table_rows: Dict[str, Dict[str, float]] = {}
 
-        for cost_name, overrides in COST_PRESETS.items():
+        for cost_name, overrides in cost_items:
             print(f"\n--- cost preset: {cost_name} {overrides} ---")
             group_dir = os.path.join(
                 args.save_dir,
                 binary.replace(os.sep, "_"),
                 cost_name,
             )
-            block = _run_cost_group(
-                train_cfg,
-                binary,
-                cost_name,
-                overrides,
-                args.seeds,
-                args.eval_episodes,
-                group_dir,
-            )
-            per_cost[cost_name] = block
-            table_rows[cost_name] = block["mean_resolve_rate"]
 
-        all_results["by_binary"][binary] = per_cost
-        summary_for_print[binary] = table_rows
-        _print_cost_x_strategy_table(
-            f"Resolve rate (mean over seeds {args.seeds}): {binary}",
-            table_rows,
-        )
+            for seed in args.seeds:
+                fp = _run_fingerprint(binary, cost_name, seed, args.timesteps)
+                run_save = os.path.join(group_dir, f"seed_{seed}")
+                cal_model_zip = calibration_model_path(binary, cost_name, seed)
+                cfg = dataclasses.replace(
+                    train_cfg,
+                    binary_name=binary,
+                    cost_overrides=overrides,
+                    save_dir=run_save,
+                    sensitivity_cost_name=None if args.eval_only else cost_name,
+                )
+
+                if args.eval_only:
+                    if not os.path.isfile(cal_model_zip):
+                        raise SystemExit(
+                            f"Missing model for eval-only: {cal_model_zip}\n"
+                            "Train first (without --eval-only) so train_single saves there."
+                        )
+                    print(f"    eval-only seed={seed} ← {cal_model_zip}")
+                else:
+                    skip_train = (
+                        args.resume
+                        and fp in completed
+                        and os.path.isfile(cal_model_zip)
+                    )
+                    if skip_train:
+                        print(f"    skip training (resume) seed={seed}")
+                    else:
+                        print(f"    train seed={seed} ...")
+                        train_single(cfg, seed=seed)
+
+                ev = evaluate_trained_model(
+                    cal_model_zip,
+                    cfg,
+                    n_episodes=args.eval_episodes,
+                    seed=seed,
+                    skip_baselines=args.skip_baselines,
+                )
+
+                run_record: Dict[str, Any] = {
+                    "binary": binary,
+                    "cost_name": cost_name,
+                    "cost_overrides": overrides,
+                    "seed": seed,
+                    "timesteps": args.timesteps,
+                    "skip_baselines": args.skip_baselines,
+                    "eval_episodes": args.eval_episodes,
+                    "eval_only": args.eval_only,
+                    "rl": ev["rl"],
+                    "baselines": ev.get("baselines") or {},
+                }
+                runs.append(run_record)
+                _dedupe_runs_last_wins(runs)
+                completed = {_fp_from_run(r, args.timesteps) for r in runs}
+                save_document()
+                print(f"    saved → {args.output} ({len(runs)} runs)")
+
+        # Per-binary table from full file state (includes resume from other binaries)
+        by_binary_now = _aggregate_runs(runs)
+        if binary in by_binary_now:
+            per_binary_summary = {
+                cn: by_binary_now[binary][cn]["mean_resolve_rate"]
+                for cn in cost_order
+                if cn in by_binary_now[binary]
+            }
+            _print_cost_x_strategy_table(
+                f"Resolve rate (mean over seeds {args.seeds}): {binary}",
+                per_binary_summary,
+                cost_order,
+                table_skip_baselines,
+            )
 
     print(f"\n{'=' * 60}\nSUMMARY: binary × cost × strategy → mean resolve rate\n{'=' * 60}")
-    _print_flat_binary_cost_summary(summary_for_print)
+    by_final = _aggregate_runs(runs)
+    summary_final = _build_summary_for_print(by_final, cost_order)
+    # Only print rows for binaries in this invocation and costs we care about
+    summary_filtered = {
+        b: {c: summary_final[b][c] for c in cost_order if c in summary_final.get(b, {})}
+        for b in binaries
+        if b in summary_final
+    }
+    _print_flat_binary_cost_summary(
+        summary_filtered, cost_order, table_skip_baselines
+    )
 
-    os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
-    with open(args.output, "w") as f:
-        json.dump(all_results, f, indent=2)
-    print(f"\nWrote {args.output}")
+    save_document()
+    print(f"\nWrote {args.output} ({len(runs)} runs total)")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,33 @@
+{
+  "env_config_path": "rl/configs/env_configs.yaml",
+  "binary_name": "gcc_base.arm32-gcc81-O3",
+  "budget_ratio": 2.0,
+  "algorithm": "PPO",
+  "total_timesteps": 200000,
+  "learning_rate": 0.0003,
+  "n_steps": 2048,
+  "batch_size": 64,
+  "n_epochs": 10,
+  "gamma": 0.99,
+  "policy_net": "MlpPolicy",
+  "policy_kwargs": {
+    "net_arch": [
+      64,
+      64
+    ]
+  },
+  "num_seeds": 1,
+  "cost_overrides": {
+    "L1": 1.0,
+    "L2": 3.0,
+    "L3": 15.0
+  },
+  "cost_lambda": 0.02,
+  "eval_freq": 10000,
+  "eval_episodes": 100,
+  "save_dir": "results/sensitivity/gcc_base.arm32-gcc81-O3/low/seed_0",
+  "sensitivity_cost_name": "low",
+  "use_site_features": true,
+  "use_global_stats": true,
+  "oracle_mode": false
+}
