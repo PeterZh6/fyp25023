@@ -2,6 +2,8 @@
 
 Final Year Project (FYP): Using RL to intelligently allocate analysis budget across indirect control-flow targets in binary programs.
 
+**Repository:** [github.com/PeterZh6/fyp25023](https://github.com/PeterZh6/fyp25023)
+
 ## Problem
 
 Binary reverse-engineering tools (Ghidra, angr, Pin) vary in cost and accuracy when resolving indirect jumps/calls. Given a finite analysis budget, the agent must decide **which analysis level** to apply to each target to maximise the number of successfully resolved sites.
