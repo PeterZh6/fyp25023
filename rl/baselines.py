@@ -75,6 +75,9 @@ def budget_aware(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     return 0
 
 
+# Intentional equivalence with greedy_cheap under current env dynamics: the only extra logic
+# is `if resolved[ct]: return SKIP`, which does not change outcomes vs. greedy_cheap here (not a bug).
+# Telling them apart in reports would need environment/design changes, not a baseline bugfix.
 def escalation(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     """Mimics human analyst: try L1 first, escalate to L2, then L3."""
     ct = env.current_target

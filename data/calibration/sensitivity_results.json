@@ -2,13 +2,12 @@
   "meta": {
     "timesteps": 200000,
     "seeds": [
-      0
+      0,
+      1,
+      2
     ],
     "eval_episodes": 200,
     "binaries": [
-      "bzip2_base.arm32-gcc81-O3",
-      "openssl",
-      "ssh",
       "gcc_base.arm32-gcc81-O3",
       "dealII_base.arm32-gcc81-O3"
     ],
