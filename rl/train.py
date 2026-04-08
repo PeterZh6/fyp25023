@@ -55,6 +55,7 @@ class TrainConfig:
     use_global_stats: bool = True
     oracle_mode: bool = False
     deterministic_reward: bool = False
+    sunk_cost_l1: bool = False
 
 
 def make_env_config(train_cfg: TrainConfig) -> EnvConfig:
@@ -68,6 +69,9 @@ def make_env_config(train_cfg: TrainConfig) -> EnvConfig:
     env_config.use_site_features = train_cfg.use_site_features
     env_config.use_global_stats = train_cfg.use_global_stats
     env_config.deterministic_reward = train_cfg.deterministic_reward
+    env_config.sunk_cost_l1 = train_cfg.sunk_cost_l1
+    if train_cfg.sunk_cost_l1:
+        pass  # budget is computed per-episode in reset(); config.budget is a placeholder
     return env_config
 
 
@@ -390,6 +394,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--no-site-features", action="store_true")
     parser.add_argument("--no-global-stats", action="store_true")
     parser.add_argument("--oracle", action="store_true")
+    parser.add_argument("--sunk-cost", action="store_true", help="Enable sunk-cost L1 mode")
 
     parser.add_argument("--eval-model", type=str, default=None)
     parser.add_argument("--save-dir", default="results/")
@@ -414,6 +419,7 @@ def main():
         use_site_features=not args.no_site_features,
         use_global_stats=not args.no_global_stats,
         oracle_mode=args.oracle,
+        sunk_cost_l1=args.sunk_cost,
         save_dir=args.save_dir,
     )
 

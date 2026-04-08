@@ -1,6 +1,6 @@
 {
   "env_config_path": "rl/configs/env_configs.yaml",
-  "binary_name": "dealII_base.arm32-gcc81-O3",
+  "binary_name": "ssh",
   "budget_ratio": 2.0,
   "algorithm": "PPO",
   "total_timesteps": 200000,
@@ -25,7 +25,7 @@
   "cost_lambda": 0.02,
   "eval_freq": 10000,
   "eval_episodes": 100,
-  "save_dir": "results/sensitivity/dealII_base.arm32-gcc81-O3/baseline/seed_2",
+  "save_dir": "results/sensitivity/ssh/baseline/seed_1",
   "sensitivity_cost_name": "baseline",
   "use_site_features": true,
   "use_global_stats": true,

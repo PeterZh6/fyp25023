@@ -29,5 +29,7 @@
   "sensitivity_cost_name": "baseline",
   "use_site_features": true,
   "use_global_stats": true,
-  "oracle_mode": false
+  "oracle_mode": false,
+  "deterministic_reward": false,
+  "sunk_cost_l1": true
 }

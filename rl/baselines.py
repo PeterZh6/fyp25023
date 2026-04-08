@@ -19,11 +19,19 @@ def all_skip(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
 
 
 def all_l1(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
+    if env.config.sunk_cost_l1:
+        if env.budget_remaining >= env.config.costs["L2"]:
+            return 1
+        return 0
     return 1
 
 
 def all_l2(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     costs = env.config.costs
+    if env.config.sunk_cost_l1:
+        if env.budget_remaining >= costs["L2"]:
+            return 1
+        return 0
     if env.budget_remaining >= costs["L2"]:
         return 2
     if env.budget_remaining >= costs["L1"]:
@@ -33,6 +41,12 @@ def all_l2(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
 
 def all_l3(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     costs = env.config.costs
+    if env.config.sunk_cost_l1:
+        if env.budget_remaining >= costs["L3"]:
+            return 2
+        if env.budget_remaining >= costs["L2"]:
+            return 1
+        return 0
     if env.budget_remaining >= costs["L3"]:
         return 3
     if env.budget_remaining >= costs["L2"]:
@@ -43,16 +57,21 @@ def all_l3(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
 
 
 def random_policy(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
-    return int(env.np_random.integers(0, 4))
+    n_actions = 3 if env.config.sunk_cost_l1 else 4
+    return int(env.np_random.integers(0, n_actions))
 
 
 def greedy_cheap(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     """Pick cheapest untried non-SKIP level."""
     ct = env.current_target
-    if ct >= env.config.num_sites:
+    if ct >= env.num_active_sites:
         return 0
     costs = env.config.costs
-    for lvl_idx, lvl_name in enumerate(["L1", "L2", "L3"]):
+    if env.config.sunk_cost_l1:
+        levels = ["L2", "L3"]
+    else:
+        levels = ["L1", "L2", "L3"]
+    for lvl_idx, lvl_name in enumerate(levels):
         if not env.tried_levels[ct, lvl_idx] and env.budget_remaining >= costs[lvl_name]:
             return lvl_idx + 1
     return 0
@@ -61,13 +80,17 @@ def greedy_cheap(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
 def budget_aware(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     """Dynamically adjust action based on remaining budget per site."""
     ct = env.current_target
-    if ct >= env.config.num_sites:
+    if ct >= env.num_active_sites:
         return 0
-    remaining_sites = max(env.config.num_sites - ct, 1)
+    remaining_sites = max(env.num_active_sites - ct, 1)
     avg_budget = env.budget_remaining / remaining_sites
     costs = env.config.costs
 
-    for lvl_idx, lvl_name in reversed(list(enumerate(["L1", "L2", "L3"]))):
+    if env.config.sunk_cost_l1:
+        levels = ["L2", "L3"]
+    else:
+        levels = ["L1", "L2", "L3"]
+    for lvl_idx, lvl_name in reversed(list(enumerate(levels))):
         if (avg_budget >= costs[lvl_name]
                 and not env.tried_levels[ct, lvl_idx]
                 and env.budget_remaining >= costs[lvl_name]):
@@ -81,12 +104,16 @@ def budget_aware(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
 def escalation(obs: np.ndarray, env: AnalysisBudgetEnv) -> int:
     """Mimics human analyst: try L1 first, escalate to L2, then L3."""
     ct = env.current_target
-    if ct >= env.config.num_sites:
+    if ct >= env.num_active_sites:
         return 0
     if env.resolved[ct]:
         return 0
     costs = env.config.costs
-    for lvl_idx, lvl_name in enumerate(["L1", "L2", "L3"]):
+    if env.config.sunk_cost_l1:
+        levels = ["L2", "L3"]
+    else:
+        levels = ["L1", "L2", "L3"]
+    for lvl_idx, lvl_name in enumerate(levels):
         if not env.tried_levels[ct, lvl_idx] and env.budget_remaining >= costs[lvl_name]:
             return lvl_idx + 1
     return 0

@@ -1,0 +1,2197 @@
+{
+  "meta": {
+    "timesteps": 200000,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "eval_episodes": 200,
+    "binaries": [
+      "bzip2_base.arm32-gcc81-O3",
+      "openssl",
+      "ssh",
+      "gcc_base.arm32-gcc81-O3",
+      "dealII_base.arm32-gcc81-O3"
+    ],
+    "cost_presets": {
+      "baseline": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "low": {
+        "L1": 1.0,
+        "L2": 3.0,
+        "L3": 15.0
+      },
+      "high": {
+        "L1": 1.0,
+        "L2": 10.0,
+        "L3": 50.0
+      }
+    },
+    "costs_run": [
+      "baseline"
+    ],
+    "skip_baselines": false,
+    "resume": true,
+    "eval_only": false,
+    "deterministic_reward": false,
+    "sunk_cost_l1": true
+  },
+  "runs": [
+    {
+      "binary": "bzip2_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 0,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 2.0772500000000003,
+        "std_reward": 1.3024476716935696,
+        "mean_cost": 132.0,
+        "std_cost": 26.832815729997478,
+        "mean_resolved": 4.72,
+        "std_resolved": 1.6004999218994045,
+        "mean_resolve_rate": 0.3305421136526013,
+        "std_resolve_rate": 0.08922235291863778,
+        "mean_episode_length": 16.09
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 14.21
+        },
+        "all_l1": {
+          "mean_reward": 0.6297499999999999,
+          "std_reward": 1.9952449567659607,
+          "mean_cost": 142.1,
+          "std_cost": 26.936777832547087,
+          "mean_resolved": 4.32,
+          "std_resolved": 2.070652071208488,
+          "mean_resolve_rate": 0.3058342960573998,
+          "std_resolve_rate": 0.14222689503908914,
+          "mean_episode_length": 31.78
+        },
+        "all_l2": {
+          "mean_reward": 0.6297499999999999,
+          "std_reward": 1.9952449567659607,
+          "mean_cost": 142.1,
+          "std_cost": 26.936777832547087,
+          "mean_resolved": 4.32,
+          "std_resolved": 2.070652071208488,
+          "mean_resolve_rate": 0.3058342960573998,
+          "std_resolve_rate": 0.14222689503908914,
+          "mean_episode_length": 31.78
+        },
+        "all_l3": {
+          "mean_reward": 2.1294999999999997,
+          "std_reward": 1.3993854901348663,
+          "mean_cost": 142.1,
+          "std_cost": 26.936777832547087,
+          "mean_resolved": 5.07,
+          "std_resolved": 1.6355732939859344,
+          "mean_resolve_rate": 0.35587875718622625,
+          "std_resolve_rate": 0.09129197426138899,
+          "mean_episode_length": 16.78
+        },
+        "random": {
+          "mean_reward": 1.08575,
+          "std_reward": 1.5193121593339534,
+          "mean_cost": 131.65,
+          "std_cost": 30.129346159516967,
+          "mean_resolved": 4.55,
+          "std_resolved": 1.6605721905415614,
+          "mean_resolve_rate": 0.4241861373920197,
+          "std_resolve_rate": 0.1516303296132377,
+          "mean_episode_length": 17.675
+        },
+        "greedy_cheap": {
+          "mean_reward": 2.1479999999999997,
+          "std_reward": 1.464,
+          "mean_cost": 142.1,
+          "std_cost": 26.936777832547087,
+          "mean_resolved": 4.99,
+          "std_resolved": 1.702909275328548,
+          "mean_resolve_rate": 0.3503587524876224,
+          "std_resolve_rate": 0.09965836944181457,
+          "mean_episode_length": 22.355
+        },
+        "budget_aware": {
+          "mean_reward": 1.8935000000000002,
+          "std_reward": 1.4829726059506292,
+          "mean_cost": 137.325,
+          "std_cost": 27.262050087988616,
+          "mean_resolved": 4.64,
+          "std_resolved": 1.6823792675850473,
+          "mean_resolve_rate": 0.32651110392015964,
+          "std_resolve_rate": 0.1039532811385233,
+          "mean_episode_length": 24.87
+        },
+        "escalation": {
+          "mean_reward": 2.1479999999999997,
+          "std_reward": 1.464,
+          "mean_cost": 142.1,
+          "std_cost": 26.936777832547087,
+          "mean_resolved": 4.99,
+          "std_resolved": 1.702909275328548,
+          "mean_resolve_rate": 0.3503587524876224,
+          "std_resolve_rate": 0.09965836944181457,
+          "mean_episode_length": 22.355
+        }
+      }
+    },
+    {
+      "binary": "openssl",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 0,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 2.16775,
+        "std_reward": 1.486168710981361,
+        "mean_cost": 153.3,
+        "std_cost": 33.122650860098744,
+        "mean_resolved": 5.27,
+        "std_resolved": 1.7908377927662797,
+        "mean_resolve_rate": 0.32842441202708045,
+        "std_resolve_rate": 0.09118246322549628,
+        "mean_episode_length": 18.51
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 16.13
+        },
+        "all_l1": {
+          "mean_reward": 0.5722499999999999,
+          "std_reward": 2.2042895539152747,
+          "mean_cost": 161.25,
+          "std_cost": 36.15159055975269,
+          "mean_resolved": 4.765,
+          "std_resolved": 2.4474016834185597,
+          "mean_resolve_rate": 0.2936515248732666,
+          "std_resolve_rate": 0.13069594640857415,
+          "mean_episode_length": 36.095
+        },
+        "all_l2": {
+          "mean_reward": 0.5722499999999999,
+          "std_reward": 2.2042895539152747,
+          "mean_cost": 161.25,
+          "std_cost": 36.15159055975269,
+          "mean_resolved": 4.765,
+          "std_resolved": 2.4474016834185597,
+          "mean_resolve_rate": 0.2936515248732666,
+          "std_resolve_rate": 0.13069594640857415,
+          "mean_episode_length": 36.095
+        },
+        "all_l3": {
+          "mean_reward": 2.22025,
+          "std_reward": 1.5733729492717232,
+          "mean_cost": 161.3,
+          "std_cost": 36.11523224347311,
+          "mean_resolved": 5.565,
+          "std_resolved": 1.8643430478321312,
+          "mean_resolve_rate": 0.34571592011909175,
+          "std_resolve_rate": 0.09093556679863553,
+          "mean_episode_length": 19.09
+        },
+        "random": {
+          "mean_reward": 1.0027499999999998,
+          "std_reward": 1.5547845308916604,
+          "mean_cost": 151.7,
+          "std_cost": 38.87942900815288,
+          "mean_resolved": 4.995,
+          "std_resolved": 1.8721578459093666,
+          "mean_resolve_rate": 0.4174334993523848,
+          "std_resolve_rate": 0.13853196573202856,
+          "mean_episode_length": 20.09
+        },
+        "greedy_cheap": {
+          "mean_reward": 2.259,
+          "std_reward": 1.5983488355174535,
+          "mean_cost": 161.3,
+          "std_cost": 36.11523224347311,
+          "mean_resolved": 5.485,
+          "std_resolved": 1.9156656806447208,
+          "mean_resolve_rate": 0.34057536799841825,
+          "std_resolve_rate": 0.10102475974220901,
+          "mean_episode_length": 25.385
+        },
+        "budget_aware": {
+          "mean_reward": 2.058,
+          "std_reward": 1.697214188015172,
+          "mean_cost": 157.1,
+          "std_cost": 36.357117597521395,
+          "mean_resolved": 5.2,
+          "std_resolved": 1.9874606914351791,
+          "mean_resolve_rate": 0.3226458950453848,
+          "std_resolve_rate": 0.10997335103037538,
+          "mean_episode_length": 28.325
+        },
+        "escalation": {
+          "mean_reward": 2.259,
+          "std_reward": 1.5983488355174535,
+          "mean_cost": 161.3,
+          "std_cost": 36.11523224347311,
+          "mean_resolved": 5.485,
+          "std_resolved": 1.9156656806447208,
+          "mean_resolve_rate": 0.34057536799841825,
+          "std_resolve_rate": 0.10102475974220901,
+          "mean_episode_length": 25.385
+        }
+      }
+    },
+    {
+      "binary": "ssh",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 0,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 18.617000000000008,
+        "std_reward": 3.744711070296356,
+        "mean_cost": 1245.4,
+        "std_cost": 61.69959481228382,
+        "mean_resolved": 45.215,
+        "std_resolved": 4.23069438744989,
+        "mean_resolve_rate": 0.9344844346794585,
+        "std_resolve_rate": 0.03519820516733346,
+        "mean_episode_length": 65.61
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 125.05
+        },
+        "all_l1": {
+          "mean_reward": 14.769249999999998,
+          "std_reward": 6.239566646610971,
+          "mean_cost": 1250.5,
+          "std_cost": 61.357558621574896,
+          "mean_resolved": 47.095,
+          "std_resolved": 6.293327816028655,
+          "mean_resolve_rate": 0.3769163127873484,
+          "std_resolve_rate": 0.049178143952118815,
+          "mean_episode_length": 271.98
+        },
+        "all_l2": {
+          "mean_reward": 14.769249999999998,
+          "std_reward": 6.239566646610971,
+          "mean_cost": 1250.5,
+          "std_cost": 61.357558621574896,
+          "mean_resolved": 47.095,
+          "std_resolved": 6.293327816028655,
+          "mean_resolve_rate": 0.3769163127873484,
+          "std_resolve_rate": 0.049178143952118815,
+          "mean_episode_length": 271.98
+        },
+        "all_l3": {
+          "mean_reward": 19.54350000000001,
+          "std_reward": 3.761676188881769,
+          "mean_cost": 1250.5,
+          "std_cost": 61.357558621574896,
+          "mean_resolved": 45.37,
+          "std_resolved": 4.201559234379542,
+          "mean_resolve_rate": 0.36273510347747034,
+          "std_resolve_rate": 0.027578964864708188,
+          "mean_episode_length": 141.93
+        },
+        "random": {
+          "mean_reward": 19.256000000000004,
+          "std_reward": 4.13928000985679,
+          "mean_cost": 1243.45,
+          "std_cost": 63.08999524488807,
+          "mean_resolved": 46.0,
+          "std_resolved": 4.46318272088428,
+          "mean_resolve_rate": 0.459526885500187,
+          "std_resolve_rate": 0.049331081504665544,
+          "mean_episode_length": 150.235
+        },
+        "greedy_cheap": {
+          "mean_reward": 21.899999999999995,
+          "std_reward": 4.982368914482342,
+          "mean_cost": 1250.5,
+          "std_cost": 61.357558621574896,
+          "mean_resolved": 46.91,
+          "std_resolved": 5.327466564888043,
+          "mean_resolve_rate": 0.37522838251682905,
+          "std_resolve_rate": 0.03956756347355048,
+          "mean_episode_length": 187.63
+        },
+        "budget_aware": {
+          "mean_reward": 23.92300000000003,
+          "std_reward": 5.185052651613111,
+          "mean_cost": 1245.35,
+          "std_cost": 61.238284593871505,
+          "mean_resolved": 48.83,
+          "std_resolved": 5.586689538537112,
+          "mean_resolve_rate": 0.3905077993549081,
+          "std_resolve_rate": 0.04075966178894697,
+          "mean_episode_length": 211.455
+        },
+        "escalation": {
+          "mean_reward": 21.899999999999995,
+          "std_reward": 4.982368914482342,
+          "mean_cost": 1250.5,
+          "std_cost": 61.357558621574896,
+          "mean_resolved": 46.91,
+          "std_resolved": 5.327466564888043,
+          "mean_resolve_rate": 0.37522838251682905,
+          "std_resolve_rate": 0.03956756347355048,
+          "mean_episode_length": 187.63
+        }
+      }
+    },
+    {
+      "binary": "gcc_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 0,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 71.87174999999993,
+        "std_reward": 8.12345612639708,
+        "mean_cost": 5042.5,
+        "std_cost": 196.20333840177133,
+        "mean_resolved": 177.22,
+        "std_resolved": 10.20203901188385,
+        "mean_resolve_rate": 0.9743346063241295,
+        "std_resolve_rate": 0.012952337838734854,
+        "mean_episode_length": 253.125
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 504.76
+        },
+        "all_l1": {
+          "mean_reward": 18.96350000000004,
+          "std_reward": 11.368449443525767,
+          "mean_cost": 5047.6,
+          "std_cost": 195.6048056669365,
+          "mean_resolved": 150.755,
+          "std_resolved": 12.706886912222048,
+          "mean_resolve_rate": 0.2986426005450083,
+          "std_resolve_rate": 0.022052753077490453,
+          "mean_episode_length": 1122.17
+        },
+        "all_l2": {
+          "mean_reward": 18.96350000000004,
+          "std_reward": 11.368449443525767,
+          "mean_cost": 5047.6,
+          "std_cost": 195.6048056669365,
+          "mean_resolved": 150.755,
+          "std_resolved": 12.706886912222048,
+          "mean_resolve_rate": 0.2986426005450083,
+          "std_resolve_rate": 0.022052753077490453,
+          "mean_episode_length": 1122.17
+        },
+        "all_l3": {
+          "mean_reward": 72.85749999999993,
+          "std_reward": 8.155477837012267,
+          "mean_cost": 5047.6,
+          "std_cost": 195.6048056669365,
+          "mean_resolved": 177.33,
+          "std_resolved": 10.201524395892998,
+          "mean_resolve_rate": 0.351290722943502,
+          "std_resolve_rate": 0.014243103007430143,
+          "mean_episode_length": 575.83
+        },
+        "random": {
+          "mean_reward": 66.22175000000001,
+          "std_reward": 8.747466172412398,
+          "mean_cost": 5041.825,
+          "std_cost": 195.20897616400737,
+          "mean_resolved": 171.935,
+          "std_resolved": 10.844389102203959,
+          "mean_resolve_rate": 0.4328801280874214,
+          "std_resolve_rate": 0.023553426961214225,
+          "mean_episode_length": 609.825
+        },
+        "greedy_cheap": {
+          "mean_reward": 70.69800000000001,
+          "std_reward": 8.664271233058228,
+          "mean_cost": 5047.6,
+          "std_cost": 195.6048056669365,
+          "mean_resolved": 171.65,
+          "std_resolved": 10.690065481558099,
+          "mean_resolve_rate": 0.3400385297431148,
+          "std_resolve_rate": 0.016091194718184453,
+          "mean_episode_length": 758.875
+        },
+        "budget_aware": {
+          "mean_reward": 66.07150000000004,
+          "std_reward": 9.74114663425193,
+          "mean_cost": 5043.175,
+          "std_cost": 195.73845911062037,
+          "mean_resolved": 166.935,
+          "std_resolved": 11.607789410563925,
+          "mean_resolve_rate": 0.330679130317043,
+          "std_resolve_rate": 0.018451834039670736,
+          "mean_episode_length": 888.27
+        },
+        "escalation": {
+          "mean_reward": 70.69800000000001,
+          "std_reward": 8.664271233058228,
+          "mean_cost": 5047.6,
+          "std_cost": 195.6048056669365,
+          "mean_resolved": 171.65,
+          "std_resolved": 10.690065481558099,
+          "mean_resolve_rate": 0.3400385297431148,
+          "std_resolve_rate": 0.016091194718184453,
+          "mean_episode_length": 758.875
+        }
+      }
+    },
+    {
+      "binary": "dealII_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 0,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 259.5562499999991,
+        "std_reward": 13.122078662982966,
+        "mean_cost": 18226.3,
+        "std_cost": 134.61912939846255,
+        "mean_resolved": 637.855,
+        "std_resolved": 13.21869793133953,
+        "mean_resolve_rate": 0.9729740049232568,
+        "std_resolve_rate": 0.006408246247889527,
+        "mean_episode_length": 912.315
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 1823.09
+        },
+        "all_l1": {
+          "mean_reward": 71.58499999999991,
+          "std_reward": 20.621729437658,
+          "mean_cost": 18230.9,
+          "std_cost": 134.68923490761983,
+          "mean_resolved": 547.585,
+          "std_resolved": 20.540272028383654,
+          "mean_resolve_rate": 0.3003616699685864,
+          "std_resolve_rate": 0.011071256789846511,
+          "mean_episode_length": 4051.36
+        },
+        "all_l2": {
+          "mean_reward": 71.58499999999991,
+          "std_reward": 20.621729437658,
+          "mean_cost": 18230.9,
+          "std_cost": 134.68923490761983,
+          "mean_resolved": 547.585,
+          "std_resolved": 20.540272028383654,
+          "mean_resolve_rate": 0.3003616699685864,
+          "std_resolve_rate": 0.011071256789846511,
+          "mean_episode_length": 4051.36
+        },
+        "all_l3": {
+          "mean_reward": 260.5854999999992,
+          "std_reward": 13.1425669011047,
+          "mean_cost": 18230.9,
+          "std_cost": 134.68923490761983,
+          "mean_resolved": 637.995,
+          "std_resolved": 13.252734623465454,
+          "mean_resolve_rate": 0.349954267750976,
+          "std_resolve_rate": 0.0068874801903474475,
+          "mean_episode_length": 2079.52
+        },
+        "random": {
+          "mean_reward": 241.8239999999992,
+          "std_reward": 16.530222291306433,
+          "mean_cost": 18225.75,
+          "std_cost": 134.16384572603752,
+          "mean_resolved": 621.23,
+          "std_resolved": 17.036052946618828,
+          "mean_resolve_rate": 0.43464465346897185,
+          "std_resolve_rate": 0.013435101243317114,
+          "mean_episode_length": 2186.65
+        },
+        "greedy_cheap": {
+          "mean_reward": 253.2620000000004,
+          "std_reward": 15.607618524297605,
+          "mean_cost": 18230.9,
+          "std_cost": 134.68923490761983,
+          "mean_resolved": 617.88,
+          "std_resolved": 16.346730559962136,
+          "mean_resolve_rate": 0.3389143866170369,
+          "std_resolve_rate": 0.008425818441226385,
+          "mean_episode_length": 2739.75
+        },
+        "budget_aware": {
+          "mean_reward": 238.71249999999768,
+          "std_reward": 17.278871310071604,
+          "mean_cost": 18225.625,
+          "std_cost": 135.39196569590086,
+          "mean_resolved": 603.225,
+          "std_resolved": 17.84669086973829,
+          "mean_resolve_rate": 0.33087794492145534,
+          "std_resolve_rate": 0.009377898026180352,
+          "mean_episode_length": 3208.96
+        },
+        "escalation": {
+          "mean_reward": 253.2620000000004,
+          "std_reward": 15.607618524297605,
+          "mean_cost": 18230.9,
+          "std_cost": 134.68923490761983,
+          "mean_resolved": 617.88,
+          "std_resolved": 16.346730559962136,
+          "mean_resolve_rate": 0.3389143866170369,
+          "std_resolve_rate": 0.008425818441226385,
+          "mean_episode_length": 2739.75
+        }
+      }
+    },
+    {
+      "binary": "bzip2_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 1,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 2.1407499999999997,
+        "std_reward": 1.3473128580622988,
+        "mean_cost": 136.8,
+        "std_cost": 28.03141095271517,
+        "mean_resolved": 4.89,
+        "std_resolved": 1.6425285385648554,
+        "mean_resolve_rate": 0.34250777299326063,
+        "std_resolve_rate": 0.08967987729416164,
+        "mean_episode_length": 16.135
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 14.185
+        },
+        "all_l1": {
+          "mean_reward": 0.6162499999999999,
+          "std_reward": 1.993031218395738,
+          "mean_cost": 141.85,
+          "std_cost": 26.815620447791247,
+          "mean_resolved": 4.3,
+          "std_resolved": 2.0639767440550294,
+          "mean_resolve_rate": 0.30504369776680146,
+          "std_resolve_rate": 0.14220248985156536,
+          "mean_episode_length": 31.73
+        },
+        "all_l2": {
+          "mean_reward": 0.6162499999999999,
+          "std_reward": 1.993031218395738,
+          "mean_cost": 141.85,
+          "std_cost": 26.815620447791247,
+          "mean_resolved": 4.3,
+          "std_resolved": 2.0639767440550294,
+          "mean_resolve_rate": 0.30504369776680146,
+          "std_resolve_rate": 0.14220248985156536,
+          "mean_episode_length": 31.73
+        },
+        "all_l3": {
+          "mean_reward": 2.11925,
+          "std_reward": 1.4132292586484334,
+          "mean_cost": 141.85,
+          "std_cost": 26.815620447791247,
+          "mean_resolved": 5.055,
+          "std_resolved": 1.6498409014204976,
+          "mean_resolve_rate": 0.35525909906656805,
+          "std_resolve_rate": 0.0922357177968269,
+          "mean_episode_length": 16.76
+        },
+        "random": {
+          "mean_reward": 1.0767499999999999,
+          "std_reward": 1.512670465600489,
+          "mean_cost": 131.575,
+          "std_cost": 30.11468703141376,
+          "mean_resolved": 4.545,
+          "std_resolved": 1.6577017222648953,
+          "mean_resolve_rate": 0.425644470725353,
+          "std_resolve_rate": 0.1521512076835378,
+          "mean_episode_length": 17.62
+        },
+        "greedy_cheap": {
+          "mean_reward": 2.1229999999999993,
+          "std_reward": 1.4680160080871052,
+          "mean_cost": 141.85,
+          "std_cost": 26.815620447791247,
+          "mean_resolved": 4.96,
+          "std_resolved": 1.7024687956024336,
+          "mean_resolve_rate": 0.34890576103463106,
+          "std_resolve_rate": 0.1003917568110444,
+          "mean_episode_length": 22.325
+        },
+        "budget_aware": {
+          "mean_reward": 1.8784999999999998,
+          "std_reward": 1.4716615609575456,
+          "mean_cost": 137.075,
+          "std_cost": 27.144417013448642,
+          "mean_resolved": 4.62,
+          "std_resolved": 1.6660132052297785,
+          "mean_resolve_rate": 0.32582734323639895,
+          "std_resolve_rate": 0.10362454584804436,
+          "mean_episode_length": 24.83
+        },
+        "escalation": {
+          "mean_reward": 2.1229999999999993,
+          "std_reward": 1.4680160080871052,
+          "mean_cost": 141.85,
+          "std_cost": 26.815620447791247,
+          "mean_resolved": 4.96,
+          "std_resolved": 1.7024687956024336,
+          "mean_resolve_rate": 0.34890576103463106,
+          "std_resolve_rate": 0.1003917568110444,
+          "mean_episode_length": 22.325
+        }
+      }
+    },
+    {
+      "binary": "bzip2_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 2,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 2.146,
+        "std_reward": 1.3345725907570558,
+        "mean_cost": 136.2,
+        "std_cost": 28.02784329911954,
+        "mean_resolved": 4.87,
+        "std_resolved": 1.6319007322750976,
+        "mean_resolve_rate": 0.3420067809297685,
+        "std_resolve_rate": 0.08902997482215659,
+        "mean_episode_length": 16.095
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 14.155
+        },
+        "all_l1": {
+          "mean_reward": 0.6242499999999999,
+          "std_reward": 1.9911427466407323,
+          "mean_cost": 141.55,
+          "std_cost": 27.16794986744491,
+          "mean_resolved": 4.3,
+          "std_resolved": 2.0639767440550294,
+          "mean_resolve_rate": 0.30584726919537286,
+          "std_resolve_rate": 0.1421414322294055,
+          "mean_episode_length": 31.66
+        },
+        "all_l2": {
+          "mean_reward": 0.6242499999999999,
+          "std_reward": 1.9911427466407323,
+          "mean_cost": 141.55,
+          "std_cost": 27.16794986744491,
+          "mean_resolved": 4.3,
+          "std_resolved": 2.0639767440550294,
+          "mean_resolve_rate": 0.30584726919537286,
+          "std_resolve_rate": 0.1421414322294055,
+          "mean_episode_length": 31.66
+        },
+        "all_l3": {
+          "mean_reward": 2.1155,
+          "std_reward": 1.4142700413994493,
+          "mean_cost": 141.55,
+          "std_cost": 27.16794986744491,
+          "mean_resolved": 5.045,
+          "std_resolved": 1.6561929235448387,
+          "mean_resolve_rate": 0.35534838478085384,
+          "std_resolve_rate": 0.0922461405083323,
+          "mean_episode_length": 16.725
+        },
+        "random": {
+          "mean_reward": 1.07625,
+          "std_reward": 1.512580059864601,
+          "mean_cost": 131.35,
+          "std_cost": 30.33030662555194,
+          "mean_resolved": 4.545,
+          "std_resolved": 1.6577017222648953,
+          "mean_resolve_rate": 0.42707304215392455,
+          "std_resolve_rate": 0.15217198138926757,
+          "mean_episode_length": 17.575
+        },
+        "greedy_cheap": {
+          "mean_reward": 2.1239999999999997,
+          "std_reward": 1.4674549396829875,
+          "mean_cost": 141.55,
+          "std_cost": 27.16794986744491,
+          "mean_resolved": 4.955,
+          "std_resolved": 1.7067439761135823,
+          "mean_resolve_rate": 0.3493521896060595,
+          "std_resolve_rate": 0.1003082462757105,
+          "mean_episode_length": 22.27
+        },
+        "budget_aware": {
+          "mean_reward": 1.8695,
+          "std_reward": 1.4745574759906783,
+          "mean_cost": 136.775,
+          "std_cost": 27.494988179666493,
+          "mean_resolved": 4.605,
+          "std_resolved": 1.6759997016706178,
+          "mean_resolve_rate": 0.32529162895068464,
+          "std_resolve_rate": 0.10373815660244236,
+          "mean_episode_length": 24.785
+        },
+        "escalation": {
+          "mean_reward": 2.1239999999999997,
+          "std_reward": 1.4674549396829875,
+          "mean_cost": 141.55,
+          "std_cost": 27.16794986744491,
+          "mean_resolved": 4.955,
+          "std_resolved": 1.7067439761135823,
+          "mean_resolve_rate": 0.3493521896060595,
+          "std_resolve_rate": 0.1003082462757105,
+          "mean_episode_length": 22.27
+        }
+      }
+    },
+    {
+      "binary": "openssl",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 1,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 2.27,
+        "std_reward": 1.4928831166571614,
+        "mean_cost": 156.5,
+        "std_cost": 35.80153627988609,
+        "mean_resolved": 5.4,
+        "std_resolved": 1.849324200890693,
+        "mean_resolve_rate": 0.33565393944410793,
+        "std_resolve_rate": 0.08956824729640235,
+        "mean_episode_length": 18.535
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 16.11
+        },
+        "all_l1": {
+          "mean_reward": 0.57275,
+          "std_reward": 2.2042277417499307,
+          "mean_cost": 161.05,
+          "std_cost": 36.157952099088796,
+          "mean_resolved": 4.76,
+          "std_resolved": 2.447937907709262,
+          "mean_resolve_rate": 0.2936912074129492,
+          "std_resolve_rate": 0.13069232553031565,
+          "mean_episode_length": 36.05
+        },
+        "all_l2": {
+          "mean_reward": 0.57275,
+          "std_reward": 2.2042277417499307,
+          "mean_cost": 161.05,
+          "std_cost": 36.157952099088796,
+          "mean_resolved": 4.76,
+          "std_resolved": 2.447937907709262,
+          "mean_resolve_rate": 0.2936912074129492,
+          "std_resolve_rate": 0.13069232553031565,
+          "mean_episode_length": 36.05
+        },
+        "all_l3": {
+          "mean_reward": 2.2247500000000002,
+          "std_reward": 1.5717346905569018,
+          "mean_cost": 161.1,
+          "std_cost": 36.12187702764074,
+          "mean_resolved": 5.565,
+          "std_resolved": 1.8643430478321312,
+          "mean_resolve_rate": 0.34611274551591703,
+          "std_resolve_rate": 0.09081131403695422,
+          "mean_episode_length": 19.06
+        },
+        "random": {
+          "mean_reward": 1.0215,
+          "std_reward": 1.5579514594492345,
+          "mean_cost": 151.525,
+          "std_cost": 38.85291977445196,
+          "mean_resolved": 5.01,
+          "std_resolved": 1.8761396536505486,
+          "mean_resolve_rate": 0.4179035848224703,
+          "std_resolve_rate": 0.13878211529123607,
+          "mean_episode_length": 20.09
+        },
+        "greedy_cheap": {
+          "mean_reward": 2.273,
+          "std_reward": 1.5942618981836076,
+          "mean_cost": 161.1,
+          "std_cost": 36.12187702764074,
+          "mean_resolved": 5.495,
+          "std_resolved": 1.913106113105073,
+          "mean_resolve_rate": 0.3416071140301642,
+          "std_resolve_rate": 0.10086434840370144,
+          "mean_episode_length": 25.33
+        },
+        "budget_aware": {
+          "mean_reward": 2.062,
+          "std_reward": 1.6968370575868503,
+          "mean_cost": 156.9,
+          "std_cost": 36.36811790566017,
+          "mean_resolved": 5.2,
+          "std_resolved": 1.9874606914351791,
+          "mean_resolve_rate": 0.32304272044221016,
+          "std_resolve_rate": 0.10995392184314606,
+          "mean_episode_length": 28.28
+        },
+        "escalation": {
+          "mean_reward": 2.273,
+          "std_reward": 1.5942618981836076,
+          "mean_cost": 161.1,
+          "std_cost": 36.12187702764074,
+          "mean_resolved": 5.495,
+          "std_resolved": 1.913106113105073,
+          "mean_resolve_rate": 0.3416071140301642,
+          "std_resolve_rate": 0.10086434840370144,
+          "mean_episode_length": 25.33
+        }
+      }
+    },
+    {
+      "binary": "openssl",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 2,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 2.2197500000000003,
+        "std_reward": 1.4827921086585267,
+        "mean_cost": 154.8,
+        "std_cost": 34.71253375943623,
+        "mean_resolved": 5.335,
+        "std_resolved": 1.811842984367023,
+        "mean_resolve_rate": 0.3333452273228958,
+        "std_resolve_rate": 0.08979139047262909,
+        "mean_episode_length": 18.465
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 16.06
+        },
+        "all_l1": {
+          "mean_reward": 0.5452499999999999,
+          "std_reward": 2.1455453706458876,
+          "mean_cost": 160.55,
+          "std_cost": 36.30698968518321,
+          "mean_resolved": 4.72,
+          "std_resolved": 2.3773094035064095,
+          "mean_resolve_rate": 0.29294120741294916,
+          "std_resolve_rate": 0.12906571296685046,
+          "mean_episode_length": 35.95
+        },
+        "all_l2": {
+          "mean_reward": 0.5452499999999999,
+          "std_reward": 2.1455453706458876,
+          "mean_cost": 160.55,
+          "std_cost": 36.30698968518321,
+          "mean_resolved": 4.72,
+          "std_resolved": 2.3773094035064095,
+          "mean_resolve_rate": 0.29294120741294916,
+          "std_resolve_rate": 0.12906571296685046,
+          "mean_episode_length": 35.95
+        },
+        "all_l3": {
+          "mean_reward": 2.20975,
+          "std_reward": 1.5599254589562925,
+          "mean_cost": 160.6,
+          "std_cost": 36.271752094432934,
+          "mean_resolved": 5.54,
+          "std_resolved": 1.8515939079614623,
+          "mean_resolve_rate": 0.34586274551591706,
+          "std_resolve_rate": 0.09059353525432308,
+          "mean_episode_length": 19.01
+        },
+        "random": {
+          "mean_reward": 1.0234999999999999,
+          "std_reward": 1.5606161443481226,
+          "mean_cost": 150.95,
+          "std_cost": 38.982015083881954,
+          "mean_resolved": 4.995,
+          "std_resolved": 1.8641284826964046,
+          "mean_resolve_rate": 0.418181362600248,
+          "std_resolve_rate": 0.13889051582089312,
+          "mean_episode_length": 20.005
+        },
+        "greedy_cheap": {
+          "mean_reward": 2.2680000000000002,
+          "std_reward": 1.5872542329444266,
+          "mean_cost": 160.6,
+          "std_cost": 36.271752094432934,
+          "mean_resolved": 5.48,
+          "std_resolved": 1.8972611839174913,
+          "mean_resolve_rate": 0.3423571140301642,
+          "std_resolve_rate": 0.10221616118725073,
+          "mean_episode_length": 25.255
+        },
+        "budget_aware": {
+          "mean_reward": 2.052,
+          "std_reward": 1.6912705283306986,
+          "mean_cost": 156.4,
+          "std_cost": 36.45942950733047,
+          "mean_resolved": 5.18,
+          "std_resolved": 1.979292802998081,
+          "mean_resolve_rate": 0.3230427204422102,
+          "std_resolve_rate": 0.10995392184314606,
+          "mean_episode_length": 28.195
+        },
+        "escalation": {
+          "mean_reward": 2.2680000000000002,
+          "std_reward": 1.5872542329444266,
+          "mean_cost": 160.6,
+          "std_cost": 36.271752094432934,
+          "mean_resolved": 5.48,
+          "std_resolved": 1.8972611839174913,
+          "mean_resolve_rate": 0.3423571140301642,
+          "std_resolve_rate": 0.10221616118725073,
+          "mean_episode_length": 25.255
+        }
+      }
+    },
+    {
+      "binary": "ssh",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 1,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 20.292749999999966,
+        "std_reward": 4.703560878472803,
+        "mean_cost": 1250.35,
+        "std_cost": 61.17497445851531,
+        "mean_resolved": 46.935,
+        "std_resolved": 4.954873863177548,
+        "mean_resolve_rate": 0.6306049752959514,
+        "std_resolve_rate": 0.05497551104658139,
+        "mean_episode_length": 119.515
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 125.035
+        },
+        "all_l1": {
+          "mean_reward": 14.761749999999997,
+          "std_reward": 6.242108973536114,
+          "mean_cost": 1250.35,
+          "std_cost": 61.17497445851531,
+          "mean_resolved": 47.085,
+          "std_resolved": 6.29347082300379,
+          "mean_resolve_rate": 0.37688099320206875,
+          "std_resolve_rate": 0.04919410088562168,
+          "mean_episode_length": 271.97
+        },
+        "all_l2": {
+          "mean_reward": 14.761749999999997,
+          "std_reward": 6.242108973536114,
+          "mean_cost": 1250.35,
+          "std_cost": 61.17497445851531,
+          "mean_resolved": 47.085,
+          "std_resolved": 6.29347082300379,
+          "mean_resolve_rate": 0.37688099320206875,
+          "std_resolve_rate": 0.04919410088562168,
+          "mean_episode_length": 271.97
+        },
+        "all_l3": {
+          "mean_reward": 19.49950000000001,
+          "std_reward": 3.74257929107722,
+          "mean_cost": 1250.35,
+          "std_cost": 61.17497445851531,
+          "mean_resolved": 45.325,
+          "std_resolved": 4.167658215353078,
+          "mean_resolve_rate": 0.36243688085014897,
+          "std_resolve_rate": 0.02754526988542613,
+          "mean_episode_length": 141.96
+        },
+        "random": {
+          "mean_reward": 19.212250000000004,
+          "std_reward": 4.128793702463231,
+          "mean_cost": 1243.325,
+          "std_cost": 62.93305470895243,
+          "mean_resolved": 45.955,
+          "std_resolved": 4.437676757043036,
+          "mean_resolve_rate": 0.45925139961826544,
+          "std_resolve_rate": 0.0493098392949947,
+          "mean_episode_length": 150.24
+        },
+        "greedy_cheap": {
+          "mean_reward": 21.862999999999992,
+          "std_reward": 4.992617650090978,
+          "mean_cost": 1250.35,
+          "std_cost": 61.17497445851531,
+          "mean_resolved": 46.87,
+          "std_resolved": 5.326640592343358,
+          "mean_resolve_rate": 0.37496661881624804,
+          "std_resolve_rate": 0.03970411792011306,
+          "mean_episode_length": 187.655
+        },
+        "budget_aware": {
+          "mean_reward": 23.89550000000003,
+          "std_reward": 5.175811989437035,
+          "mean_cost": 1245.225,
+          "std_cost": 61.09070612621858,
+          "mean_resolved": 48.8,
+          "std_resolved": 5.569560126257728,
+          "mean_resolve_rate": 0.3903257895565716,
+          "std_resolve_rate": 0.040751489274067056,
+          "mean_episode_length": 211.46
+        },
+        "escalation": {
+          "mean_reward": 21.862999999999992,
+          "std_reward": 4.992617650090978,
+          "mean_cost": 1250.35,
+          "std_cost": 61.17497445851531,
+          "mean_resolved": 46.87,
+          "std_resolved": 5.326640592343358,
+          "mean_resolve_rate": 0.37496661881624804,
+          "std_resolve_rate": 0.03970411792011306,
+          "mean_episode_length": 187.655
+        }
+      }
+    },
+    {
+      "binary": "ssh",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 2,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 18.563250000000004,
+        "std_reward": 4.053758988580852,
+        "mean_cost": 1242.825,
+        "std_cost": 61.29554938982112,
+        "mean_resolved": 45.195,
+        "std_resolved": 4.4561165828555245,
+        "mean_resolve_rate": 0.9752469814538869,
+        "std_resolve_rate": 0.024374287055319178,
+        "mean_episode_length": 67.24
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 124.96
+        },
+        "all_l1": {
+          "mean_reward": 14.759249999999998,
+          "std_reward": 6.2429141382450615,
+          "mean_cost": 1249.6,
+          "std_cost": 61.2359371611148,
+          "mean_resolved": 47.065,
+          "std_resolved": 6.300061507636255,
+          "mean_resolve_rate": 0.3769382970093725,
+          "std_resolve_rate": 0.04917648674498012,
+          "mean_episode_length": 271.845
+        },
+        "all_l2": {
+          "mean_reward": 14.759249999999998,
+          "std_reward": 6.2429141382450615,
+          "mean_cost": 1249.6,
+          "std_cost": 61.2359371611148,
+          "mean_resolved": 47.065,
+          "std_resolved": 6.300061507636255,
+          "mean_resolve_rate": 0.3769382970093725,
+          "std_resolve_rate": 0.04917648674498012,
+          "mean_episode_length": 271.845
+        },
+        "all_l3": {
+          "mean_reward": 19.52075000000001,
+          "std_reward": 3.7562656904830454,
+          "mean_cost": 1249.6,
+          "std_cost": 61.2359371611148,
+          "mean_resolved": 45.33,
+          "std_resolved": 4.1702637806258736,
+          "mean_resolve_rate": 0.362707859871128,
+          "std_resolve_rate": 0.02774704877988604,
+          "mean_episode_length": 141.86
+        },
+        "random": {
+          "mean_reward": 19.286250000000006,
+          "std_reward": 4.083754208752044,
+          "mean_cost": 1242.55,
+          "std_cost": 62.999980158727034,
+          "mean_resolved": 46.01,
+          "std_resolved": 4.406801561223287,
+          "mean_resolve_rate": 0.4599633737282979,
+          "std_resolve_rate": 0.048508081434702206,
+          "mean_episode_length": 150.065
+        },
+        "greedy_cheap": {
+          "mean_reward": 21.852999999999994,
+          "std_reward": 4.9891272783924805,
+          "mean_cost": 1249.6,
+          "std_cost": 61.2359371611148,
+          "mean_resolved": 46.845,
+          "std_resolved": 5.318926113418008,
+          "mean_resolve_rate": 0.3750006126002418,
+          "std_resolve_rate": 0.03971676969760122,
+          "mean_episode_length": 187.545
+        },
+        "budget_aware": {
+          "mean_reward": 23.920000000000027,
+          "std_reward": 5.182161711100894,
+          "mean_cost": 1244.5,
+          "std_cost": 61.178018928370015,
+          "mean_resolved": 48.81,
+          "std_resolved": 5.571705304482641,
+          "mean_resolve_rate": 0.3906492161299981,
+          "std_resolve_rate": 0.040855066839612195,
+          "mean_episode_length": 211.305
+        },
+        "escalation": {
+          "mean_reward": 21.852999999999994,
+          "std_reward": 4.9891272783924805,
+          "mean_cost": 1249.6,
+          "std_cost": 61.2359371611148,
+          "mean_resolved": 46.845,
+          "std_resolved": 5.318926113418008,
+          "mean_resolve_rate": 0.3750006126002418,
+          "std_resolve_rate": 0.03971676969760122,
+          "mean_episode_length": 187.545
+        }
+      }
+    },
+    {
+      "binary": "gcc_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 1,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 71.81074999999993,
+        "std_reward": 8.077247175708955,
+        "mean_cost": 5042.0,
+        "std_cost": 195.82645377987112,
+        "mean_resolved": 177.14,
+        "std_resolved": 10.145954858957337,
+        "mean_resolve_rate": 0.9724871362177586,
+        "std_resolve_rate": 0.01370492272831674,
+        "mean_episode_length": 253.46
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 504.715
+        },
+        "all_l1": {
+          "mean_reward": 18.898750000000042,
+          "std_reward": 11.246802253863155,
+          "mean_cost": 5047.15,
+          "std_cost": 195.26489059736264,
+          "mean_resolved": 150.68,
+          "std_resolved": 12.559761144225632,
+          "mean_resolve_rate": 0.2985274853000665,
+          "std_resolve_rate": 0.0218474868104008,
+          "mean_episode_length": 1122.1
+        },
+        "all_l2": {
+          "mean_reward": 18.898750000000042,
+          "std_reward": 11.246802253863155,
+          "mean_cost": 5047.15,
+          "std_cost": 195.26489059736264,
+          "mean_resolved": 150.68,
+          "std_resolved": 12.559761144225632,
+          "mean_resolve_rate": 0.2985274853000665,
+          "std_resolve_rate": 0.0218474868104008,
+          "mean_episode_length": 1122.1
+        },
+        "all_l3": {
+          "mean_reward": 72.78399999999993,
+          "std_reward": 8.112291229979252,
+          "mean_cost": 5047.15,
+          "std_cost": 195.26489059736264,
+          "mean_resolved": 177.25,
+          "std_resolved": 10.14088260458625,
+          "mean_resolve_rate": 0.35116756649200875,
+          "std_resolve_rate": 0.014201747673788742,
+          "mean_episode_length": 575.835
+        },
+        "random": {
+          "mean_reward": 66.24425000000001,
+          "std_reward": 8.764726432553342,
+          "mean_cost": 5041.4,
+          "std_cost": 194.90200101589517,
+          "mean_resolved": 171.95,
+          "std_resolved": 10.857601024167355,
+          "mean_resolve_rate": 0.43288445836697476,
+          "std_resolve_rate": 0.02355483309641807,
+          "mean_episode_length": 609.8
+        },
+        "greedy_cheap": {
+          "mean_reward": 70.642,
+          "std_reward": 8.619364013661354,
+          "mean_cost": 5047.15,
+          "std_cost": 195.26489059736264,
+          "mean_resolved": 171.585,
+          "std_resolved": 10.629805971888668,
+          "mean_resolve_rate": 0.3399436657395574,
+          "std_resolve_rate": 0.016036267115706056,
+          "mean_episode_length": 758.835
+        },
+        "budget_aware": {
+          "mean_reward": 66.01950000000005,
+          "std_reward": 9.697518741925572,
+          "mean_cost": 5042.775,
+          "std_cost": 195.43777622302196,
+          "mean_resolved": 166.875,
+          "std_resolved": 11.550297615213212,
+          "mean_resolve_rate": 0.3305933080388246,
+          "std_resolve_rate": 0.01839627801966173,
+          "mean_episode_length": 888.235
+        },
+        "escalation": {
+          "mean_reward": 70.642,
+          "std_reward": 8.619364013661354,
+          "mean_cost": 5047.15,
+          "std_cost": 195.26489059736264,
+          "mean_resolved": 171.585,
+          "std_resolved": 10.629805971888668,
+          "mean_resolve_rate": 0.3399436657395574,
+          "std_resolve_rate": 0.016036267115706056,
+          "mean_episode_length": 758.835
+        }
+      }
+    },
+    {
+      "binary": "gcc_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 2,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 71.85824999999993,
+        "std_reward": 8.06143253010892,
+        "mean_cost": 5041.0,
+        "std_cost": 196.2421972971155,
+        "mean_resolved": 177.175,
+        "std_resolved": 10.124444429202029,
+        "mean_resolve_rate": 0.9743604349858088,
+        "std_resolve_rate": 0.013003434187437646,
+        "mean_episode_length": 253.05
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 504.61
+        },
+        "all_l1": {
+          "mean_reward": 18.946250000000042,
+          "std_reward": 11.248818757429659,
+          "mean_cost": 5046.1,
+          "std_cost": 195.703321382137,
+          "mean_resolved": 150.7,
+          "std_resolved": 12.55706972187381,
+          "mean_resolve_rate": 0.2986312791004415,
+          "std_resolve_rate": 0.021855755623474582,
+          "mean_episode_length": 1121.87
+        },
+        "all_l2": {
+          "mean_reward": 18.946250000000042,
+          "std_reward": 11.248818757429659,
+          "mean_cost": 5046.1,
+          "std_cost": 195.703321382137,
+          "mean_resolved": 150.7,
+          "std_resolved": 12.55706972187381,
+          "mean_resolve_rate": 0.2986312791004415,
+          "std_resolve_rate": 0.021855755623474582,
+          "mean_episode_length": 1121.87
+        },
+        "all_l3": {
+          "mean_reward": 72.83874999999993,
+          "std_reward": 8.101239777805512,
+          "mean_cost": 5046.1,
+          "std_cost": 195.703321382137,
+          "mean_resolved": 177.28,
+          "std_resolved": 10.131219077682607,
+          "mean_resolve_rate": 0.3513021636137853,
+          "std_resolve_rate": 0.01419703613326953,
+          "mean_episode_length": 575.66
+        },
+        "random": {
+          "mean_reward": 66.32775000000001,
+          "std_reward": 8.699357300254958,
+          "mean_cost": 5040.4,
+          "std_cost": 195.34223813604675,
+          "mean_resolved": 172.01,
+          "std_resolved": 10.81341296723657,
+          "mean_resolve_rate": 0.4332821743831636,
+          "std_resolve_rate": 0.02363360642849835,
+          "mean_episode_length": 609.365
+        },
+        "greedy_cheap": {
+          "mean_reward": 70.63799999999999,
+          "std_reward": 8.62327988644694,
+          "mean_cost": 5046.1,
+          "std_cost": 195.703321382137,
+          "mean_resolved": 171.56,
+          "std_resolved": 10.653468918619888,
+          "mean_resolve_rate": 0.3399621112067209,
+          "std_resolve_rate": 0.016019422354246495,
+          "mean_episode_length": 758.695
+        },
+        "budget_aware": {
+          "mean_reward": 66.02050000000004,
+          "std_reward": 9.696970132469097,
+          "mean_cost": 5041.725,
+          "std_cost": 195.85236627368076,
+          "mean_resolved": 166.855,
+          "std_resolved": 11.562178644182938,
+          "mean_resolve_rate": 0.3306211893060222,
+          "std_resolve_rate": 0.018383705677960546,
+          "mean_episode_length": 888.015
+        },
+        "escalation": {
+          "mean_reward": 70.63799999999999,
+          "std_reward": 8.62327988644694,
+          "mean_cost": 5046.1,
+          "std_cost": 195.703321382137,
+          "mean_resolved": 171.56,
+          "std_resolved": 10.653468918619888,
+          "mean_resolve_rate": 0.3399621112067209,
+          "std_resolve_rate": 0.016019422354246495,
+          "mean_episode_length": 758.695
+        }
+      }
+    },
+    {
+      "binary": "dealII_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 1,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 259.62199999999916,
+        "std_reward": 13.219354787583738,
+        "mean_cost": 18226.6,
+        "std_cost": 134.44865190845164,
+        "mean_resolved": 637.925,
+        "std_resolved": 13.308996017731767,
+        "mean_resolve_rate": 0.9729981063236892,
+        "std_resolve_rate": 0.006433768891556945,
+        "mean_episode_length": 912.33
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 1823.125
+        },
+        "all_l1": {
+          "mean_reward": 71.8114999999999,
+          "std_reward": 20.769497291700883,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 547.815,
+          "std_resolved": 20.666416597949436,
+          "mean_resolve_rate": 0.30048242136997005,
+          "std_resolve_rate": 0.011152311698437285,
+          "mean_episode_length": 4051.325
+        },
+        "all_l2": {
+          "mean_reward": 71.8114999999999,
+          "std_reward": 20.769497291700883,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 547.815,
+          "std_resolved": 20.666416597949436,
+          "mean_resolve_rate": 0.30048242136997005,
+          "std_resolve_rate": 0.011152311698437285,
+          "mean_episode_length": 4051.325
+        },
+        "all_l3": {
+          "mean_reward": 260.6549999999992,
+          "std_reward": 13.247014758050701,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 638.07,
+          "std_resolved": 13.351220917953533,
+          "mean_resolve_rate": 0.3499886181873194,
+          "std_resolve_rate": 0.006942517866565793,
+          "mean_episode_length": 2079.52
+        },
+        "random": {
+          "mean_reward": 241.87374999999912,
+          "std_reward": 16.497915730100697,
+          "mean_cost": 18226.05,
+          "std_cost": 133.99402038897108,
+          "mean_resolved": 621.295,
+          "std_resolved": 16.987288630031575,
+          "mean_resolve_rate": 0.43472540508012175,
+          "std_resolve_rate": 0.013308588773730593,
+          "mean_episode_length": 2186.56
+        },
+        "greedy_cheap": {
+          "mean_reward": 253.3400000000004,
+          "std_reward": 15.62809009444205,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 617.965,
+          "std_resolved": 16.360127597301922,
+          "mean_resolve_rate": 0.3389546168577994,
+          "std_resolve_rate": 0.008439352585713846,
+          "mean_episode_length": 2739.725
+        },
+        "budget_aware": {
+          "mean_reward": 238.76499999999768,
+          "std_reward": 17.32502741700617,
+          "mean_cost": 18226.0,
+          "std_cost": 135.1887569289695,
+          "mean_resolved": 603.285,
+          "std_resolved": 17.892841445673184,
+          "mean_resolve_rate": 0.3309044419657765,
+          "std_resolve_rate": 0.009403166080596343,
+          "mean_episode_length": 3208.875
+        },
+        "escalation": {
+          "mean_reward": 253.3400000000004,
+          "std_reward": 15.62809009444205,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 617.965,
+          "std_resolved": 16.360127597301922,
+          "mean_resolve_rate": 0.3389546168577994,
+          "std_resolve_rate": 0.008439352585713846,
+          "mean_episode_length": 2739.725
+        }
+      }
+    },
+    {
+      "binary": "dealII_base.arm32-gcc81-O3",
+      "cost_name": "baseline",
+      "cost_overrides": {
+        "L1": 1.0,
+        "L2": 5.0,
+        "L3": 20.0
+      },
+      "seed": 2,
+      "timesteps": 200000,
+      "deterministic_reward": false,
+      "sunk_cost_l1": true,
+      "skip_baselines": false,
+      "eval_episodes": 200,
+      "eval_only": false,
+      "rl": {
+        "mean_reward": 259.78099999999904,
+        "std_reward": 13.017618407374412,
+        "mean_cost": 18223.975,
+        "std_cost": 134.08327403147644,
+        "mean_resolved": 637.895,
+        "std_resolved": 13.1173158458581,
+        "mean_resolve_rate": 0.9648677502297969,
+        "std_resolve_rate": 0.009959953507728787,
+        "mean_episode_length": 924.06
+      },
+      "baselines": {
+        "all_skip": {
+          "mean_reward": 0.0,
+          "std_reward": 0.0,
+          "mean_cost": 0.0,
+          "std_cost": 0.0,
+          "mean_resolved": 0.0,
+          "std_resolved": 0.0,
+          "mean_resolve_rate": 0.0,
+          "std_resolve_rate": 0.0,
+          "mean_episode_length": 1823.125
+        },
+        "all_l1": {
+          "mean_reward": 71.9449999999999,
+          "std_reward": 20.777348844353806,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 547.945,
+          "std_resolved": 20.67974794333819,
+          "mean_resolve_rate": 0.3005535762687112,
+          "std_resolve_rate": 0.011155641436959038,
+          "mean_episode_length": 4051.25
+        },
+        "all_l2": {
+          "mean_reward": 71.9449999999999,
+          "std_reward": 20.777348844353806,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 547.945,
+          "std_resolved": 20.67974794333819,
+          "mean_resolve_rate": 0.3005535762687112,
+          "std_resolve_rate": 0.011155641436959038,
+          "mean_episode_length": 4051.25
+        },
+        "all_l3": {
+          "mean_reward": 260.6699999999991,
+          "std_reward": 13.231251830420772,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 638.085,
+          "std_resolved": 13.337082702000465,
+          "mean_resolve_rate": 0.34999682836794344,
+          "std_resolve_rate": 0.006933490944067183,
+          "mean_episode_length": 2079.52
+        },
+        "random": {
+          "mean_reward": 241.86449999999917,
+          "std_reward": 16.506432526442655,
+          "mean_cost": 18226.0,
+          "std_cost": 133.97947604017565,
+          "mean_resolved": 621.285,
+          "std_resolved": 16.99569872055868,
+          "mean_resolve_rate": 0.43469932305403974,
+          "std_resolve_rate": 0.013332370615965827,
+          "mean_episode_length": 2186.625
+        },
+        "greedy_cheap": {
+          "mean_reward": 253.33500000000043,
+          "std_reward": 15.63424366574852,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 617.96,
+          "std_resolved": 16.365769153938352,
+          "mean_resolve_rate": 0.33895188013092464,
+          "std_resolve_rate": 0.008442860485217826,
+          "mean_episode_length": 2739.775
+        },
+        "budget_aware": {
+          "mean_reward": 238.99049999999764,
+          "std_reward": 17.145418039523424,
+          "mean_cost": 18225.975,
+          "std_cost": 135.18107994464313,
+          "mean_resolved": 603.51,
+          "std_resolved": 17.729915397429284,
+          "mean_resolve_rate": 0.33102759467513615,
+          "std_resolve_rate": 0.00930099744206332,
+          "mean_episode_length": 3208.51
+        },
+        "escalation": {
+          "mean_reward": 253.33500000000043,
+          "std_reward": 15.63424366574852,
+          "mean_cost": 18231.25,
+          "std_cost": 134.491403070977,
+          "mean_resolved": 617.96,
+          "std_resolved": 16.365769153938352,
+          "mean_resolve_rate": 0.33895188013092464,
+          "std_resolve_rate": 0.008442860485217826,
+          "mean_episode_length": 2739.775
+        }
+      }
+    }
+  ],
+  "by_binary": {
+    "bzip2_base.arm32-gcc81-O3": {
+      "baseline": {
+        "cost_name": "baseline",
+        "cost_overrides": {
+          "L1": 1.0,
+          "L2": 5.0,
+          "L3": 20.0
+        },
+        "mean_resolve_rate": {
+          "RL": 0.3383522225252101,
+          "all_skip": 0.0,
+          "all_l1": 0.30557508767319136,
+          "all_l2": 0.30557508767319136,
+          "all_l3": 0.35549541367788273,
+          "random": 0.42563455009043244,
+          "greedy_cheap": 0.34953890104277097,
+          "budget_aware": 0.3258766920357477,
+          "escalation": 0.34953890104277097
+        },
+        "std_resolve_rate": {
+          "RL": 0.005526367023245513,
+          "all_skip": 0.0,
+          "all_l1": 0.0003757867303289924,
+          "all_l2": 0.0003757867303289924,
+          "all_l3": 0.00027350462364858014,
+          "random": 0.001178594810307351,
+          "greedy_cheap": 0.0006076961472455385,
+          "budget_aware": 0.0004990699872709156,
+          "escalation": 0.0006076961472455385
+        },
+        "per_seed": {
+          "RL": [
+            0.3305421136526013,
+            0.34250777299326063,
+            0.3420067809297685
+          ],
+          "all_skip": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "all_l1": [
+            0.3058342960573998,
+            0.30504369776680146,
+            0.30584726919537286
+          ],
+          "all_l2": [
+            0.3058342960573998,
+            0.30504369776680146,
+            0.30584726919537286
+          ],
+          "all_l3": [
+            0.35587875718622625,
+            0.35525909906656805,
+            0.35534838478085384
+          ],
+          "random": [
+            0.4241861373920197,
+            0.425644470725353,
+            0.42707304215392455
+          ],
+          "greedy_cheap": [
+            0.3503587524876224,
+            0.34890576103463106,
+            0.3493521896060595
+          ],
+          "budget_aware": [
+            0.32651110392015964,
+            0.32582734323639895,
+            0.32529162895068464
+          ],
+          "escalation": [
+            0.3503587524876224,
+            0.34890576103463106,
+            0.3493521896060595
+          ]
+        }
+      }
+    },
+    "openssl": {
+      "baseline": {
+        "cost_name": "baseline",
+        "cost_overrides": {
+          "L1": 1.0,
+          "L2": 5.0,
+          "L3": 20.0
+        },
+        "mean_resolve_rate": {
+          "RL": 0.3324745262646947,
+          "all_skip": 0.0,
+          "all_l1": 0.29342797989972164,
+          "all_l2": 0.29342797989972164,
+          "all_l3": 0.3458971370503086,
+          "random": 0.4178394822583677,
+          "greedy_cheap": 0.3415131986862489,
+          "budget_aware": 0.322910445309935,
+          "escalation": 0.3415131986862489
+        },
+        "std_resolve_rate": {
+          "RL": 0.003014974507128527,
+          "all_skip": 0.0,
+          "all_l1": 0.0003445811625707612,
+          "all_l2": 0.0003445811625707612,
+          "all_l3": 0.00016381835900317596,
+          "random": 0.0003086602376071324,
+          "greedy_cheap": 0.0007304198789179062,
+          "budget_aware": 0.00018706528602817344,
+          "escalation": 0.0007304198789179062
+        },
+        "per_seed": {
+          "RL": [
+            0.32842441202708045,
+            0.33565393944410793,
+            0.3333452273228958
+          ],
+          "all_skip": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "all_l1": [
+            0.2936515248732666,
+            0.2936912074129492,
+            0.29294120741294916
+          ],
+          "all_l2": [
+            0.2936515248732666,
+            0.2936912074129492,
+            0.29294120741294916
+          ],
+          "all_l3": [
+            0.34571592011909175,
+            0.34611274551591703,
+            0.34586274551591706
+          ],
+          "random": [
+            0.4174334993523848,
+            0.4179035848224703,
+            0.418181362600248
+          ],
+          "greedy_cheap": [
+            0.34057536799841825,
+            0.3416071140301642,
+            0.3423571140301642
+          ],
+          "budget_aware": [
+            0.3226458950453848,
+            0.32304272044221016,
+            0.3230427204422102
+          ],
+          "escalation": [
+            0.34057536799841825,
+            0.3416071140301642,
+            0.3423571140301642
+          ]
+        }
+      }
+    },
+    "ssh": {
+      "baseline": {
+        "cost_name": "baseline",
+        "cost_overrides": {
+          "L1": 1.0,
+          "L2": 5.0,
+          "L3": 20.0
+        },
+        "mean_resolve_rate": {
+          "RL": 0.846778797143099,
+          "all_skip": 0.0,
+          "all_l1": 0.3769118676662632,
+          "all_l2": 0.3769118676662632,
+          "all_l3": 0.3626266147329158,
+          "random": 0.45958055294891675,
+          "greedy_cheap": 0.37506520464443965,
+          "budget_aware": 0.3904942683471593,
+          "escalation": 0.37506520464443965
+        },
+        "std_resolve_rate": {
+          "RL": 0.15376115080189812,
+          "all_skip": 0.0,
+          "all_l1": 2.360439096117864e-05,
+          "all_l2": 2.360439096117864e-05,
+          "all_l3": 0.00013462234392046826,
+          "random": 0.0002931290155420652,
+          "greedy_cheap": 0.00011621577020268837,
+          "budget_aware": 0.00013238454901693056,
+          "escalation": 0.00011621577020268837
+        },
+        "per_seed": {
+          "RL": [
+            0.9344844346794585,
+            0.6306049752959514,
+            0.9752469814538869
+          ],
+          "all_skip": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "all_l1": [
+            0.3769163127873484,
+            0.37688099320206875,
+            0.3769382970093725
+          ],
+          "all_l2": [
+            0.3769163127873484,
+            0.37688099320206875,
+            0.3769382970093725
+          ],
+          "all_l3": [
+            0.36273510347747034,
+            0.36243688085014897,
+            0.362707859871128
+          ],
+          "random": [
+            0.459526885500187,
+            0.45925139961826544,
+            0.4599633737282979
+          ],
+          "greedy_cheap": [
+            0.37522838251682905,
+            0.37496661881624804,
+            0.3750006126002418
+          ],
+          "budget_aware": [
+            0.3905077993549081,
+            0.3903257895565716,
+            0.3906492161299981
+          ],
+          "escalation": [
+            0.37522838251682905,
+            0.37496661881624804,
+            0.3750006126002418
+          ]
+        }
+      }
+    },
+    "gcc_base.arm32-gcc81-O3": {
+      "baseline": {
+        "cost_name": "baseline",
+        "cost_overrides": {
+          "L1": 1.0,
+          "L2": 5.0,
+          "L3": 20.0
+        },
+        "mean_resolve_rate": {
+          "RL": 0.9737273925092323,
+          "all_skip": 0.0,
+          "all_l1": 0.2986004549818388,
+          "all_l2": 0.2986004549818388,
+          "all_l3": 0.3512534843497653,
+          "random": 0.43301558694585324,
+          "greedy_cheap": 0.33998143556313104,
+          "budget_aware": 0.3306312092206299,
+          "escalation": 0.33998143556313104
+        },
+        "std_resolve_rate": {
+          "RL": 0.0008770570226030891,
+          "all_skip": 0.0,
+          "all_l1": 5.1803954934148275e-05,
+          "all_l2": 5.1803954934148275e-05,
+          "all_l3": 6.093237204882688e-05,
+          "random": 0.00018851407397331232,
+          "greedy_cheap": 4.106797499865448e-05,
+          "budget_aware": 3.5746000953104775e-05,
+          "escalation": 4.106797499865448e-05
+        },
+        "per_seed": {
+          "RL": [
+            0.9743346063241295,
+            0.9724871362177586,
+            0.9743604349858088
+          ],
+          "all_skip": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "all_l1": [
+            0.2986426005450083,
+            0.2985274853000665,
+            0.2986312791004415
+          ],
+          "all_l2": [
+            0.2986426005450083,
+            0.2985274853000665,
+            0.2986312791004415
+          ],
+          "all_l3": [
+            0.351290722943502,
+            0.35116756649200875,
+            0.3513021636137853
+          ],
+          "random": [
+            0.4328801280874214,
+            0.43288445836697476,
+            0.4332821743831636
+          ],
+          "greedy_cheap": [
+            0.3400385297431148,
+            0.3399436657395574,
+            0.3399621112067209
+          ],
+          "budget_aware": [
+            0.330679130317043,
+            0.3305933080388246,
+            0.3306211893060222
+          ],
+          "escalation": [
+            0.3400385297431148,
+            0.3399436657395574,
+            0.3399621112067209
+          ]
+        }
+      }
+    },
+    "dealII_base.arm32-gcc81-O3": {
+      "baseline": {
+        "cost_name": "baseline",
+        "cost_overrides": {
+          "L1": 1.0,
+          "L2": 5.0,
+          "L3": 20.0
+        },
+        "mean_resolve_rate": {
+          "RL": 0.970279953825581,
+          "all_skip": 0.0,
+          "all_l1": 0.30046588920242256,
+          "all_l2": 0.30046588920242256,
+          "all_l3": 0.34997990476874624,
+          "random": 0.43468979386771106,
+          "greedy_cheap": 0.3389402945352536,
+          "budget_aware": 0.33093666052078935,
+          "escalation": 0.3389402945352536
+        },
+        "std_resolve_rate": {
+          "RL": 0.0038270185123704674,
+          "all_skip": 0.0,
+          "all_l1": 7.921275751529256e-05,
+          "all_l2": 7.921275751529256e-05,
+          "all_l3": 1.843536956659456e-05,
+          "random": 3.36482760320186e-05,
+          "greedy_cheap": 1.8353702410162578e-05,
+          "budget_aware": 6.520372514674198e-05,
+          "escalation": 1.8353702410162578e-05
+        },
+        "per_seed": {
+          "RL": [
+            0.9729740049232568,
+            0.9729981063236892,
+            0.9648677502297969
+          ],
+          "all_skip": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "all_l1": [
+            0.3003616699685864,
+            0.30048242136997005,
+            0.3005535762687112
+          ],
+          "all_l2": [
+            0.3003616699685864,
+            0.30048242136997005,
+            0.3005535762687112
+          ],
+          "all_l3": [
+            0.349954267750976,
+            0.3499886181873194,
+            0.34999682836794344
+          ],
+          "random": [
+            0.43464465346897185,
+            0.43472540508012175,
+            0.43469932305403974
+          ],
+          "greedy_cheap": [
+            0.3389143866170369,
+            0.3389546168577994,
+            0.33895188013092464
+          ],
+          "budget_aware": [
+            0.33087794492145534,
+            0.3309044419657765,
+            0.33102759467513615
+          ],
+          "escalation": [
+            0.3389143866170369,
+            0.3389546168577994,
+            0.33895188013092464
+          ]
+        }
+      }
+    }
+  }
+}

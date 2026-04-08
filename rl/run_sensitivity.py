@@ -52,6 +52,7 @@ def _experiment_dedupe_key(r: Dict[str, Any]) -> Tuple[Any, ...]:
         r["seed"],
         r.get("timesteps"),
         r.get("deterministic_reward", False),
+        r.get("sunk_cost_l1", False),
     )
 
 
@@ -86,9 +87,10 @@ def _run_fingerprint(
     seed: int,
     timesteps: int,
     deterministic_reward: bool = False,
+    sunk_cost_l1: bool = False,
 ) -> Tuple[Any, ...]:
     """Training resume key only (eval / baselines flags are not part of it)."""
-    return (binary, cost_name, seed, timesteps, deterministic_reward)
+    return (binary, cost_name, seed, timesteps, deterministic_reward, sunk_cost_l1)
 
 
 def _fp_from_run(r: Dict[str, Any], default_timesteps: int) -> Tuple[Any, ...]:
@@ -98,6 +100,7 @@ def _fp_from_run(r: Dict[str, Any], default_timesteps: int) -> Tuple[Any, ...]:
         r["seed"],
         r.get("timesteps", default_timesteps),
         r.get("deterministic_reward", False),
+        r.get("sunk_cost_l1", False),
     )
 
 
@@ -270,6 +273,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Use deterministic L1/L2 reward (pre-sampled per episode)",
     )
+    p.add_argument(
+        "--sunk-cost",
+        action="store_true",
+        help="Enable sunk-cost L1 mode (L1 pre-applied at reset; agent sees SKIP/L2/L3 only)",
+    )
     return p.parse_args()
 
 
@@ -284,6 +292,8 @@ def main() -> None:
 
     if args.deterministic and args.output == RESULT_JSON:
         args.output = "data/calibration/deterministic_results.json"
+    if args.sunk_cost and args.output == RESULT_JSON:
+        args.output = "data/calibration/sunk_cost_results.json"
 
     train_cfg = TrainConfig(
         env_config_path=args.config,
@@ -292,6 +302,7 @@ def main() -> None:
         cost_lambda=args.cost_lambda,
         num_seeds=len(args.seeds),
         deterministic_reward=args.deterministic,
+        sunk_cost_l1=args.sunk_cost,
     )
 
     prev_meta: Dict[str, Any] = {}
@@ -316,6 +327,7 @@ def main() -> None:
         "resume": args.resume,
         "eval_only": args.eval_only,
         "deterministic_reward": args.deterministic,
+        "sunk_cost_l1": args.sunk_cost,
     }
 
     def save_document() -> None:
@@ -342,7 +354,7 @@ def main() -> None:
             )
 
             for seed in args.seeds:
-                fp = _run_fingerprint(binary, cost_name, seed, args.timesteps, args.deterministic)
+                fp = _run_fingerprint(binary, cost_name, seed, args.timesteps, args.deterministic, args.sunk_cost)
                 run_save = os.path.join(group_dir, f"seed_{seed}")
                 cal_model_zip = calibration_model_path(binary, cost_name, seed)
                 cfg = dataclasses.replace(
@@ -387,6 +399,7 @@ def main() -> None:
                     "seed": seed,
                     "timesteps": args.timesteps,
                     "deterministic_reward": args.deterministic,
+                    "sunk_cost_l1": args.sunk_cost,
                     "skip_baselines": args.skip_baselines,
                     "eval_episodes": args.eval_episodes,
                     "eval_only": args.eval_only,

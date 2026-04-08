@@ -23,7 +23,9 @@ from gymnasium import spaces
 from calibration.config import filter_binary_names
 
 OBS_DIM = 19
+SUNK_COST_OBS_DIM = 17
 LEVEL_NAMES = ["SKIP", "L1", "L2", "L3"]
+SUNK_COST_LEVEL_NAMES = ["SKIP", "L2", "L3"]
 DIFFICULTY_NAMES = ["easy", "medium", "hard"]
 
 
@@ -61,6 +63,7 @@ class EnvConfig:
     use_site_features: bool = True
     budget_ratio: float = 2.0
     max_sites_per_episode: int = 2000
+    sunk_cost_l1: bool = False
 
     @classmethod
     def from_yaml(cls, yaml_path: str, binary_name: str = "mixed_no_cpp") -> "EnvConfig":
@@ -172,10 +175,16 @@ class AnalysisBudgetEnv(gym.Env):
         super().__init__()
         self.config = config or EnvConfig()
 
-        self.action_space = spaces.Discrete(4)
-        self.observation_space = spaces.Box(
-            low=0.0, high=1.0, shape=(OBS_DIM,), dtype=np.float32
-        )
+        if self.config.sunk_cost_l1:
+            self.action_space = spaces.Discrete(3)
+            self.observation_space = spaces.Box(
+                low=0.0, high=1.0, shape=(SUNK_COST_OBS_DIM,), dtype=np.float32
+            )
+        else:
+            self.action_space = spaces.Discrete(4)
+            self.observation_space = spaces.Box(
+                low=0.0, high=1.0, shape=(OBS_DIM,), dtype=np.float32
+            )
 
         self.site_difficulties: np.ndarray = np.array([])
         self.site_types: np.ndarray = np.array([])
@@ -188,62 +197,109 @@ class AnalysisBudgetEnv(gym.Env):
         self.site_l1_success: np.ndarray = np.array([], dtype=bool)
         self.site_l2_success: np.ndarray = np.array([], dtype=bool)
 
-        self.total_attempts_by_level = {"L1": 0, "L2": 0, "L3": 0}
-        self.total_successes_by_level = {"L1": 0, "L2": 0, "L3": 0}
+        self.num_active_sites: int = 0
+        self._episode_budget: float = 0.0
+        self._l1_pre_resolved: int = 0
+        self._l1_total_sites: int = 0
+
+        self.total_attempts_by_level: dict = {}
+        self.total_successes_by_level: dict = {}
         self.total_resolved = 0
         self.total_visited = 0
 
     def reset(self, *, seed: Optional[int] = None, options: Optional[dict] = None):
         super().reset(seed=seed)
 
+        N = self.config.num_sites
         dist = self.config.difficulty_distribution
         dist_arr = np.array(dist, dtype=np.float64)
         dist_arr = dist_arr / dist_arr.sum()
 
         self.site_difficulties = self.np_random.choice(
-            DIFFICULTY_NAMES,
-            size=self.config.num_sites,
-            p=dist_arr,
+            DIFFICULTY_NAMES, size=N, p=dist_arr,
         )
-
         self.site_types = self.np_random.choice(
-            ["jump", "call"],
-            size=self.config.num_sites,
+            ["jump", "call"], size=N,
             p=[self.config.jump_ratio, 1 - self.config.jump_ratio],
         )
 
-        self.current_target = 0
-        self.budget_remaining = self.config.budget
-        self.budget_spent = 0.0
-        self.resolved = np.zeros(self.config.num_sites, dtype=bool)
-        self.attempts = np.zeros(self.config.num_sites, dtype=int)
-        self.tried_levels = np.zeros((self.config.num_sites, 3), dtype=bool)
-        self.site_l1_success = np.zeros(self.config.num_sites, dtype=bool)
-        self.site_l2_success = np.zeros(self.config.num_sites, dtype=bool)
-
-        self.total_attempts_by_level = {"L1": 0, "L2": 0, "L3": 0}
-        self.total_successes_by_level = {"L1": 0, "L2": 0, "L3": 0}
-        self.total_resolved = 0
-        self.total_visited = 0
-
-        if self.config.deterministic_reward:
+        if self.config.sunk_cost_l1:
             diff_indices = np.array(
                 [DIFFICULTY_NAMES.index(d) for d in self.site_difficulties]
             )
             l1_probs = np.array([self.config.success_rates["L1"][di] for di in diff_indices])
-            l2_probs = np.array([self.config.success_rates["L2"][di] for di in diff_indices])
-            self.site_l1_success = self.np_random.random(self.config.num_sites) < l1_probs
-            self.site_l2_success = self.np_random.random(self.config.num_sites) < l2_probs
+            l1_outcomes = self.np_random.random(N) < l1_probs
+
+            self._l1_total_sites = N
+            self._l1_pre_resolved = int(l1_outcomes.sum())
+
+            unresolved = ~l1_outcomes
+            self.site_difficulties = self.site_difficulties[unresolved]
+            self.site_types = self.site_types[unresolved]
+            n = len(self.site_difficulties)
+            self.num_active_sites = n
+
+            self._episode_budget = self.config.budget_ratio * n * self.config.costs["L2"]
+            self.current_target = 0
+            self.budget_remaining = self._episode_budget
+            self.budget_spent = 0.0
+            self.resolved = np.zeros(n, dtype=bool)
+            self.attempts = np.zeros(n, dtype=int)
+            self.tried_levels = np.zeros((n, 2), dtype=bool)
+            self.site_l1_success = np.array([], dtype=bool)
+            self.site_l2_success = np.zeros(n, dtype=bool)
+
+            self.total_attempts_by_level = {"L2": 0, "L3": 0}
+            self.total_successes_by_level = {"L2": 0, "L3": 0}
+            self.total_resolved = 0
+            self.total_visited = 0
+
+            if self.config.deterministic_reward and n > 0:
+                di = np.array([DIFFICULTY_NAMES.index(d) for d in self.site_difficulties])
+                l2_probs = np.array([self.config.success_rates["L2"][i] for i in di])
+                self.site_l2_success = self.np_random.random(n) < l2_probs
+        else:
+            self._l1_total_sites = N
+            self._l1_pre_resolved = 0
+            self.num_active_sites = N
+            self._episode_budget = self.config.budget
+
+            self.current_target = 0
+            self.budget_remaining = self.config.budget
+            self.budget_spent = 0.0
+            self.resolved = np.zeros(N, dtype=bool)
+            self.attempts = np.zeros(N, dtype=int)
+            self.tried_levels = np.zeros((N, 3), dtype=bool)
+            self.site_l1_success = np.zeros(N, dtype=bool)
+            self.site_l2_success = np.zeros(N, dtype=bool)
+
+            self.total_attempts_by_level = {"L1": 0, "L2": 0, "L3": 0}
+            self.total_successes_by_level = {"L1": 0, "L2": 0, "L3": 0}
+            self.total_resolved = 0
+            self.total_visited = 0
+
+            if self.config.deterministic_reward:
+                diff_indices = np.array(
+                    [DIFFICULTY_NAMES.index(d) for d in self.site_difficulties]
+                )
+                l1_probs = np.array([self.config.success_rates["L1"][di] for di in diff_indices])
+                l2_probs = np.array([self.config.success_rates["L2"][di] for di in diff_indices])
+                self.site_l1_success = self.np_random.random(N) < l1_probs
+                self.site_l2_success = self.np_random.random(N) < l2_probs
 
         return self._get_obs(), self._get_info()
 
     def step(self, action: int):
         assert self.action_space.contains(action)
 
-        if self.current_target >= self.config.num_sites:
+        n = self.num_active_sites
+        if self.current_target >= n:
             return self._get_obs(), 0.0, True, False, self._get_info()
 
-        level = LEVEL_NAMES[action]
+        if self.config.sunk_cost_l1:
+            level = SUNK_COST_LEVEL_NAMES[action]
+        else:
+            level = LEVEL_NAMES[action]
         cost = self.config.costs[level]
 
         reward = 0.0
@@ -262,7 +318,10 @@ class AnalysisBudgetEnv(gym.Env):
         if level == "SKIP":
             self._advance_target()
         else:
-            level_idx = ["L1", "L2", "L3"].index(level)
+            if self.config.sunk_cost_l1:
+                level_idx = ["L2", "L3"].index(level)
+            else:
+                level_idx = ["L1", "L2", "L3"].index(level)
 
             if self.tried_levels[self.current_target, level_idx]:
                 reward += self.config.invalid_repeat_penalty
@@ -294,7 +353,7 @@ class AnalysisBudgetEnv(gym.Env):
                     self.attempts[self.current_target] >= self.config.max_attempts_per_target):
                 self._advance_target()
 
-        if self.current_target >= self.config.num_sites:
+        if self.current_target >= n:
             terminated = True
 
         return self._get_obs(), float(reward), terminated, truncated, self._get_info()
@@ -304,15 +363,21 @@ class AnalysisBudgetEnv(gym.Env):
         self.current_target += 1
 
     def _get_obs(self) -> np.ndarray:
-        if self.current_target >= self.config.num_sites:
+        n = self.num_active_sites
+        if self.config.sunk_cost_l1:
+            return self._get_obs_sunk_cost(n)
+        return self._get_obs_normal(n)
+
+    def _get_obs_normal(self, n: int) -> np.ndarray:
+        if self.current_target >= n:
             return np.zeros(OBS_DIM, dtype=np.float32)
 
         ct = self.current_target
         obs = np.zeros(OBS_DIM, dtype=np.float32)
 
-        obs[0] = ct / self.config.num_sites
-        obs[1] = self.budget_spent / max(self.config.budget, 1e-6)
-        obs[2] = self.budget_remaining / max(self.config.budget, 1e-6)
+        obs[0] = ct / n
+        obs[1] = self.budget_spent / max(self._episode_budget, 1e-6)
+        obs[2] = self.budget_remaining / max(self._episode_budget, 1e-6)
         obs[3:6] = self.tried_levels[ct].astype(np.float32)
         obs[6] = self.attempts[ct] / self.config.max_attempts_per_target
         obs[7] = float(self.resolved[ct])
@@ -337,16 +402,57 @@ class AnalysisBudgetEnv(gym.Env):
 
         return obs
 
+    def _get_obs_sunk_cost(self, n: int) -> np.ndarray:
+        """17-dim obs: no tried_L1, no global_L1_sr, no current_resolved; adds l1_pre_resolved_ratio."""
+        if self.current_target >= n:
+            return np.zeros(SUNK_COST_OBS_DIM, dtype=np.float32)
+
+        ct = self.current_target
+        obs = np.zeros(SUNK_COST_OBS_DIM, dtype=np.float32)
+
+        obs[0] = ct / max(n, 1)
+        obs[1] = self.budget_spent / max(self._episode_budget, 1e-6)
+        obs[2] = self.budget_remaining / max(self._episode_budget, 1e-6)
+        obs[3:5] = self.tried_levels[ct].astype(np.float32)
+        obs[5] = self.attempts[ct] / self.config.max_attempts_per_target
+
+        if self.config.use_global_stats:
+            visited = max(self.total_visited, 1)
+            obs[6] = self.total_resolved / visited
+            for i, lvl in enumerate(["L2", "L3"]):
+                att = self.total_attempts_by_level[lvl]
+                obs[7 + i] = self.total_successes_by_level[lvl] / max(att, 1)
+
+        obs[9] = self._l1_pre_resolved / max(self._l1_total_sites, 1)
+
+        if self.config.use_site_features:
+            obs[10] = 1.0 if self.site_types[ct] == "jump" else 0.0
+            obs[11] = self.config.difficulty_distribution[0]
+            obs[12] = self.config.difficulty_distribution[1]
+            obs[13] = self.config.difficulty_distribution[2]
+
+        if self.config.oracle_mode:
+            diff = self.site_difficulties[ct]
+            oracle_idx = DIFFICULTY_NAMES.index(diff)
+            obs[14 + oracle_idx] = 1.0
+
+        return obs
+
     def _get_info(self) -> dict:
-        return {
-            "budget": self.config.budget,
+        info = {
+            "budget": self._episode_budget,
             "budget_spent": self.budget_spent,
             "budget_remaining": self.budget_remaining,
             "current_target": self.current_target,
             "total_resolved": self.total_resolved,
             "total_visited": self.total_visited,
-            "num_sites": self.config.num_sites,
+            "num_sites": self.num_active_sites,
             "resolve_rate": (
                 self.total_resolved / max(self.total_visited, 1)
             ),
         }
+        if self.config.sunk_cost_l1:
+            info["l1_pre_resolved"] = self._l1_pre_resolved
+            info["l1_total_sites"] = self._l1_total_sites
+            info["num_active_sites"] = self.num_active_sites
+        return info
