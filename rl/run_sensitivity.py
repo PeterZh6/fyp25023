@@ -51,6 +51,7 @@ def _experiment_dedupe_key(r: Dict[str, Any]) -> Tuple[Any, ...]:
         r["cost_name"],
         r["seed"],
         r.get("timesteps"),
+        r.get("deterministic_reward", False),
     )
 
 
@@ -84,9 +85,10 @@ def _run_fingerprint(
     cost_name: str,
     seed: int,
     timesteps: int,
+    deterministic_reward: bool = False,
 ) -> Tuple[Any, ...]:
     """Training resume key only (eval / baselines flags are not part of it)."""
-    return (binary, cost_name, seed, timesteps)
+    return (binary, cost_name, seed, timesteps, deterministic_reward)
 
 
 def _fp_from_run(r: Dict[str, Any], default_timesteps: int) -> Tuple[Any, ...]:
@@ -95,6 +97,7 @@ def _fp_from_run(r: Dict[str, Any], default_timesteps: int) -> Tuple[Any, ...]:
         r["cost_name"],
         r["seed"],
         r.get("timesteps", default_timesteps),
+        r.get("deterministic_reward", False),
     )
 
 
@@ -262,6 +265,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Never train; load PPO zip from data/calibration/models/ and run eval (--skip-baselines still applies)",
     )
+    p.add_argument(
+        "--deterministic",
+        action="store_true",
+        help="Use deterministic L1/L2 reward (pre-sampled per episode)",
+    )
     return p.parse_args()
 
 
@@ -274,12 +282,16 @@ def main() -> None:
     cost_items = _resolve_cost_presets(args.cost)
     cost_order = [name for name, _ in cost_items]
 
+    if args.deterministic and args.output == RESULT_JSON:
+        args.output = "data/calibration/deterministic_results.json"
+
     train_cfg = TrainConfig(
         env_config_path=args.config,
         budget_ratio=args.budget_ratio,
         total_timesteps=args.timesteps,
         cost_lambda=args.cost_lambda,
         num_seeds=len(args.seeds),
+        deterministic_reward=args.deterministic,
     )
 
     prev_meta: Dict[str, Any] = {}
@@ -303,6 +315,7 @@ def main() -> None:
         "skip_baselines": args.skip_baselines,
         "resume": args.resume,
         "eval_only": args.eval_only,
+        "deterministic_reward": args.deterministic,
     }
 
     def save_document() -> None:
@@ -329,7 +342,7 @@ def main() -> None:
             )
 
             for seed in args.seeds:
-                fp = _run_fingerprint(binary, cost_name, seed, args.timesteps)
+                fp = _run_fingerprint(binary, cost_name, seed, args.timesteps, args.deterministic)
                 run_save = os.path.join(group_dir, f"seed_{seed}")
                 cal_model_zip = calibration_model_path(binary, cost_name, seed)
                 cfg = dataclasses.replace(
@@ -373,6 +386,7 @@ def main() -> None:
                     "cost_overrides": overrides,
                     "seed": seed,
                     "timesteps": args.timesteps,
+                    "deterministic_reward": args.deterministic,
                     "skip_baselines": args.skip_baselines,
                     "eval_episodes": args.eval_episodes,
                     "eval_only": args.eval_only,

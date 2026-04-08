@@ -54,6 +54,7 @@ class TrainConfig:
     use_site_features: bool = True
     use_global_stats: bool = True
     oracle_mode: bool = False
+    deterministic_reward: bool = False
 
 
 def make_env_config(train_cfg: TrainConfig) -> EnvConfig:
@@ -66,6 +67,7 @@ def make_env_config(train_cfg: TrainConfig) -> EnvConfig:
     env_config.oracle_mode = train_cfg.oracle_mode
     env_config.use_site_features = train_cfg.use_site_features
     env_config.use_global_stats = train_cfg.use_global_stats
+    env_config.deterministic_reward = train_cfg.deterministic_reward
     return env_config
 
 

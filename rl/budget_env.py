@@ -56,6 +56,7 @@ class EnvConfig:
     max_attempts_per_target: int = 3
 
     oracle_mode: bool = False
+    deterministic_reward: bool = False
     use_global_stats: bool = True
     use_site_features: bool = True
     budget_ratio: float = 2.0
@@ -184,6 +185,8 @@ class AnalysisBudgetEnv(gym.Env):
         self.resolved: np.ndarray = np.array([])
         self.attempts: np.ndarray = np.array([])
         self.tried_levels: np.ndarray = np.array([])
+        self.site_l1_success: np.ndarray = np.array([], dtype=bool)
+        self.site_l2_success: np.ndarray = np.array([], dtype=bool)
 
         self.total_attempts_by_level = {"L1": 0, "L2": 0, "L3": 0}
         self.total_successes_by_level = {"L1": 0, "L2": 0, "L3": 0}
@@ -215,11 +218,22 @@ class AnalysisBudgetEnv(gym.Env):
         self.resolved = np.zeros(self.config.num_sites, dtype=bool)
         self.attempts = np.zeros(self.config.num_sites, dtype=int)
         self.tried_levels = np.zeros((self.config.num_sites, 3), dtype=bool)
+        self.site_l1_success = np.zeros(self.config.num_sites, dtype=bool)
+        self.site_l2_success = np.zeros(self.config.num_sites, dtype=bool)
 
         self.total_attempts_by_level = {"L1": 0, "L2": 0, "L3": 0}
         self.total_successes_by_level = {"L1": 0, "L2": 0, "L3": 0}
         self.total_resolved = 0
         self.total_visited = 0
+
+        if self.config.deterministic_reward:
+            diff_indices = np.array(
+                [DIFFICULTY_NAMES.index(d) for d in self.site_difficulties]
+            )
+            l1_probs = np.array([self.config.success_rates["L1"][di] for di in diff_indices])
+            l2_probs = np.array([self.config.success_rates["L2"][di] for di in diff_indices])
+            self.site_l1_success = self.np_random.random(self.config.num_sites) < l1_probs
+            self.site_l2_success = self.np_random.random(self.config.num_sites) < l2_probs
 
         return self._get_obs(), self._get_info()
 
@@ -260,8 +274,15 @@ class AnalysisBudgetEnv(gym.Env):
 
             difficulty = self.site_difficulties[self.current_target]
             diff_idx = DIFFICULTY_NAMES.index(difficulty)
-            success_prob = self.config.success_rates[level][diff_idx]
-            success = self.np_random.random() < success_prob
+
+            if self.config.deterministic_reward and level in ("L1", "L2"):
+                if level == "L1":
+                    success = bool(self.site_l1_success[self.current_target])
+                else:
+                    success = bool(self.site_l2_success[self.current_target])
+            else:
+                success_prob = self.config.success_rates[level][diff_idx]
+                success = self.np_random.random() < success_prob
 
             if success and not self.resolved[self.current_target]:
                 self.resolved[self.current_target] = True
